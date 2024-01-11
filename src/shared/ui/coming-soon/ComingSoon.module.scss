@@ -1,0 +1,9 @@
+.coming__soon {
+  text-decoration: line-through;
+  cursor: default;
+  color: var(--secondary-color);
+
+  &:hover {
+    color: var(--secondary-color);
+  }
+}

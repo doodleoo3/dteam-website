@@ -1,0 +1,192 @@
+  [
+    {
+      "id": 1,
+      "name": "haqq",
+      "type": "testnet",
+      "description": "Uptick Network is building business-grade infrastructure and ecosystems for non-fungible tokens (NFTs). The platform is designed with a focus on multi-chain and cross-chain interoperability, and includes three key components: the NFT infrastructure, an NFT marketplace, and NFT ecosystem applications.",
+      "is_tendermint_chain": true,
+
+      "links": {
+        "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
+        "website": "https://www.uptickproject.com/",
+        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": true
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc": false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "uptickd",
+
+        "main_dir": "uptick",
+        "working_dir": "uptickd",
+        
+        "valoper_address": "uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr",
+
+        "denom": "auptick",
+        "denom_exponent": 18,
+
+        "ticker": "",
+        "cg_ticker": ""
+      }
+    },
+    {
+      "id": 2,
+      "name": "c4e",
+      "type": "testnet",
+      "description": "Uptick Network is building business-grade infrastructure and ecosystems for non-fungible tokens (NFTs). The platform is designed with a focus on multi-chain and cross-chain interoperability, and includes three key components: the NFT infrastructure, an NFT marketplace, and NFT ecosystem applications.",
+      "is_tendermint_chain": true,
+
+      "links": {
+        "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
+        "website": "https://www.uptickproject.com/",
+        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": true
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc": false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "uptickd",
+
+        "main_dir": "uptick",
+        "working_dir": "uptickd",
+        
+        "valoper_address": "uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr",
+
+        "denom": "auptick",
+        "denom_exponent": 18,
+
+        "ticker": "",
+        "cg_ticker": ""
+      }
+    },
+    
+    {
+      "id": 3,
+      "name": "uptick",
+      "type": "testnet",
+      "description": "Uptick Network is building business-grade infrastructure and ecosystems for non-fungible tokens (NFTs). The platform is designed with a focus on multi-chain and cross-chain interoperability, and includes three key components: the NFT infrastructure, an NFT marketplace, and NFT ecosystem applications.",
+      "is_tendermint_chain": true,
+
+      "links": {
+        "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
+        "website": "https://www.uptickproject.com/",
+        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": true
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc": false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "uptickd",
+
+        "main_dir": "uptick",
+        "working_dir": "uptickd",
+        
+        "valoper_address": "uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr",
+
+        "denom": "auptick",
+        "denom_exponent": 18,
+
+        "ticker": "",
+        "cg_ticker": ""
+      }
+    },
+
+    {
+      "id": 4,
+      "name": "lava",
+      "type": "testnet",
+      "description": "Uptick Network is building business-grade infrastructure and ecosystems for non-fungible tokens (NFTs). The platform is designed with a focus on multi-chain and cross-chain interoperability, and includes three key components: the NFT infrastructure, an NFT marketplace, and NFT ecosystem applications.",
+      "is_tendermint_chain": true,
+
+      "links": {
+        "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
+        "website": "https://www.uptickproject.com/",
+        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": true
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc": false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "uptickd",
+
+        "main_dir": "uptick",
+        "working_dir": "uptickd",
+
+        "valoper_address": "uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr",
+
+        "denom": "auptick",
+        "denom_exponent": 18,
+
+        "ticker": "",
+        "cg_ticker": ""
+      }
+    }
+  ]

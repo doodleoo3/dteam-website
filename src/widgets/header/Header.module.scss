@@ -1,0 +1,57 @@
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--secondary-color);
+  background-color: var(--bg-content-color);
+  min-height: 70px;
+  z-index: 999;
+}
+
+.nav__links {
+  min-width: 60%;
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 0 25px;
+}
+
+.dteam__logo, .btn__wrapper{
+  display: flex;
+  width: 20%;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn__wrapper a {
+  min-height: 40px;
+  min-width: 150px;
+}
+
+.stake__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color: var(--bg-content-color);
+  border: 1px solid var(--primary-color);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.stake__btn:hover, .active__stake__btn {
+  background-color: var(--bg-content-color);
+  color: var(--primary-color);
+  border-color: var(--secondary-color);
+}

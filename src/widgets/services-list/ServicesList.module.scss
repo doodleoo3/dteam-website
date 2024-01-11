@@ -1,0 +1,29 @@
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  width: 20%;
+  height: 50px;
+  min-width: 400px;
+  min-height: 50px;
+  margin: 0 20px 75px 20px;
+
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  background-color: var(--bg-content-color);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}

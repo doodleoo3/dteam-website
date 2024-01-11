@@ -1,0 +1,31 @@
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.block {
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  background: darkgray;
+  background: linear-gradient(to right, var(--bg-color) 8%, var(--secondary-color) 18%, var(--bg-color) 33%);
+  background-size: 2000px 104px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border: var(--border);
+}
+
+.block:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--secondary-color) 50%, rgba(255, 255, 255, 0) 100%);
+  animation: shimmer 1.5s infinite linear;
+  background-size: 1000px 100%;
+}
