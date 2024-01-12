@@ -1,14 +1,8 @@
 import React, {FC} from 'react';
-import {INetwork} from "@/src/app/models/INetwork";
 import ContentItem from "@/src/entities/content-item/ContentItem";
+import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 
-interface InstallationGuideContentProps {
-    network: INetwork;
-    nodeVersion: string | null;
-    chainId: string | null;
-}
-
-const UsualTendermintInstallationGuide:FC<InstallationGuideContentProps> = ({network, nodeVersion, chainId}) => {
+const UsualTendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVersion, chainId}) => {
     return (
         <>
             <ContentItem title={"INSTALL DEPENDENCIES"}>

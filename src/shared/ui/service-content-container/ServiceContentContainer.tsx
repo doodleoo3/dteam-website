@@ -9,6 +9,7 @@ import UsualTendermintInstallationGuide
 import mainnets from "@/src/shared/lib/networks-data/mainnets.json"
 import testnets from "@/src/shared/lib/networks-data/testnets.json"
 import {useNetworkParams} from "@/src/shared/hooks/useNetworkParams";
+import UsualTendermintSnapshot from "@/src/widgets/services-content/usual-tendermint-snapshot/UsualTendermintSnapshot";
 
 interface ServiceContentContainerProps {
     networkName: string;
@@ -40,6 +41,14 @@ const ServiceContentContainer:FC<ServiceContentContainerProps> = ({networkName, 
     useEffect(() => {
         getCurrentNetwork(type, networkName)
     }, [getCurrentNetwork, networkName, type]);
+
+    if (service === MainnetServices.snapshot && currentNetwork) {
+        return (
+            <section className={styles.container}>
+                <UsualTendermintSnapshot network={currentNetwork}/>
+            </section>
+        );
+    }
 
     if (service === MainnetServices.installation_guide && currentNetwork) {
         return (
