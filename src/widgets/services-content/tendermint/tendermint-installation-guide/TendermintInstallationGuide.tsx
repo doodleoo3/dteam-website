@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 
-const UsualTendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVersion, chainId}) => {
+const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVersion, chainId}) => {
     return (
         <>
             <ContentItem title={"INSTALL DEPENDENCIES"}>
@@ -121,4 +121,4 @@ const UsualTendermintInstallationGuide:FC<TendermintContentProps> = ({network, n
     );
 };
 
-export default UsualTendermintInstallationGuide;
+export default TendermintInstallationGuide;

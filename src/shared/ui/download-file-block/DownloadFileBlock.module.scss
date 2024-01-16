@@ -1,0 +1,18 @@
+.download {
+  margin: 30px;
+  display: flex;
+  height: 100px;
+  border: var(--border);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid var(--primary-color);
+  }
+}
+
+.icon {
+  font-size: var(--font-line-xl);
+  margin-right: 15px;
+}

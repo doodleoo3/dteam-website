@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
-const UsualTendermintSnapshot:FC<TendermintContentProps> = ({network}) => {
+const TendermintSnapshot:FC<TendermintContentProps> = ({network}) => {
     return (
         <>
             <ContentItem title={"SNAPSHOT INFO"}>
@@ -35,4 +35,4 @@ const UsualTendermintSnapshot:FC<TendermintContentProps> = ({network}) => {
     );
 };
 
-export default UsualTendermintSnapshot;
+export default TendermintSnapshot;
