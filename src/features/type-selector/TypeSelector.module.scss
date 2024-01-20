@@ -4,6 +4,10 @@
   justify-content: space-between;
   align-items: center;
 
+  opacity: 90%;
+
+
+
   div {
     width: 100%;
     padding: 3px 10px;
@@ -12,6 +16,8 @@
     background-color: var(--bg-content-color);
     border: 1px solid var(--secondary-color);
     text-align: center;
+
+    box-shadow: var(--box-shadow);
   }
 
   button {
@@ -21,6 +27,8 @@
     color: var(--secondary-color);
     background-color: var(--bg-content-color);
     border: 1px solid var(--secondary-color);
+
+    box-shadow: var(--box-shadow);
 
     &:hover {
       color: var(--primary-color) !important;

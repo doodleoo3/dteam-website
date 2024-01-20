@@ -1,0 +1,20 @@
+.panel {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  justify-content: space-around;
+
+  min-width: 300px;
+  //min-height: 500px;
+
+  min-height: 100%;
+
+  width: 50%;
+
+  border: var(--border);
+  padding: 15px;
+
+  background-color: var(--bg-content-color);
+  box-shadow: var(--box-shadow);
+}

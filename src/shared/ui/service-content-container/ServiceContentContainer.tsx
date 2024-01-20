@@ -4,18 +4,20 @@ import React, {FC, useCallback, useEffect, useState} from 'react';
 import styles from "./ServiceContentContainer.module.scss"
 import {INetwork, NetworkType} from "@/src/app/models/INetwork";
 import {MainnetServices, TestnetServices} from "@/src/app/models/IServices";
-import TendermintInstallationGuide
-    from "@/src/widgets/services-content/tendermint/tendermint-installation-guide/TendermintInstallationGuide";
 import mainnets from "@/src/shared/lib/networks-data/mainnets.json"
 import testnets from "@/src/shared/lib/networks-data/testnets.json"
 import {useNetworkParams} from "@/src/shared/hooks/useNetworkParams";
-import TendermintSnapshot from "@/src/widgets/services-content/tendermint/tendermint-snapshot/TendermintSnapshot";
-import TendermintStateSync from "@/src/widgets/services-content/tendermint/tendermint-state-sync/TendermintStateSync";
-import TendermintAddrbook from "@/src/widgets/services-content/tendermint/tendermint-addrbook/TendermintAddrbook";
-import TendermintGenesis from "@/src/widgets/services-content/tendermint/tendermint-genesis/TendermintGenesis";
-import TendermintSeeds from "@/src/widgets/services-content/tendermint/tendermint-seeds/TendermintSeeds";
-import TendermintPeers from "@/src/widgets/services-content/tendermint/tendermint-peers/TendermintPeers";
-import TendermintOverview from "@/src/widgets/services-content/tendermint/tendermint-overview/TendermintOverview";
+import dynamic from "next/dynamic";
+
+const TendermintInstallationGuide = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-installation-guide/TendermintInstallationGuide'))
+const TendermintSnapshot = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-snapshot/TendermintSnapshot'))
+const TendermintStateSync = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-state-sync/TendermintStateSync'))
+const TendermintAddrbook = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-addrbook/TendermintAddrbook'))
+const TendermintGenesis = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-genesis/TendermintGenesis'))
+const TendermintSeeds = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-seeds/TendermintSeeds'))
+const TendermintPeers = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-peers/TendermintPeers'))
+const TendermintOverview = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-overview/TendermintOverview'))
+
 
 interface ServiceContentContainerProps {
     networkName: string;
@@ -50,7 +52,7 @@ const ServiceContentContainer:FC<ServiceContentContainerProps> = ({networkName, 
 
     if (service === MainnetServices.overview && currentNetwork) {
         return (
-            <section className={styles.container}>
+            <section className={styles.overview__container}>
                 <TendermintOverview network={currentNetwork} />
             </section>
         );

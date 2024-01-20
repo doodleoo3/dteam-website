@@ -1,8 +1,8 @@
 import React from 'react';
-
+import styles from "./StakingPanel.module.scss"
 const StakingPanel = () => {
     return (
-        <div>
+        <div className={styles.panel}>
 
         </div>
     );

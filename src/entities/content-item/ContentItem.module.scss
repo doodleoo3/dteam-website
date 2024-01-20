@@ -2,6 +2,8 @@
   border-bottom: 1px solid var(--secondary-color);
   overflow-x: auto;
 
+  opacity: 90%;
+
   &::-webkit-scrollbar {
     width: 5px;
     background-color: var(--primary-color);

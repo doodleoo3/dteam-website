@@ -5,11 +5,11 @@ const TendermintSnapshot:FC<TendermintContentProps> = ({network}) => {
     return (
         <>
             <ContentItem title={"SNAPSHOT INFO"}>
-                <p>Name:</p>
-                <p>Height:</p>
-                <p>Size:</p>
-                <p>Time:</p>
-                <p>Url:</p>
+                <h3>Name: </h3>
+                <h3>Height: </h3>
+                <h3>Size: </h3>
+                <h3>Time: </h3>
+                <h3>Url:</h3>
             </ContentItem>
             <ContentItem title={"INSTALL DEPENDENCIES"}>
                 <p>sudo apt update</p>

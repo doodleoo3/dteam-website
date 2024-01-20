@@ -8,6 +8,10 @@
   flex-direction: column;
   background-color: var(--bg-content-color);
   border: 1px solid var(--secondary-color);
+
+  opacity: 90%;
+
+  box-shadow: var(--box-shadow);
 }
 
 .link {

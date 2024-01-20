@@ -28,10 +28,11 @@
   --font-line-xl: 40px;
   --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
 
-  --bg-color: #3e3e3e;
+  --bg-color: #323232;
   --bg-content-color: #303030;
   --primary-color: #ff9417;
-  --secondary-color: #808080;
+  --secondary-color: #636363;
 
-  --border: 1px solid var(--secondary-color)
+  --border: 1px solid var(--secondary-color);
+  --box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }

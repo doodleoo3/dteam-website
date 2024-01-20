@@ -3,7 +3,7 @@
 
 html {
   font: var(--font-m);
-  background: var(--bg-color);
+  background: linear-gradient(to top right, var(--bg-content-color), var(--bg-color), rgb(72, 72, 72));
   color: var(--secondary-color);
 
   min-height: 100vh;

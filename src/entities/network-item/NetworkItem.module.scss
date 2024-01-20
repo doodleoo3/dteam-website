@@ -12,6 +12,13 @@
   border: 1px solid var(--secondary-color);
   background-color: var(--bg-content-color);
 
+  opacity: 90%;
+  box-shadow: var(--box-shadow);
+  //box-shadow: rgba(99, 99, 99, 0.4) 5px 5px, rgba(99, 99, 99, 0.3) 10px 10px, rgba(99, 99, 99, 0.2) 15px 15px, rgba(99, 99, 99, 0.1) 20px 20px, rgba(99, 99, 99, 0.05) 25px 25px;
+  &:hover {
+    //box-shadow: rgba(255, 148, 23, 0.4) 5px 5px, rgba(255, 148, 23, 0.3) 10px 10px, rgba(255, 148, 23, 0.2) 15px 15px, rgba(255, 148, 23, 0.1) 20px 20px, rgba(255, 148, 23, 0.05) 25px 25px;
+  }
+
   &:hover, &:hover .logo__wrapper {
     border-color: var(--primary-color);
 

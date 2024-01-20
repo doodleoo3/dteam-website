@@ -9,24 +9,28 @@ interface StakingCalculatorProps {
 const StakingCalculator:FC<StakingCalculatorProps> = ({network}) => {
     return (
         <div className={styles.calculator}>
-            <h2>Calculator</h2>
+            <div className={styles.title__wrapper}>
+                <h2 className={styles.title}>{network.name} APR: 0%</h2>
+                <p>Annual Percentage Rate</p>
+            </div>
+
             <input className={styles.range} type="range"/>
 
             <div className={styles.rewards}>
                 <div className={styles.daily}>
-                    <p>Daily:</p>
+                    <h3>Daily:</h3>
                     <p>0${network.other.ticker}</p>
                     <p>0$</p>
                 </div>
 
                 <div className={styles.monthly}>
-                    <p>Monthly:</p>
+                    <h3>Monthly:</h3>
                     <p>0${network.other.ticker}</p>
                     <p>0$</p>
                 </div>
 
                 <div className={styles.yearly}>
-                    <p>Yearly:</p>
+                    <h3>Yearly:</h3>
                     <p>0${network.other.ticker}</p>
                     <p>0$</p>
                 </div>

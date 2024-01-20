@@ -1,8 +1,27 @@
-.container {
-  width: calc(100% - 30% - 100px - 50px);
+%container {
   max-width: calc(100% - 30% - 100px);
   min-height: calc(100vh - 70px - 70px - 140px - 50px);
+
+  width: calc(100% - 30% - 100px - 50px);
+
   background-color: var(--bg-content-color);
   border: 1px solid var(--secondary-color);
+
   margin: 0 50px 50px 0;
+  opacity: 90%;
+
+}
+
+.container {
+  @extend %container;
+  box-shadow: var(--box-shadow);
+}
+
+.overview__container {
+  display: flex;
+  flex-direction: row;
+  @extend %container;
+
+  background-color: inherit;
+  border: none;
 }
