@@ -25,9 +25,9 @@ export const fetchTendermintApr = createAsyncThunk (
 
             const inflationResponse = await axios.get<IInflation>(network.links.inflation);
 
-            const tokensPoolResponse =  await axios.get<ITokensPool>(`https://api.mainnet.${network.name}.dteam.tech/cosmos/staking/v1beta1/pool`)
-            const totalSupplyResponse = await axios.get<ITotalSupply>(`https://api.mainnet.${network.name}.dteam.tech/cosmos/bank/v1beta1/supply`)
-            const validatorsListResponse = await axios.get<IValidatorList>(`https://api.mainnet.${network.name}.dteam.tech/cosmos/staking/v1beta1/validators`)
+            const tokensPoolResponse =  await axios.get<ITokensPool>(`https://api.${network.name}.mainnet.dteam.tech/cosmos/staking/v1beta1/pool`)
+            const totalSupplyResponse = await axios.get<ITotalSupply>(`https://api.${network.name}.mainnet.dteam.tech/cosmos/bank/v1beta1/supply`)
+            const validatorsListResponse = await axios.get<IValidatorList>(`https://api.${network.name}.mainnet.dteam.tech/cosmos/staking/v1beta1/validators`)
 
             const inflation = inflationResponse.data.inflation;
             const bondedTokes = tokensPoolResponse.data.pool.bonded_tokens;

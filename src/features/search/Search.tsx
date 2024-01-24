@@ -1,5 +1,6 @@
 import React, {FC, useEffect, useState} from 'react';
 import styles from "./Search.module.scss"
+import Input from '@/src/shared/ui/input/Input';
 
 interface SearchProps {
     getSearchQuery: (searchQuery: string) => void;
@@ -12,11 +13,11 @@ const Search:FC<SearchProps> = ({getSearchQuery}) => {
     }, [getSearchQuery, searchQuery]);
 
     return (
-        <input
-            className={styles.search}
+        <Input
             placeholder="SEARCH NETWORK..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
+            isSearch={true}
         />
     );
 };

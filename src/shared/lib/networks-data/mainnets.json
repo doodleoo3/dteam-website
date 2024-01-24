@@ -9,7 +9,7 @@
       "links": {
         "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
         "website": "https://www.uptickproject.com/",
-        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+        "inflation": "https://api.uptick.mainnet.dteam.tech/cosmos/mint/v1beta1/inflation"
       },
 
       "services": {
@@ -53,7 +53,7 @@
       "links": {
         "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
         "website": "https://www.uptickproject.com/",
-        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+        "inflation": "https://api.uptick.mainnet.dteam.tech/cosmos/mint/v1beta1/inflation"
       },
 
       "services": {
@@ -101,7 +101,7 @@
       "links": {
         "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
         "website": "https://www.uptickproject.com/",
-        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+        "inflation": "https://api.uptick.mainnet.dteam.tech/cosmos/mint/v1beta1/inflation"
       },
 
       "services": {
@@ -149,7 +149,7 @@
       "links": {
         "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
         "website": "https://www.uptickproject.com/",
-        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+        "inflation": "https://api.uptick.mainnet.dteam.tech/cosmos/mint/v1beta1/inflation"
       },
 
       "services": {
@@ -189,7 +189,7 @@
 
     {
       "id": 5,
-      "name": "uptick",
+      "name": "quicksilver",
       "type": "mainnet",
       "description": "Uptick Network is building business-grade infrastructure and ecosystems for non-fungible tokens (NFTs). The platform is designed with a focus on multi-chain and cross-chain interoperability, and includes three key components: the NFT infrastructure, an NFT marketplace, and NFT ecosystem applications.",
       "is_tendermint_chain": true,
@@ -197,7 +197,7 @@
       "links": {
         "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
         "website": "https://www.uptickproject.com/",
-        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+        "inflation": "https://api.uptick.mainnet.dteam.tech/cosmos/mint/v1beta1/inflation"
       },
 
       "services": {
@@ -245,7 +245,7 @@
       "links": {
         "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
         "website": "https://www.uptickproject.com/",
-        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+        "inflation": "https://api.uptick.mainnet.dteam.tech/cosmos/mint/v1beta1/inflation"
       },
 
       "services": {
