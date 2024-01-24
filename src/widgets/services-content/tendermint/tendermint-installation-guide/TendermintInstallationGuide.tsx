@@ -1,8 +1,12 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 
 const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVersion, chainId}) => {
+    const [wallet, setWallet] = useState<string>("wallet");
+    const [moniker, setMoniker] = useState<string>("DTEAM_GUIDE");
+    const [port, setPort] = useState<number>(25);
+
     return (
         <>
             <ContentItem title={"INSTALL DEPENDENCIES"}>
@@ -11,32 +15,32 @@ const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVe
             </ContentItem>
 
             <ContentItem title={"INSTALL GO"}>
-                <p>cd $HOME</p>
-                <p>{`! [ -x "$(command -v go)" ] && {`}</p>
-                <p>{`VER="1.19.5"`}</p>
-                <p>{`wget "https://golang.org/dl/go$VER.linux-amd64.tar.gz"`}</p>
-                <p>sudo rm -rf /usr/local/go</p>
-                <p>{`sudo tar -C /usr/local -xzf "go$VER.linux-amd64.tar.gz"`}</p>
-                <p>{`rm "go$VER.linux-amd64.tar.gz"`}</p>
-                <p>[ ! -f ~/.bash_profile ] && touch ~/.bash_profile</p>
-                <p>{`echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile`}</p>
-                <p>source $HOME/.bash_profile</p>
-                <p>{`}`}</p>
-                <p>[ ! -d ~/go/bin ] && mkdir -p ~/go/bin</p>
+                <p>{`cd $HOME && \\`}</p>
+                <p>{`ver="1.21.4" && \\`}</p>
+                <p>{`wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \\`}</p>
+                <p>{`sudo rm -rf /usr/local/go && \\`}</p>
+                <p>{`sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \\`}</p>
+                <p>{`rm "go$ver.linux-amd64.tar.gz" && \\"`}</p>
+                <p>{`echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile && \\`}</p>
+                <p>{`source $HOME/.bash_profile && \\`}</p>
+                <p>{`go version`}</p>
             </ContentItem>
 
-            <ContentItem title={"SET VARIABLES"}>
-                <p>{`echo "export WALLET="wallet"" >> $HOME/.bash_profile`}</p>
-                <p>{`echo "export MONIKER="test"" >> $HOME/.bash_profile`}</p>
-                <p>{`echo "export ${network.name.toUpperCase()}_CHAIN_ID="${chainId}"" >> $HOME/.bash_profile`}</p>
-                <p>{`echo "export ${network.name.toUpperCase()}_PORT="25"" >> $HOME/.bash_profile`}</p>
+            <ContentItem
+                title={"SET VARIABLES"}
+                isInstallationGuidePage={true}
+                setPort={setPort}
+                setWallet={setWallet}
+                setMoniker={setMoniker}
+            >
+                <p>{`echo "export WALLET="${wallet}"" >> $HOME/.bash_profile`}</p>
+                <p>{`echo "export MONIKER="${moniker}"" >> $HOME/.bash_profile`}</p>
+                <p>{`echo "export ${network.name.toUpperCase()}_PORT="${port}"" >> $HOME/.bash_profile`}</p>
                 <p>source $HOME/.bash_profile</p>
             </ContentItem>
 
             <ContentItem title={"DOWNLOAD BINARY"}>
-                <p>sudo apt update</p>
                 <p>cd $HOME</p>
-                <p>rm -rf {network.name}</p>
                 {/*<p>{network.other.download_binary_command}</p>*/}
                 <p>cd {network.name}</p>
                 <p>git checkout v{nodeVersion}</p>
@@ -112,7 +116,7 @@ const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVe
                 <p>{`curl https://download.${network.type}.${network.name}.dteam.tech/snapshot | lz4 -dc - | tar -xf - -C $HOME/.${network.other.working_dir}`}</p>
             </ContentItem>
 
-            <ContentItem title={"ENABLE AND START SERVICE"}>
+            <ContentItem title={"ENABLE AND START SERVICE"} >
                 <p>sudo systemctl daemon-reload</p>
                 <p>{`sudo systemctl enable ${network.other.binary_name}`}</p>
                 <p>{`sudo systemctl restart ${network.other.binary_name} && sudo journalctl -u ${network.other.binary_name} -f`}</p>

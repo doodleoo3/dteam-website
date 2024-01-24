@@ -37,13 +37,14 @@
   border-left: 1px solid var(--secondary-color);
 }
 
+.title__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   margin: 20px;
 }
-
-//pre {
-//  background: none !important;
-//}
 
 .code__wrapper {
   display: flex;
@@ -58,4 +59,3 @@
     background: none;
   }
 }
-
