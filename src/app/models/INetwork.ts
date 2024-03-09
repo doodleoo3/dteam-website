@@ -15,6 +15,11 @@ export interface INodeVersion {
     }
 }
 
+interface IBCItem {
+    name: string;
+    wallet_link: string;
+}
+
 export interface TendermintParams {
     id: number,
     chainId: string,
@@ -27,24 +32,34 @@ export enum NetworkType {
 }
 
 export interface ILinks {
-    delegate: string;
+    delegate?: string;
     website: string;
-    inflation: string;
+    inflation?: string;
+    binary_download: string;
+    git: string;
+    explorer: string;
 }
 
 export interface IOther {
     binary_name: string;
-
     main_dir: string; //example: canto
     working_dir: string; //example: cantod
-
-    valoper_address: string;
+    valoper_address?: string;
 
     denom: string;
     denom_exponent: number;
 
-    ticker: string;
-    cg_ticker: string;
+    ticker?: string;
+    cg_ticker?: string;
+
+    peer?: string
+    seed?: string
+    grpc_port?: string
+    p2p_port?: string
+
+    ibc?: IBCItem[]
+
+    pruning: boolean;
 }
 
 export interface INetwork {
@@ -52,9 +67,8 @@ export interface INetwork {
     name: string;
     type: string;
     description: string;
-
     is_tendermint_chain: boolean;
-
+    need_build_binary: boolean;
     links: ILinks;
     services: IServices;
     other: IOther;

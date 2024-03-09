@@ -17,7 +17,7 @@ const Header = () => {
                     <Link
                         className={`link ${pathname === '/' ? 'active' : ''}`}
                         href="/"
-                    >ABOUT US
+                    >HOME
                     </Link>
                 </li>
                 <li className={styles.link}>

@@ -4,4 +4,5 @@ export interface TendermintContentProps {
     network: INetwork;
     nodeVersion?: string | null;
     chainId?: string | null;
+    peers?: string | null;
 }

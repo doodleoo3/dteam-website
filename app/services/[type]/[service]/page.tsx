@@ -1,20 +1,19 @@
 import React from 'react';
-import {MainnetServices, TestnetServices} from "@/src/app/models/IServices";
+import {ServicesEnum} from "@/src/app/models/IServices";
 import {NetworkType} from "@/src/app/models/INetwork";
 import NetworksPage from "@/src/pages/networks/NetworksPage";
 
 export const dynamicParams = false
 
 export function generateStaticParams() {
-    const mainnetServices = Object.entries(MainnetServices).map(([, value]) => value);
-    const testnetServices = Object.entries(TestnetServices).map(([, value]) => value);
+    const services = Object.entries(ServicesEnum).map(([, value]) => value);
 
-    const mainnetParams = mainnetServices.map(service => ({
+    const mainnetParams = services.map(service => ({
         type: NetworkType.mainnet,
         service: service
     }));
 
-    const testnetParams = testnetServices.map(service => ({
+    const testnetParams = services.map(service => ({
         type: NetworkType.testnet,
         service: service
     }));
@@ -22,7 +21,7 @@ export function generateStaticParams() {
     return [...mainnetParams, ...testnetParams];
 }
 
-const Page = ({ params, }: { params: {type: NetworkType, service: MainnetServices | TestnetServices } }) => {
+const Page = ({ params, }: { params: {type: NetworkType, service: ServicesEnum } }) => {
     const { type, service } = params
 
     return (

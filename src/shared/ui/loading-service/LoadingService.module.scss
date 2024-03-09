@@ -1,0 +1,52 @@
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+%container {
+  max-width: calc(100% - 30% - 100px);
+  width: calc(100% - 30% - 100px - 50px);
+  background-color: var(--bg-content-color);
+  margin: 0 50px 50px 0;
+  opacity: 0.9;
+}
+
+.loading__service {
+  //@extend %container;
+
+  position: relative;
+  overflow: hidden;
+
+  min-width: calc(100% - 30% - 100px - 50px);
+  min-height: calc(100vh - 70px - 70px - 140px - 50px - 50px);
+
+  opacity: 0.9;
+
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+
+  background: darkgray;
+  background: linear-gradient(to right, var(--bg-color) 8%, var(--secondary-color) 18%, var(--bg-color) 33%);
+  background-size: 2000px 100px;
+
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+
+  &:before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--secondary-color) 50%, rgba(255, 255, 255, 0) 100%);
+    background-size: 1000px 100%;
+
+    animation: shimmer 3s infinite linear;
+  }
+}

@@ -24,16 +24,33 @@ const ServiceSelector:FC<ServiceSelectorProps> = ({type, network}) => {
         }
 
         return Object.entries(selectedNetwork.services).map(([key, value]) => {
-            if (value === true) {
-                return <Link
-                    className={`${styles.link} ${pathname?.includes(`${key}`) ? 'active' : ''}`}
-                    href={`/services/${type}/${key}/${network}`}
-                    key={key}
-                >
-                    <li className={styles.link} >
-                        {key.toUpperCase().replace(/-/g, ' ')}
-                    </li>
-                </Link>
+            if (typeof value === 'object') {
+                const hasActiveSubservice = Object.values(value).some(subValue => subValue === true);
+                if (hasActiveSubservice) {
+                    return (
+                        <Link
+                            className={`${styles.link} ${pathname?.includes(`${key}`) ? styles.active : ''}`}
+                            href={`/services/${type}/${key}/${network}`}
+                            key={key}
+                        >
+                            <li className={styles.link}>
+                                {key.toUpperCase().replace(/-/g, ' ')}
+                            </li>
+                        </Link>
+                    );
+                }
+            } else if (value === true) {
+                return (
+                    <Link
+                        className={`${styles.link} ${pathname?.includes(`${key}`) ? styles.active : ''}`}
+                        href={`/services/${type}/${key}/${network}`}
+                        key={key}
+                    >
+                        <li className={styles.link}>
+                            {key.toUpperCase().replace(/-/g, ' ')}
+                        </li>
+                    </Link>
+                );
             }
             return null;
         });

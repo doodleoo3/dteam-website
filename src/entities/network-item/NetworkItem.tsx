@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {INetwork, NetworkType} from "@/src/app/models/INetwork";
 import styles from "./NetworkItem.module.scss"
 import NetworkLinks from "@/src/shared/ui/network-links/NetworkLinks";

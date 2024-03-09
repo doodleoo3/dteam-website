@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "DallasOutline";
+  src: url("../../../public/fonts/Dallas/Dallas-OutlineThick.woff2") format("truetype");
+  font-style: normal;
+  font-weight: bold;
+}
+
+.home__page__content {
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  background-color: var(--bg-content-color);
+  opacity: 0.9;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 90%;
+  height: 550px;
+
+  .left__side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    width: 50%;
+    height: 80%;
+
+    padding: 30px;
+
+    border-right: var(--border);
+
+    h1 {
+      font: 80px / 84px DallasOutline
+    }
+
+    &>* {
+      margin: 20px;
+    }
+  }
+
+  .right__side {
+    width: 50%;
+    height: 100%;
+  }
+}
+
+.socials__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 100%;
+
+  * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    width: 24px;
+
+    &:hover {
+      color: #ff9417;
+      cursor: pointer;
+    }
+  }
+}

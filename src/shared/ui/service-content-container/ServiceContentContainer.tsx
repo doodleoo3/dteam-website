@@ -1,124 +1,94 @@
 'use client'
 
-import React, {FC, useCallback, useEffect, useState} from 'react';
-import styles from "./ServiceContentContainer.module.scss"
+import React, {ComponentType, FC, useCallback, useEffect, useMemo, useState} from 'react';
 import {INetwork, NetworkType} from "@/src/app/models/INetwork";
-import {MainnetServices, TestnetServices} from "@/src/app/models/IServices";
+import {ServicesEnum} from "@/src/app/models/IServices";
 import mainnets from "@/src/shared/lib/networks-data/mainnets.json"
 import testnets from "@/src/shared/lib/networks-data/testnets.json"
 import {useNetworkParams} from "@/src/shared/hooks/useNetworkParams";
 import dynamic from "next/dynamic";
+import {useAppDispatch} from "@/src/app/store/hooks";
+import {fetchTendermintParams} from "@/src/app/store/action-creators/fetchTendermintParams";
+import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
+import LoadingService from "@/src/shared/ui/loading-service/LoadingService";
+import axios from "axios";
 
-const TendermintInstallationGuide = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-installation-guide/TendermintInstallationGuide'))
-const TendermintSnapshot = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-snapshot/TendermintSnapshot'))
-const TendermintStateSync = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-state-sync/TendermintStateSync'))
-const TendermintAddrbook = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-addrbook/TendermintAddrbook'))
-const TendermintGenesis = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-genesis/TendermintGenesis'))
-const TendermintSeeds = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-seeds/TendermintSeeds'))
-const TendermintPeers = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-peers/TendermintPeers'))
-const TendermintOverview = dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-overview/TendermintOverview'))
+type ServicesComponents = {
+    [key in ServicesEnum]: ComponentType<TendermintContentProps>;
+};
 
+const services: ServicesComponents = {
+    [ServicesEnum.installation_guide]: dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-installation-guide/TendermintInstallationGuide'), {loading: LoadingService}),
+    [ServicesEnum.snapshot]: dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-snapshot/TendermintSnapshot'), {loading: LoadingService}),
+    [ServicesEnum.state_sync]: dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-state-sync/TendermintStateSync'), {loading: LoadingService}),
+    [ServicesEnum.seeds]: dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-seeds/TendermintSeeds'), {loading: LoadingService}),
+    [ServicesEnum.peers]: dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-peers/TendermintPeers'), {loading: LoadingService}),
+    [ServicesEnum.overview]: dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-overview/TendermintOverview'), {loading: LoadingService}),
+    [ServicesEnum.addrbook]: dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-addrbook/TendermintAddrbook'), {loading: LoadingService}),
+    [ServicesEnum.genesis]: dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-genesis/TendermintGenesis'), {loading: LoadingService}),
+    [ServicesEnum.useful_commands]: dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-useful-commands/TendermintUsefulCommands'), {loading: LoadingService}),
+    [ServicesEnum.ibc]: dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-ibc/TendermintIBC'), {loading: LoadingService}),
+    [ServicesEnum.endpoints]: dynamic(() => import('@/src/widgets/services-content/tendermint/tendermint-endpoints/TendermintEndpoints'), {loading: LoadingService})
+};
 
 interface ServiceContentContainerProps {
     networkName: string;
     type: NetworkType;
-    service: MainnetServices | TestnetServices;
+    service: ServicesEnum;
 }
-const ServiceContentContainer:FC<ServiceContentContainerProps> = ({networkName, service, type}) => {
+
+const ServiceContentContainer: FC<ServiceContentContainerProps> = React.memo(({ networkName, service, type }) => {
+    const dispatch = useAppDispatch();
+
     const [currentNetwork, setCurrentNetwork] = useState<INetwork | null>(null);
-    const {chainId, nodeVersion} = useNetworkParams(currentNetwork)
+    const { chainId, nodeVersion } = useNetworkParams(currentNetwork);
+    const [peers, setPeers] = useState<string | null>(null);
 
-    const getCurrentNetwork = useCallback((type : NetworkType, networkName : string) => {
-        if (type === NetworkType.mainnet) {
-            mainnets.forEach(network => {
-                if (networkName === network.name) {
-                    setCurrentNetwork(network);
+    const getCurrentNetwork = useCallback((type: NetworkType, networkName: string) => {
+        const networks = type === NetworkType.mainnet ? mainnets : testnets;
+        const network = networks.find(n => n.name === networkName);
+        if (network) {
+            dispatch(fetchTendermintParams(network));
+
+            setCurrentNetwork(network);
+
+            fetchPeers(network).then(data => {
+                if (data !== null) {
+                    setPeers(data);
                 }
             });
         }
+    }, [dispatch]);
 
-        if (type === NetworkType.testnet) {
-            testnets.forEach(network => {
-                if (networkName === network.name) {
-                    setCurrentNetwork(network);
-                }
-            });
+    async function fetchPeers(network: INetwork) {
+        try {
+            const response = await axios.get<ISnapshot>(`https://data.dteam.tech/${network.name}/${network.type}/snapshot`);
+            return response.data.peers;
+        } catch (e) {
+            throw Error()
         }
-    }, [setCurrentNetwork]);
+    }
 
     useEffect(() => {
-        getCurrentNetwork(type, networkName)
-    }, [getCurrentNetwork, networkName, type]);
+        getCurrentNetwork(type, networkName);
+    }, []);
 
-    if (service === MainnetServices.overview && currentNetwork) {
-        return (
-            <section className={styles.overview__container}>
-                <TendermintOverview network={currentNetwork} />
-            </section>
-        );
-    }
+    const ServiceComponent = useMemo(() => {
+        if (!currentNetwork) return <LoadingService/>;
 
-    if (service === MainnetServices.peers && currentNetwork) {
-        return (
-            <section className={styles.container}>
-                <TendermintPeers network={currentNetwork}/>
-            </section>
-        );
-    }
+        const Service = services[service];
+        if (!Service) return null;
 
-    if (service === MainnetServices.seeds && currentNetwork) {
         return (
-            <section className={styles.container}>
-                <TendermintSeeds network={currentNetwork}/>
-            </section>
+            <Service network={currentNetwork} chainId={chainId} nodeVersion={nodeVersion} peers={peers}/>
         );
-    }
-
-    if (service === MainnetServices.genesis && currentNetwork) {
-        return (
-            <section className={styles.container}>
-                <TendermintGenesis network={currentNetwork}/>
-            </section>
-        );
-    }
-
-    if (service === MainnetServices.addrbook && currentNetwork) {
-        return (
-            <section className={styles.container}>
-                <TendermintAddrbook network={currentNetwork}/>
-            </section>
-        );
-    }
-
-    if (service === MainnetServices.state_sync && currentNetwork) {
-        return (
-            <section className={styles.container}>
-                <TendermintStateSync network={currentNetwork}/>
-            </section>
-        );
-    }
-
-    if (service === MainnetServices.snapshot && currentNetwork) {
-        return (
-            <section className={styles.container}>
-                <TendermintSnapshot network={currentNetwork}/>
-            </section>
-        );
-    }
-
-    if (service === MainnetServices.installation_guide && currentNetwork) {
-        return (
-            <section className={styles.container}>
-                <TendermintInstallationGuide network={currentNetwork} chainId={chainId} nodeVersion={nodeVersion}/>
-            </section>
-        );
-    }
+    }, [currentNetwork, service, chainId, nodeVersion, peers]);
 
     return (
-        <section className={styles.container}>
-
-        </section>
+        ServiceComponent
     );
-};
+});
+
+ServiceContentContainer.displayName = 'ServiceContentContainer';
 
 export default ServiceContentContainer;

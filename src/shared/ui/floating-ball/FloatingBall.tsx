@@ -1,4 +1,6 @@
-import React, {FC} from 'react';
+'use client'
+
+import React, {FC, useEffect} from 'react';
 import styles from "./FloatingBall.module.scss"
 interface FloatingBallProps {
     left: string,
@@ -8,6 +10,7 @@ interface FloatingBallProps {
 }
 
 const FloatingBall:FC<FloatingBallProps> = ({left, top, size, animationDuration}) => {
+    
     return (
         <div className={styles.floating__ball}
              style={{

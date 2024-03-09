@@ -1,15 +1,17 @@
   [
     {
-      "id": 1,
-      "name": "haqq",
+      "id": 999,
+      "name": "selfchain",
       "type": "testnet",
-      "description": "Uptick Network is building business-grade infrastructure and ecosystems for non-fungible tokens (NFTs). The platform is designed with a focus on multi-chain and cross-chain interoperability, and includes three key components: the NFT infrastructure, an NFT marketplace, and NFT ecosystem applications.",
+      "description": "Self chain is the first decentralized self-custody network and infrastructure service, revolutionizing key management through mpc-tss for keyless non-custodial wallet creation and management.",
       "is_tendermint_chain": true,
+      "need_build_binary": false,
 
       "links": {
-        "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
-        "website": "https://www.uptickproject.com/",
-        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+        "website": "",
+        "git": "",
+        "binary_download": "",
+        "explorer": ""
       },
 
       "services": {
@@ -21,7 +23,7 @@
           "api": true,
           "rpc": true,
           "grpc": true,
-          "json_rpc": true
+          "json_rpc": false
         },
         "addrbook": true,
         "genesis": true,
@@ -32,31 +34,35 @@
       },
 
       "other": {
-        "binary_name": "uptickd",
+        "binary_name": "selfchaind",
+        "main_dir": "",
+        "working_dir": ".selfchain",
 
-        "main_dir": "uptick",
-        "working_dir": "uptickd",
-        
-        "valoper_address": "uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr",
-
-        "denom": "auptick",
+        "denom": "uself",
         "denom_exponent": 18,
 
-        "ticker": "",
-        "cg_ticker": ""
+        "grpc_port": "9790",
+        "p2p_port": "60856",
+
+        "seed": "",
+        "peer": "6ba6446a0075b2710506377bfed86c8dde4bbc59",
+
+        "pruning": true
       }
     },
     {
-      "id": 2,
+      "id": 998,
       "name": "c4e",
       "type": "testnet",
-      "description": "Uptick Network is building business-grade infrastructure and ecosystems for non-fungible tokens (NFTs). The platform is designed with a focus on multi-chain and cross-chain interoperability, and includes three key components: the NFT infrastructure, an NFT marketplace, and NFT ecosystem applications.",
+      "description": "Chain4Energy (C4E) is a sovereign global decentralized blockchain ecosystem. The Energy Marketplace which enables institutions and individuals to seamlessly participate in the renewable energy market accessing and offering a wide range of renewable energy solutions and services.",
       "is_tendermint_chain": true,
+      "need_build_binary": true,
 
       "links": {
-        "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
-        "website": "https://www.uptickproject.com/",
-        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+        "website": "",
+        "git": "",
+        "binary_download": "",
+        "explorer": ""
       },
 
       "services": {
@@ -68,7 +74,7 @@
           "api": true,
           "rpc": true,
           "grpc": true,
-          "json_rpc": true
+          "json_rpc": false
         },
         "addrbook": true,
         "genesis": true,
@@ -79,32 +85,36 @@
       },
 
       "other": {
-        "binary_name": "uptickd",
+        "binary_name": "c4ed",
+        "main_dir": "c4e-chain",
+        "working_dir": ".c4e-chain",
 
-        "main_dir": "uptick",
-        "working_dir": "uptickd",
-        
-        "valoper_address": "uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr",
-
-        "denom": "auptick",
+        "denom": "uc4e",
         "denom_exponent": 18,
 
-        "ticker": "",
-        "cg_ticker": ""
+        "grpc_port": "9990",
+        "p2p_port": "61056",
+
+        "seed": "",
+        "peer": "09c378e9108236d2339e26f267102addb4ba7309",
+
+        "pruning": true
       }
     },
     
     {
-      "id": 3,
-      "name": "uptick",
+      "id": 997,
+      "name": "quicksilver",
       "type": "testnet",
-      "description": "Uptick Network is building business-grade infrastructure and ecosystems for non-fungible tokens (NFTs). The platform is designed with a focus on multi-chain and cross-chain interoperability, and includes three key components: the NFT infrastructure, an NFT marketplace, and NFT ecosystem applications.",
+      "description": "Quicksilver is a permissionless, sovereign Cosmos SDK zone providing liquid staking for the entire Interchain ecosystem.",
       "is_tendermint_chain": true,
+      "need_build_binary": false,
 
       "links": {
-        "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
-        "website": "https://www.uptickproject.com/",
-        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+        "website": "",
+        "git": "",
+        "binary_download": "",
+        "explorer": ""
       },
 
       "services": {
@@ -116,7 +126,7 @@
           "api": true,
           "rpc": true,
           "grpc": true,
-          "json_rpc": true
+          "json_rpc": false
         },
         "addrbook": true,
         "genesis": true,
@@ -127,32 +137,36 @@
       },
 
       "other": {
-        "binary_name": "uptickd",
+        "binary_name": "quicksilverd",
+        "main_dir": "quicksilver",
+        "working_dir": ".quicksilverd",
 
-        "main_dir": "uptick",
-        "working_dir": "uptickd",
-        
-        "valoper_address": "uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr",
-
-        "denom": "auptick",
+        "denom": "uqck",
         "denom_exponent": 18,
 
-        "ticker": "",
-        "cg_ticker": ""
+        "grpc_port": "9890",
+        "p2p_port": "60956",
+
+        "seed": "",
+        "peer": "16949909d970a8a5c0ac4239104262a1b885730c",
+
+        "pruning": true
       }
     },
 
     {
-      "id": 4,
+      "id": 996,
       "name": "lava",
       "type": "testnet",
-      "description": "Uptick Network is building business-grade infrastructure and ecosystems for non-fungible tokens (NFTs). The platform is designed with a focus on multi-chain and cross-chain interoperability, and includes three key components: the NFT infrastructure, an NFT marketplace, and NFT ecosystem applications.",
+      "description": "Lava is a decentralized network of top RPC and API providers that developers can subscribe to for access to any blockchain. Providers are rewarded for their quality of service, meaning apps and users get maximum speed, data integrity and uptime.",
       "is_tendermint_chain": true,
+      "need_build_binary": false,
 
       "links": {
-        "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
-        "website": "https://www.uptickproject.com/",
-        "inflation": "https://api.mainnet.uptick.dteam.tech/cosmos/mint/v1beta1/inflation"
+        "website": "",
+        "git": "",
+        "binary_download": "",
+        "explorer": ""
       },
 
       "services": {
@@ -164,7 +178,7 @@
           "api": true,
           "rpc": true,
           "grpc": true,
-          "json_rpc": true
+          "json_rpc": false
         },
         "addrbook": true,
         "genesis": true,
@@ -175,18 +189,20 @@
       },
 
       "other": {
-        "binary_name": "uptickd",
+        "binary_name": "lavad",
+        "main_dir": "lava",
+        "working_dir": ".lava",
 
-        "main_dir": "uptick",
-        "working_dir": "uptickd",
-
-        "valoper_address": "uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr",
-
-        "denom": "auptick",
+        "denom": "ulava",
         "denom_exponent": 18,
 
-        "ticker": "",
-        "cg_ticker": ""
+        "grpc_port": "9590",
+        "p2p_port": "60656",
+
+        "seed": "",
+        "peer": "6d4e96c5e653f0ed7f905b1d53ef8d373af55ecf",
+
+        "pruning": true
       }
     }
   ]

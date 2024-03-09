@@ -3,7 +3,7 @@ import '@/src/app/styles/index.scss'
 import {NetworkType} from "@/src/app/models/INetwork";
 import mainnets from "@/src/shared/lib/networks-data/mainnets.json";
 import testnets from "@/src/shared/lib/networks-data/testnets.json";
-import {MainnetServices, TestnetServices} from "@/src/app/models/IServices";
+import {ServicesEnum} from "@/src/app/models/IServices";
 import React from "react";
 import SeparateServicePage from "@/src/pages/separate-service-page/SeparateServicePage";
 
@@ -43,7 +43,7 @@ export default function DashboardLayout({
                                             params,
                                         }: {
     children: React.ReactNode,
-    params: {type: NetworkType, service: MainnetServices | TestnetServices, network: string }
+    params: {type: NetworkType, service: ServicesEnum, network: string }
 }) {
     const { type, service, network } = params
 

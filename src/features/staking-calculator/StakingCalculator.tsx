@@ -1,16 +1,19 @@
 import React, {FC} from 'react';
 import styles from "./StakingCalculator.module.scss"
 import {INetwork} from "@/src/app/models/INetwork";
+import {useApr} from "@/src/shared/hooks/useApr";
 
 interface StakingCalculatorProps {
     network: INetwork
 }
 
 const StakingCalculator:FC<StakingCalculatorProps> = ({network}) => {
+    const apr = useApr(network);
+
     return (
         <div className={styles.calculator}>
             <div className={styles.title__wrapper}>
-                <h2 className={styles.title}>{network.name} APR: 0%</h2>
+                <h2 className={styles.title}>{network.name} APR: {apr}</h2>
                 <p>Annual Percentage Rate</p>
             </div>
 

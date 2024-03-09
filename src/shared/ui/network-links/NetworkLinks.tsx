@@ -22,8 +22,7 @@ const NetworkLinks:FC<NetworkLinksProps> = ({network, type}) => {
             <button className={styles.link}
                     onClick={() => router.push(`/services/${network.type}/overview/${network.name}`)}>SERVICES
             </button>
-            <button className={styles.link} disabled style={{cursor: "default"}}><ComingSoon>EXPLORER</ComingSoon></button>
-
+            <a target="__blank" href={network.links.explorer} className={styles.link}>EXPLORER</a>
             <a target="__blank" href={network.links.website} className={styles.link}>WEBSITE</a>
         </div>
     );

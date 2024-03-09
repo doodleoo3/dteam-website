@@ -1,23 +1,40 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
+import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
+import axios from "axios";
 
 const TendermintPeers:FC<TendermintContentProps> = ({network}) => {
+    const [peers, setPeers] = useState<string | null>(null);
+    async function fetchPeers() {
+        try {
+            const response = await axios.get<ISnapshot>(`https://data.dteam.tech/${network.name}/${network.type}/snapshot`);
+            return response.data.peers;
+        } catch (e) {
+            throw Error()
+        }
+    }
+
+    useEffect(() => {
+        fetchPeers().then(data => {
+            if (data !== null) {
+                setPeers(data);
+            }
+        });
+    }, []);
+
     return (
-        <>
+        <div className={styles.container}>
             <ContentItem title={"Live peers"}>
-                <p>ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:11656</p>
-                <p>{`sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \\"$PEERS\\"/" $HOME/.${network.other.working_dir}/config/config.toml`}</p>
+                {`${peers
+                    ?
+                    `PEERS="${network.other.peer}@peer.${network.name}.${network.type}.dteam.tech:${network.other.p2p_port},${peers}"`
+                    :
+                    `PEERS="${network.other.peer}@peer.${network.name}.${network.type}.dteam.tech:${network.other.p2p_port}"`
+                }
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \\"$PEERS\\"/" $HOME/${network.other.working_dir}/config/config.toml`}
             </ContentItem>
-
-            <ContentItem title={"State sync peer"}>
-                <p>6de4ce5baa9d2bed33c0c53b9518b907cfaab33b@65.108.128.201:11656</p>
-            </ContentItem>
-
-            <ContentItem title={""}>
-                <p></p>
-            </ContentItem>
-        </>
+        </div>
     );
 };
 

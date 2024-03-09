@@ -1,9 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {AprItem} from "@/src/app/models/IApr";
+import {IAprItem} from "@/src/app/models/IApr";
 import {fetchTendermintApr} from "@/src/app/store/action-creators/fetchTendermintApr";
 
 interface TendermintAprState {
-    tendermintAprArray: AprItem[] ;
+    tendermintAprArray: IAprItem[] ;
     loading: 'idle' | 'pending' | 'succeeded' | 'failed'
 }
 

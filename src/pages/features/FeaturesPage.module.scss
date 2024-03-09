@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  flex-wrap: wrap;
+  width: 90%;
+
+  &>div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    width: calc(50% - 60px);
+    min-width: 500px;
+    height: 250px;
+    border: var(--border);
+    background-color: var(--bg-content-color);
+    box-shadow: var(--box-shadow);
+    margin: 0 30px 60px 30px;
+    padding: 30px;
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    * {
+      margin: 3px 0;
+    }
+  }
+}
+

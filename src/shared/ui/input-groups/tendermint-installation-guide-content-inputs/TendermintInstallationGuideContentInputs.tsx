@@ -11,7 +11,7 @@ interface SetVarsInputsProps {
 }
 
 const TendermintInstallationGuideContentInputs:FC<SetVarsInputsProps> = ({setPort, setMoniker, setWallet}) => {
-    const [port, setLocalPort] = useState<number>(25);
+    const [port, setLocalPort] = useState<number>(26);
     const [wallet, setLocalWallet] = useState<string>("wallet");
     const [moniker, setLocalMoniker] = useState<string>("DTEAM_GUIDE");
 

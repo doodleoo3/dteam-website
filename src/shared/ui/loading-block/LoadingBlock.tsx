@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styles from "./LoadingBlock.module.scss"
 interface LoadingBlockProps {
     width: number;
-    height: number
+    height: number;
 }
 const LoadingBlock:FC<LoadingBlockProps> = ({width, height}) => {
     return (

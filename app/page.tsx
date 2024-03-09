@@ -1,7 +1,7 @@
-import AboutUsPage from "@/src/pages/about-us/AboutUsPage";
+import HomePage from "@/src/pages/home/HomePage";
 
 export default function Home() {
   return (
-    <AboutUsPage />
+    <HomePage />
   )
 }

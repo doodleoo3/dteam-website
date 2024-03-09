@@ -58,9 +58,17 @@ const NetworksList:FC<NetworkListProps> = ({networks, searchQuery, isServicePage
 
     return (
         <div className={styles.list}>
-            {filteredNetworks.map(network =>
-                <NetworkItem key={network.id} network={network} isServicePage={isServicePage}/>
-            )}
+            {
+                filteredNetworks.length > 0
+                    ?
+                    <>
+                        {filteredNetworks.map(network =>
+                            <NetworkItem key={network.id} network={network} isServicePage={isServicePage}/>
+                        )}
+                    </>
+                    :
+                    <h1>networks not found</h1>
+            }
         </div>
     );
 };

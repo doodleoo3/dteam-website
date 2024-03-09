@@ -17,7 +17,7 @@ const Search:FC<SearchProps> = ({getSearchQuery}) => {
             placeholder="SEARCH NETWORK..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            isSearch={true}
+            search="true"
         />
     );
 };

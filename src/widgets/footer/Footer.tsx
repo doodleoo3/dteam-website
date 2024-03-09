@@ -6,7 +6,7 @@ import ComingSoon from "@/src/shared/ui/coming-soon/ComingSoon";
 const Footer = () => {
     return (
         <footer className={styles.footer}>
-            <p>COPYRIGHT © 2023 DTEAM.TECH</p>
+            <p>COPYRIGHT © 2024 DTEAM.TECH</p>
             <div className={styles.links__container}>
 
                 <div className={styles.links}>
@@ -73,7 +73,7 @@ const Footer = () => {
                 <div className={styles.links}>
                     <h2>OUR COMMUNITY</h2>
                     <ul>
-                        <li><a target="__blank" href="https://twitter.com/dteamtech">TWITTER</a></li>
+                        <li><a target="__blank" href="https://twitter.com/dteamtech">X / TWITTER</a></li>
                         <li><a target="__blank" href="https://discord.gg/aFfJH3zW4M">DISCORD</a></li>
                         <li><a target="__blank" href="https://github.com/DTEAMTECH">GITHUB</a></li>
                     </ul>
@@ -82,7 +82,7 @@ const Footer = () => {
                 <div className={styles.links}>
                     <h2>GET IN TOUCH</h2>
                     <ul>
-                        <li><a target="__blank" href="https://twitter.com/dteamtech">TWITTER</a></li>
+                        <li><a target="__blank" href="https://twitter.com/dteamtech">X / TWITTER</a></li>
                         <li><a target="__blank" href="mailto:contact@dteam.tech">EMAIL</a></li>
                     </ul>
                 </div>

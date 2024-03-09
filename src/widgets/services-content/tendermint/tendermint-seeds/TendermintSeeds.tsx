@@ -2,18 +2,16 @@ import React, {FC} from 'react';
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import DownloadFileBlock from "@/src/shared/ui/download-file-block/DownloadFileBlock";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
+import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
 
 const TendermintSeeds:FC<TendermintContentProps> = ({network}) => {
     return (
-        <>
+        <div className={styles.container}>
             <ContentItem title={"Seed node"}>
-                <p>ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:11656</p>
+                {`SEED="${network.other.seed}@seed.${network.name}.${network.type}.dteam.tech:${network.other.p2p_port}"
+sed -i.bak -e "s/^seed *=.*/seed = \\"$SEED\\"/" ~/.c4e-chain/config/config.toml`}
             </ContentItem>
-
-            <ContentItem title={""}>
-                <p></p>
-            </ContentItem>
-        </>
+        </div>
     );
 };
 

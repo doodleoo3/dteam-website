@@ -31,7 +31,26 @@ export interface IInflation {
     inflation: number;
 }
 
-export interface AprItem {
+export interface IAprItem {
     id: number,
     apr: string
+}
+
+export interface ICantoEpochMintProvisionResponse {
+    epoch_mint_provision: {
+        denom: string;
+        amount: number;
+    };
+}
+
+export interface IGuruChainApi {
+    chainId: string;
+    communityPool: number;
+    supply: number;
+    apr: number;
+    inflation: number;
+    bondedTokens: number;
+    onlineVotingPower: number;
+    totalValidators: number;
+    activeValidators: number;
 }

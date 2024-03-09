@@ -58,7 +58,7 @@ const TopSectionWrapper:FC<TopSectionWrapperProps> = ({title, type, networkName,
             }
             <div className={styles.right__side__wrapper}>
                 {getSearchQuery && <Search getSearchQuery={getSearchQuery}/>}
-                {(findInMainnet && findInTestnet) || (!networkName && service !== "ibc")
+                {(findInMainnet && findInTestnet) || (!networkName)
                     ? <TypeSelector />
                     : <TypeSelector withoutPair={true}/>
                 }
