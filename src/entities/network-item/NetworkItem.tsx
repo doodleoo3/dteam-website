@@ -29,16 +29,19 @@ const NetworkItem:FC<NetworkItemProps> = ({network, isServicePage}) => {
             <div className={styles.right__side__wrapper}>
                 <div className={styles.text__wrapper}>
                     <h2>{network.name.toUpperCase()}</h2>
-                    {(network.type === NetworkType.mainnet && !isServicePage) || pathname?.includes("stake")
-                        ?
-                        <>
-                            {apr
-                                ? <p>apr: {apr}</p>
-                                : <LoadingBlock width={100} height={12}></LoadingBlock>
-                            }
-                        </>
-                        : null
-                    }
+                    <div className={styles.apr__container}>
+                        {(network.type === NetworkType.mainnet && !isServicePage) || pathname?.includes("stake")
+                            ?
+                            <>
+                                {apr
+                                    ? <p>apr: {apr}</p>
+                                    : <LoadingBlock width={100}></LoadingBlock>
+                                }
+                            </>
+                            : null
+                        }
+                    </div>
+
                 </div>
             </div>
 

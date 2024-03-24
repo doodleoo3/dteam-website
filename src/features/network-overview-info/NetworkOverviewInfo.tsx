@@ -1,11 +1,36 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import styles from "./NetworkOverviewInfo.module.scss"
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import LoadingBlock from "@/src/shared/ui/loading-block/LoadingBlock";
 import {useAmountOfStakedTokens} from "@/src/shared/hooks/useAmountOfStakedTokens"
+import {INetwork} from "@/src/app/models/INetwork";
+import axios from "axios";
 
 const NetworkOverviewInfo:FC<TendermintContentProps> = ({network, nodeVersion, chainId}) => {
     let amountOfTokens = useAmountOfStakedTokens(network)
+    const [valueOfStakedTokens, setValueOfStakedTokens] = useState<null | "not implemented" | number>(null)
+
+    async function getValueOfStakedTokens(network: INetwork, amountOfTokens: number) {
+        try {
+            let priceResponse = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${network.other.cg_ticker}&vs_currencies=usd`)
+            let keys = Object.keys(priceResponse.data)
+
+            if (amountOfTokens === 0) {
+                setValueOfStakedTokens("not implemented")
+            } else {
+                setValueOfStakedTokens(Math.ceil(priceResponse.data[keys[0]].usd * Number(amountOfTokens)))
+                console.log(Math.ceil(priceResponse.data[keys[0]].usd * Number(amountOfTokens)))
+            }
+        } catch (e) {
+            setValueOfStakedTokens("not implemented")
+        }
+    }
+
+    useEffect(() => {
+        if (amountOfTokens) {
+            getValueOfStakedTokens(network, amountOfTokens)
+        }
+    }, [amountOfTokens, network]);
 
     return (
         <div className={styles.info}>
@@ -20,16 +45,16 @@ const NetworkOverviewInfo:FC<TendermintContentProps> = ({network, nodeVersion, c
                     <h3>Chain id: </h3>
                     {chainId
                         ? <p>{chainId}</p>
-                        : <LoadingBlock width={100} height={12}></LoadingBlock>
+                        : <LoadingBlock width={100} />
                     }
                 </div>
 
                 <div className={styles.params__item}>
                     <h3>Node version: </h3>
-                    {nodeVersion
-                        ? <p>{nodeVersion}</p>
-                        : <LoadingBlock width={100} height={12}></LoadingBlock>
-                    }
+                        {nodeVersion
+                            ? <p>{nodeVersion}</p>
+                            : <LoadingBlock width={100} />
+                        }
                 </div>
 
                 {network.type === "mainnet"
@@ -39,13 +64,16 @@ const NetworkOverviewInfo:FC<TendermintContentProps> = ({network, nodeVersion, c
                             <h3>Staked tokens with DTEAM: </h3>
                             {amountOfTokens
                                 ? <p>{amountOfTokens.toFixed(0)}${network.other.ticker}</p>
-                                : <p><LoadingBlock width={100} height={12} />${network.other.ticker}</p>
+                                : <LoadingBlock width={100} />
                             }
                         </div>
 
                         <div className={styles.params__item}>
                             <h3>Staked value with DTEAM: </h3>
-                            <p>0$</p>
+                            {valueOfStakedTokens
+                                ? <p>{valueOfStakedTokens}$</p>
+                                : <LoadingBlock width={100}/>
+                            }
                         </div>
                     </>
                     :

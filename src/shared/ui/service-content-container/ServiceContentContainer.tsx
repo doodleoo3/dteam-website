@@ -47,6 +47,7 @@ const ServiceContentContainer: FC<ServiceContentContainerProps> = React.memo(({ 
     const getCurrentNetwork = useCallback((type: NetworkType, networkName: string) => {
         const networks = type === NetworkType.mainnet ? mainnets : testnets;
         const network = networks.find(n => n.name === networkName);
+
         if (network) {
             dispatch(fetchTendermintParams(network));
 

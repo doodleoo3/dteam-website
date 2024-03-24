@@ -52,6 +52,8 @@ export const fetchTendermintApr = createAsyncThunk (
                 const inflationResponse = await axios.get<ICantoEpochMintProvisionResponse>(network.links.inflation);
                 const cantoEpochMintProvision = inflationResponse.data.epoch_mint_provision.amount
 
+                // console.log(network.id, (((cantoEpochMintProvision * 365) / bondedTokens) * (1 - validatorCommission) * 100).toFixed(2) + "%")
+
                 return {
                     id: network.id,
                     apr: (((cantoEpochMintProvision * 365) / bondedTokens) * (1 - validatorCommission) * 100).toFixed(2) + "%"

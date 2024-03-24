@@ -14,7 +14,7 @@ export function useApr(network: INetwork) {
         if (network.type === NetworkType.mainnet) {
             dispatch(fetchTendermintApr(network));
         }
-    }, [network, dispatch, loading]);
+    }, [network]);
 
     return apr;
 }

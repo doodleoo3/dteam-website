@@ -176,7 +176,7 @@
         "denom": "aISLM",
         "denom_exponent": 18,
         "ticker": "islm",
-        "cg_ticker": "",
+        "cg_ticker": "islamic-coin",
 
         "grpc_port": "9290",
         "p2p_port": "46656",
