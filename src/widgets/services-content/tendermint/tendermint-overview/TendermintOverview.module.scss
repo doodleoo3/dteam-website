@@ -10,6 +10,7 @@
   @extend %container;
 
   display: flex;
+  align-items: flex-start;
   flex-direction: row;
   background-color: inherit;
   border: none;
@@ -18,9 +19,9 @@
 .left__side__wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  align-items: flex-start;
+  //justify-content: space-around;
   min-height: 500px;
-  height: calc(100vh - 70px - 70px - 140px - 50px);
-  width: 50%;
+  //height: calc(100vh - 70px - 70px - 140px - 50px);
+  width: 100%;
 }

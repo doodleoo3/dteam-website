@@ -1,23 +1,13 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import LoadingBlock from "@/src/shared/ui/loading-block/LoadingBlock";
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss"
 
 const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVersion, chainId, peers}) => {
-    const [wallet, setWallet] = useState<string>("wallet");
-    const [moniker, setMoniker] = useState<string>("DTEAM_GUIDE");
-    const [port, setPort] = useState<number>(26);
-
-    // function dedent(str: string) {
-    //     const match = str.match(/^[ \t]*(?=\S)/gm);
-    //     if (!match) {
-    //         return str;
-    //     }
-    //     const indent = Math.min(...match.map(el => el.length));
-    //     const re = new RegExp(`^[ \\t]{${indent}}`, 'gm');
-    //     return indent > 0 ? str.replace(re, '') : str;
-    // }
+    // const [wallet, setWallet] = useState<string>("wallet");
+    // const [moniker, setMoniker] = useState<string>("DTEAM_GUIDE");
+    // const [port, setPort] = useState<number>(26);
 
     return (
         <div className={styles.container}>
@@ -45,9 +35,9 @@ go version`}
                 // setWallet={setWallet}
                 // setMoniker={setMoniker}
             >
-                {`echo "export WALLET="${wallet}"" >> $HOME/.bash_profile
-echo "export MONIKER="${moniker}"" >> $HOME/.bash_profile
-echo "export ${network.name.toUpperCase()}_PORT="${port}"" >> $HOME/.bash_profile
+                {`echo "export WALLET="wallet"" >> $HOME/.bash_profile
+echo "export MONIKER="DTEAM_GUIDE"" >> $HOME/.bash_profile
+echo "export ${network.name.toUpperCase()}_PORT="26"" >> $HOME/.bash_profile
 source $HOME/.bash_profile`}
             </ContentItem>
 
@@ -58,7 +48,7 @@ source $HOME/.bash_profile`}
 git clone ${network.links.git} && cd ${network.other.main_dir}
 ${nodeVersion 
     ? `git checkout v${nodeVersion}` 
-    : `git checkout ${<LoadingBlock width={100} height={12} />}`
+    : `git checkout ${<LoadingBlock width={100} />}`
 }
 make install
 ${network.other.binary_name} version --long | grep -e version -e commit`}
@@ -83,11 +73,11 @@ ${network.other.binary_name} version --long | grep -e version -e commit`}
                 {`${network.other.binary_name} config keyring-backend os
 ${chainId
     ? `${network.other.binary_name} config chain-id ${chainId}`
-    : `${network.other.binary_name} config chain-id ${<LoadingBlock width={100} height={12}/>}`
+    : `${network.other.binary_name} config chain-id ${<LoadingBlock width={100}/>}`
 }
 ${chainId
-    ? `${network.other.binary_name} init "${moniker}" --chain-id ${chainId}`
-    : `${network.other.binary_name} init "${moniker}" --chain-id ${<LoadingBlock width={100} height={12} />}`
+    ? `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${chainId}`
+    : `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${<LoadingBlock width={100} />}`
 }`}
             </ContentItem>
 

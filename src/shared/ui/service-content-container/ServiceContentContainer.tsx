@@ -37,7 +37,7 @@ interface ServiceContentContainerProps {
     service: ServicesEnum;
 }
 
-const ServiceContentContainer: FC<ServiceContentContainerProps> = React.memo(({ networkName, service, type }) => {
+const ServiceContentContainer: FC<ServiceContentContainerProps> = ({ networkName, service, type }) => {
     const dispatch = useAppDispatch();
 
     const [currentNetwork, setCurrentNetwork] = useState<INetwork | null>(null);
@@ -71,8 +71,11 @@ const ServiceContentContainer: FC<ServiceContentContainerProps> = React.memo(({ 
     }
 
     useEffect(() => {
+        console.log(networkName)
+        console.log(type)
+
         getCurrentNetwork(type, networkName);
-    }, []);
+    }, [networkName, type, getCurrentNetwork]);
 
     const ServiceComponent = useMemo(() => {
         if (!currentNetwork) return <LoadingService/>;
@@ -88,8 +91,10 @@ const ServiceContentContainer: FC<ServiceContentContainerProps> = React.memo(({ 
     return (
         ServiceComponent
     );
-});
+};
 
-ServiceContentContainer.displayName = 'ServiceContentContainer';
+// ServiceContentContainer.displayName = 'ServiceContentContainer';
 
-export default ServiceContentContainer;
+const ServiceContentContainerMemo = React.memo(ServiceContentContainer);
+
+export default ServiceContentContainerMemo;

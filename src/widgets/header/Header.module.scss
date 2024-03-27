@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-around;
   top: 0;
-  width: 100%;
+  width: 100vw;
   border-bottom: 1px solid var(--secondary-color);
   background-color: var(--bg-content-color);
   min-height: 70px;
@@ -14,7 +14,7 @@
 }
 
 .nav__links {
-  min-width: 60%;
+  min-width: 50%;
   display: flex;
   justify-content: center;
 }
@@ -25,12 +25,12 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  margin: 0 25px;
+  margin: 0 15px;
 }
 
 .dteam__logo, .btn__wrapper{
   display: flex;
-  width: 20%;
+  padding: 0 20px;
   justify-content: center;
   cursor: pointer;
 }
@@ -56,4 +56,41 @@
   background-color: var(--bg-content-color);
   color: var(--primary-color);
   border-color: var(--secondary-color);
+}
+
+
+
+.mobile__menu__btn {
+  display: none;
+  padding: 0 20px;
+}
+
+
+
+@media (max-width: 992px) {
+  .header {
+    justify-content: space-between;
+  }
+
+  .nav__links {
+    display: none;
+  }
+
+  .btn__wrapper {
+    display: none;
+  }
+
+  .mobile__menu__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: inherit;
+    color: var(--primary-color);
+    font-size: 40px;
+  }
+
+  .mobile__nav__links.active {
+    display: block;
+  }
 }

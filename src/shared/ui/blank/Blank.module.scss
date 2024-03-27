@@ -1,3 +1,9 @@
 .blank {
   width: 20%;
 }
+
+@media (max-width: 1400px) {
+  .blank {
+    display: none;
+  }
+}

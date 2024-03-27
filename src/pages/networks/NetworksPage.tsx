@@ -1,10 +1,10 @@
 'use client'
 
-import React, {FC, useState} from 'react';
-import {NetworkType} from "@/src/app/models/INetwork";
+import React, { FC, useState, useCallback } from 'react';
+import { NetworkType } from "@/src/app/models/INetwork";
 import TopSectionWrapper from "@/src/widgets/top-section-wrapper/TopSectionWrapper";
-import mainnets from "@/src/shared/lib/networks-data/mainnets.json"
-import testnets from "@/src/shared/lib/networks-data/testnets.json"
+import mainnets from "@/src/shared/lib/networks-data/mainnets.json";
+import testnets from "@/src/shared/lib/networks-data/testnets.json";
 import NetworksList from "@/src/widgets/networks-list/NetworksList";
 
 type NetworksPageProps = {
@@ -12,13 +12,14 @@ type NetworksPageProps = {
     title: string;
     isServicePage: boolean;
     service?: string;
-}
-const NetworksPage:FC<NetworksPageProps> = ({type, title, isServicePage, service}) => {
-    const [searchQuery, setSearchQuery] = useState<string>("")
+};
 
-    const getSearchQuery = (query: string) => {
+const NetworksPage: FC<NetworksPageProps> = ({ type, title, isServicePage, service }) => {
+    const [searchQuery, setSearchQuery] = useState<string>("");
+
+    const handleSearchQueryChange = useCallback((query: string) => {
         setSearchQuery(query);
-    }
+    }, []);
 
     return (
         <>
@@ -27,8 +28,8 @@ const NetworksPage:FC<NetworksPageProps> = ({type, title, isServicePage, service
                 type={type}
                 search={true}
                 selector={true}
-                service={service && service}
-                getSearchQuery={getSearchQuery}
+                service={service}
+                getSearchQuery={handleSearchQueryChange}
             />
 
             <NetworksList

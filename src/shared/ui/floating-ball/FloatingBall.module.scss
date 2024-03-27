@@ -32,4 +32,9 @@
     border-radius: 50%;
     z-index: -2;
   }
+
+  &:last-child {
+    max-width: 800px;
+    max-height: 800px;
+  }
 }

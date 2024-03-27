@@ -1,18 +1,29 @@
 'use client'
 
-import React from 'react';
+import React, {useState} from 'react';
 import styles from "./Header.module.scss"
 import Link from "next/link";
 import {usePathname} from "next/navigation";
+import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const Header = () => {
     const pathname = usePathname()
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
 
     return (
         <header className={styles.header}>
             <h1 className={styles.dteam__logo}>DTEAM</h1>
 
-            <ul className={styles.nav__links}>
+            <button className={styles.mobile__menu__btn} onClick={toggleMobileMenu}>
+                <FontAwesomeIcon icon={faBars} />
+            </button>
+
+            <ul className={`${styles.nav__links} ${isMobileMenuOpen ? styles.active : ''}`}>
                 <li className={styles.link}>
                     <Link
                         className={`link ${pathname === '/' ? 'active' : ''}`}

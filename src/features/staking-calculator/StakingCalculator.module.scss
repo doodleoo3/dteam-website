@@ -8,11 +8,13 @@
   min-width: 300px;
   min-height: 200px;
   height: 40%;
-  width: calc(100% - 30px);
+  //width: calc(100% - 30px);
   border: var(--border);
   padding: 20px;
 
-  margin-right: 30px;
+  width: 100%;
+
+  //margin-right: 30px;
 
   background-color: var(--bg-content-color);
   box-shadow: var(--box-shadow);
@@ -86,4 +88,12 @@
       }
     }
   }
+}
+
+.loading__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }

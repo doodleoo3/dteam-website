@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 import {INetwork, NetworkType} from "@/src/app/models/INetwork";
 import styles from "./NetworkItem.module.scss"
 import NetworkLinks from "@/src/shared/ui/network-links/NetworkLinks";
@@ -12,9 +12,9 @@ interface NetworkItemProps {
     isServicePage: boolean
 }
 
-const NetworkItem:FC<NetworkItemProps> = ({network, isServicePage}) => {
-    const router = useRouter()
-    const pathname = usePathname()
+const NetworkItem:FC<NetworkItemProps> = React.memo(({network, isServicePage}) => {
+    const router = useRouter();
+    const pathname = usePathname();
     const apr = useApr(network);
 
     return (
@@ -41,7 +41,6 @@ const NetworkItem:FC<NetworkItemProps> = ({network, isServicePage}) => {
                             : null
                         }
                     </div>
-
                 </div>
             </div>
 
@@ -53,6 +52,8 @@ const NetworkItem:FC<NetworkItemProps> = ({network, isServicePage}) => {
             }
         </div>
     );
-};
+});
+
+NetworkItem.displayName = 'NetworkItem';
 
 export default NetworkItem;

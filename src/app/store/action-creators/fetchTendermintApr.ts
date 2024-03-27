@@ -10,72 +10,63 @@ import {
     IValidatorList
 } from "@/src/app/models/IApr";
 import {INetwork} from "@/src/app/models/INetwork";
+import { RootState } from "../store";
 
-
-export const fetchTendermintApr = createAsyncThunk (
+export const fetchTendermintApr = createAsyncThunk(
     'networks/fetchTendermintAPR',
-    async (network: INetwork, thunkAPI) => {
-        try {
-            let totalSupplyNativeTokens = 0, validatorCommission = 0
+    async (network: INetwork, { rejectWithValue, getState}) => {
+        // console.log(`fetchTendermintApr called for network: ${network.id}`);
 
+        const state = (getState() as RootState);
+        const currentApr = state.apr.tendermintAprArray.find((item) => item.id === network.id)?.apr;
+        if (currentApr != null) {
+            console.log(`APR already fetched for network: ${network.id}`);
+            return;
+        }
+
+        try {
             if (!network.links.inflation) {
                 return {
                     id: network.id,
-                    apr: 0.00.toFixed(2) + "%"
-                }
+                    apr: "0.00%"
+                };
             }
 
-            const inflationResponse = await axios.get<IInflation>(network.links.inflation);
-
-            const tokensPoolResponse =  await axios.get<ITokensPool>(`https://api.${network.name}.mainnet.dteam.tech/cosmos/staking/v1beta1/pool`)
-            const totalSupplyResponse = await axios.get<ITotalSupply>(`https://api.${network.name}.mainnet.dteam.tech/cosmos/bank/v1beta1/supply`)
-            const validatorsListResponse = await axios.get<IValidatorList>(`https://api.${network.name}.mainnet.dteam.tech/cosmos/staking/v1beta1/validators`)
-
-            const inflation = inflationResponse.data.inflation;
+            const tokensPoolResponse = await axios.get<ITokensPool>(`https://api.${network.name}.mainnet.dteam.tech/cosmos/staking/v1beta1/pool`);
             const bondedTokens = tokensPoolResponse.data.pool.bonded_tokens;
-            const totalSupplyTokensList = totalSupplyResponse.data.supply;
-            const validatorsList = validatorsListResponse.data.validators;
 
-            totalSupplyTokensList.forEach((item: ITotalSupplyItem) => {
-                if (item.denom === network.other.denom) {
-                    totalSupplyNativeTokens = item.amount
-                }
-            })
-
-            validatorsList.forEach((validator: IValidator) => {
-                if(validator.operator_address === network.other.valoper_address) {
-                    validatorCommission = validator.commission.commission_rates.rate
-                }
-            })
+            let apr = 0;
 
             if (network.name === "canto") {
                 const inflationResponse = await axios.get<ICantoEpochMintProvisionResponse>(network.links.inflation);
-                const cantoEpochMintProvision = inflationResponse.data.epoch_mint_provision.amount
-
-                // console.log(network.id, (((cantoEpochMintProvision * 365) / bondedTokens) * (1 - validatorCommission) * 100).toFixed(2) + "%")
-
-                return {
-                    id: network.id,
-                    apr: (((cantoEpochMintProvision * 365) / bondedTokens) * (1 - validatorCommission) * 100).toFixed(2) + "%"
-                }
-            }
-
-            if (network.name === "haqq" || network.name === "quicksilver") {
+                const cantoEpochMintProvision = inflationResponse.data.epoch_mint_provision.amount;
+                apr = ((cantoEpochMintProvision * 365) / bondedTokens) * 100;
+            } else if (network.name === "haqq" || network.name === "quicksilver") {
                 const inflationResponse = await axios.get<IGuruChainApi>(network.links.inflation);
+                apr = inflationResponse.data.apr * 100;
+            } else {
+                const [inflationResponse, totalSupplyResponse, validatorsListResponse] = await Promise.all([
+                    axios.get<IInflation>(network.links.inflation),
+                    axios.get<ITotalSupply>(`https://api.${network.name}.mainnet.dteam.tech/cosmos/bank/v1beta1/supply`),
+                    axios.get<IValidatorList>(`https://api.${network.name}.mainnet.dteam.tech/cosmos/staking/v1beta1/validators`)
+                ]);
 
-                return {
-                    id: network.id,
-                    apr: (inflationResponse.data.apr * 100).toFixed(2) + "%"
-                }
+                const inflation = inflationResponse.data.inflation;
+                const totalSupplyNativeTokens = totalSupplyResponse.data.supply
+                    .find((item: ITotalSupplyItem) => item.denom === network.other.denom)?.amount || 0;
+                const validatorCommission = validatorsListResponse.data.validators
+                    .find(validator => validator.operator_address === network.other.valoper_address)?.commission.commission_rates.rate || 0;
+
+                apr = inflation * ((totalSupplyNativeTokens) / bondedTokens) * (1 - (validatorCommission)) * 100;
             }
 
             return {
                 id: network.id,
-                apr: (inflation * (totalSupplyNativeTokens / bondedTokens) * (1 - validatorCommission) * 100).toFixed(2) + "%"
-            }
+                apr: apr.toFixed(2) + "%"
+            };
 
-        } catch (e) {
-            return thunkAPI.rejectWithValue(e)
+        } catch (error) {
+            return rejectWithValue(error);
         }
     }
-)
+);
