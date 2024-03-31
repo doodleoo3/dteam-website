@@ -18,9 +18,9 @@ ${network.other.binary_name} tendermint unsafe-reset-all --home $HOME/${network.
             <ContentItem title={"CONFIGURE STATE SYNC"}>
                 {`${peers
                     ?
-                    `PEERS="${network.other.peer}@peer.${network.name}.${network.type}.dteam.tech:${network.other.p2p_port},${peers}`
+                    `PEERS="${network.other.peer},${peers}`
                     :
-                    `PEERS="${network.other.peer}@peer.${network.name}.${network.type}.dteam.tech:${network.other.p2p_port}"`
+                    `PEERS="${network.other.peer}"`
                 }
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \\"$PEERS\\"/" $HOME/${network.other.working_dir}/config/config.toml
 
