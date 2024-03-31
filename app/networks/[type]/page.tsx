@@ -12,7 +12,7 @@ const Page = ({ params }: { params: { type: NetworkType } }) => {
     const { type } = params
 
     return (
-        <NetworksPage type={type} title="networks" isServicePage={false}/>
+        <NetworksPage type={type} title="Networks" isServicePage={false}/>
     );
 };
 

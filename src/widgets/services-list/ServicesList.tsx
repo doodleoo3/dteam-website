@@ -1,25 +1,39 @@
-import React, {FC, useState} from 'react';
+'use client'
+
+import React, {FC, useEffect, useState} from 'react';
 import styles from "./ServicesList.module.scss"
 import Link from "next/link";
 import {NetworkType} from "@/src/app/models/INetwork";
-import {ServicesEnum} from "@/src/app/models/IServices";
 import mainnets from "@/src/shared/lib/networks-data/mainnets.json"
 import testnets from "@/src/shared/lib/networks-data/testnets.json"
+
 interface ServicesListProps {
-    type: NetworkType
+    type: NetworkType;
+    searchQuery: string;
 }
 
-const ServicesList:FC<ServicesListProps> = ({type}) => {
-    const [networksData, setNetworksData] = useState(type === "mainnet" ? mainnets : testnets)
+const ServicesList:FC<ServicesListProps> = ({type, searchQuery}) => {
+    const initialData = type === "mainnet" ? mainnets : testnets;
+    const [networksData, setNetworksData] = useState(initialData);
+    const [filteredServices, setFilteredServices] = useState<string[]>([]);
 
-    const allServices = new Set<string>();
-    networksData.forEach((network: any) => {
-        Object.entries(network.services).forEach(([key, value]: [string, any]) => {
-            if (value === true) {
-                allServices.add(key);
-            }
+    useEffect(() => {
+        const allServices = new Set<string>();
+
+        networksData.forEach((network: any) => {
+            Object.entries(network.services).forEach(([key, value]: [string, any]) => {
+                if (value === true) {
+                    allServices.add(key);
+                }
+            });
         });
-    });
+
+        const filtered = Array.from(allServices).filter(service =>
+            service.replace(/-/g, ' ').toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+        setFilteredServices(filtered);
+    }, [networksData, searchQuery]);
 
     const renderServiceLink = (service: string) => {
         return (
@@ -31,9 +45,17 @@ const ServicesList:FC<ServicesListProps> = ({type}) => {
 
     return (
         <div className={styles.list}>
-            {Array.from(allServices).map((service: string) => (
-                renderServiceLink(service)
-            ))}
+            {
+                filteredServices.length > 0
+                    ?
+                    <>
+                        {filteredServices.map((service: string) => (
+                            renderServiceLink(service)
+                        ))}
+                    </>
+                    : <h1>Services not found</h1>
+            }
+
         </div>
     );
 };

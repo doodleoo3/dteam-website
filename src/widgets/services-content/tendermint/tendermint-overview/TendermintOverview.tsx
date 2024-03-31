@@ -14,7 +14,10 @@ const TendermintOverview:FC<TendermintContentProps> = ({network, chainId, nodeVe
         <div className={styles.overview__container}>
             <div className={styles.left__side__wrapper}>
                 <NetworkOverviewInfo network={network} chainId={chainId} nodeVersion={nodeVersion} valueOfStakedTokens={value} amountOfTokens={amount}/>
-                <StakingCalculator network={network} valueOfStakedTokens={value} amountOfTokens={amount} apr={apr}/>
+                {network.type === "mainnet"
+                    ? <StakingCalculator network={network} valueOfStakedTokens={value} amountOfTokens={amount} apr={apr}/>
+                    : <></>
+                }
             </div>
             {/*<StakingPanel />*/}
         </div>

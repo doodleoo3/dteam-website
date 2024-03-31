@@ -33,11 +33,15 @@ export enum NetworkType {
 
 export interface ILinks {
     delegate?: string;
-    website: string;
     inflation?: string;
+
     binary_download: string;
     git: string;
     explorer: string;
+
+    website: string;
+    github: string;
+    twitter: string;
 }
 
 export interface IOther {
@@ -54,8 +58,10 @@ export interface IOther {
 
     peer?: string
     seed?: string
+
     grpc_port?: string
-    p2p_port?: string
+
+    version?: string //hardcoded node version
 
     ibc?: IBCItem[]
 

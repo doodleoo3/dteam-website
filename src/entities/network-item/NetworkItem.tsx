@@ -8,14 +8,48 @@ import LoadingBlock from "@/src/shared/ui/loading-block/LoadingBlock";
 import {useApr} from "@/src/shared/hooks/useApr";
 
 interface NetworkItemProps {
-    network: INetwork
-    isServicePage: boolean
+    network: INetwork;
+    isServicePage: boolean;
+    isStakingPage?: boolean;
 }
 
-const NetworkItem:FC<NetworkItemProps> = React.memo(({network, isServicePage}) => {
+const NetworkItem:FC<NetworkItemProps> = React.memo(({network, isServicePage, isStakingPage}) => {
     const router = useRouter();
     const pathname = usePathname();
     const apr = useApr(network);
+
+    if (isStakingPage) {
+        return (
+            <a
+                className={`${styles.service__network} ${styles.network}`}
+                href={network.links.delegate}
+                target="__blank"
+            >
+                <div className={styles.logo__wrapper}>
+                    <Image className={styles.logo} src={`/images/${network.name}.png`} width={400} height={400}
+                           alt=""></Image>
+                </div>
+
+                <div className={styles.right__side__wrapper}>
+                    <div className={styles.text__wrapper}>
+                        <h2>{network.name.toUpperCase()}</h2>
+                        <div className={styles.apr__container}>
+                            {(network.type === NetworkType.mainnet && !isServicePage) || pathname?.includes("stake")
+                                ?
+                                <>
+                                    {apr
+                                        ? <p>apr: {apr}</p>
+                                        : <LoadingBlock width={100}></LoadingBlock>
+                                    }
+                                </>
+                                : null
+                            }
+                        </div>
+                    </div>
+                </div>
+            </a>
+        );
+    }
 
     return (
         <div
@@ -23,24 +57,25 @@ const NetworkItem:FC<NetworkItemProps> = React.memo(({network, isServicePage}) =
             onClick={() => isServicePage ? router.push(pathname + `/${network.name}`) : null}
         >
             <div className={styles.logo__wrapper}>
-                <Image className={styles.logo} src={`/images/${network.name}.png`} width={400} height={400} alt=""></Image>
+                <Image className={styles.logo} src={`/images/${network.name}.png`} width={400} height={400}
+                       alt=""></Image>
             </div>
 
             <div className={styles.right__side__wrapper}>
                 <div className={styles.text__wrapper}>
                     <h2>{network.name.toUpperCase()}</h2>
-                    <div className={styles.apr__container}>
+
                         {(network.type === NetworkType.mainnet && !isServicePage) || pathname?.includes("stake")
                             ?
-                            <>
+                            <div className={styles.apr__container}>
                                 {apr
                                     ? <p>apr: {apr}</p>
                                     : <LoadingBlock width={100}></LoadingBlock>
                                 }
-                            </>
+                            </div>
                             : null
                         }
-                    </div>
+
                 </div>
             </div>
 

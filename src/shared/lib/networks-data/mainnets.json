@@ -9,12 +9,16 @@
       "need_build_binary": true,
 
       "links": {
-        "delegate": "",
-        "website": "https://www.uptickproject.com/",
+        "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
         "inflation": "https://api.uptick.mainnet.dteam.tech/cosmos/mint/v1beta1/inflation",
+
         "git": "https://github.com/UptickNetwork/uptick",
         "binary_download": "",
-        "explorer": ""
+        "explorer": "https://ping.pub/uptick",
+
+        "twitter": "https://twitter.com/uptickproject",
+        "website": "https://www.uptickproject.com/",
+        "github": "https://github.com/UptickNetwork"
       },
 
       "services": {
@@ -30,7 +34,7 @@
         },
         "addrbook": true,
         "genesis": true,
-        "ibc": true,
+        "ibc": false,
         "peers": true,
         "seeds": true,
         "useful-commands": true
@@ -49,25 +53,11 @@
         "cg_ticker": "",
 
         "grpc_port": "9690",
-        "p2p_port": "60756",
 
-        "seed": "",
-        "peer": "1e818e2244c9ba2ea3de0d6d7788b50a0d1c4812",
+        "seed": "e71bae28852a0b603f7360ec17fe91e7f065f324@uptick-mainnet-seed.itrocket.net:35656",
+        "peer": "1e818e2244c9ba2ea3de0d6d7788b50a0d1c4812@peer.uptick.mainnet.dteam.tech:60756",
 
-        "ibc": [
-          {
-            "name": "quicksilver",
-            "wallet_link": ""
-          },
-          {
-            "name": "haqq",
-            "wallet_link": ""
-          },
-          {
-            "name": "canto",
-            "wallet_link": ""
-          }
-        ],
+        "version": "",
 
         "pruning": true
       }
@@ -82,12 +72,16 @@
       "need_build_binary": true,
 
       "links": {
-        "delegate": "",
-        "website": "https://canto.io/",
+        "delegate": "https://restake.app/canto/cantovaloper1ys0fa3rdn3668fn5lfxazsv7g94jamu7n3qa8v/stake",
         "inflation": "https://api.canto.mainnet.dteam.tech/canto/inflation/v1/epoch_mint_provision",
+
         "git": "https://github.com/Canto-Network/Canto",
         "binary_download": "",
-        "explorer": ""
+        "explorer": "https://ping.pub/canto",
+
+        "twitter": "https://twitter.com/CantoPublic",
+        "website": "https://canto.io/",
+        "github": "https://github.com/Canto-Network"
       },
 
       "services": {
@@ -119,13 +113,14 @@
         "denom_exponent": 18,
 
         "ticker": "canto",
-        "cg_ticker": "",
+        "cg_ticker": "canto",
 
         "grpc_port": "9190",
-        "p2p_port": "36656",
 
-        "seed": "",
-        "peer": "49d40f97da4725689f91191b1f53f9322c584c95",
+        "seed": "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:15556",
+        "peer": "49d40f97da4725689f91191b1f53f9322c584c95@peer.canto.mainnet.dteam.tech:36656",
+
+        "version": "",
 
         "pruning": true
       }
@@ -137,15 +132,19 @@
       "type": "mainnet",
       "description": "HAQQ brings together the most reputable actors of Ethical finance in order to promote community-driven decentralized technologies worldwide. HAQQ is an EVM-equivalent chain, based on Cosmos SDK. The technology behind HAQQ makes it possible for any smart contract created on other EVM chains to be deployed onto the new network without any changes needed.",
       "is_tendermint_chain": true,
-      "need_build_binary": false,
+      "need_build_binary": true,
 
       "links": {
-        "delegate": "",
-        "website": "https://haqq.network/",
+        "delegate": "https://restake.app/haqq/haqqvaloper1gygy6q8dvpmwy6ps2yj8d503up3hssuv9gv6yu/stake",
         "inflation": "https://haqq.api.explorers.guru/api/v1/chain",
+
         "git": "https://github.com/haqq-network/haqq",
-        "binary_download": "https://github.com/haqq-network/haqq/releases/download/v1.7.0/haqq_1.7.0_Linux_x86_64.tar.gz",
-        "explorer": ""
+        "binary_download": "",
+        "explorer": "https://ping.pub/haqq",
+
+        "twitter": "https://twitter.com/The_HaqqNetwork",
+        "website": "https://haqq.network/",
+        "github": "https://github.com/haqq-network"
       },
 
       "services": {
@@ -179,10 +178,11 @@
         "cg_ticker": "islamic-coin",
 
         "grpc_port": "9290",
-        "p2p_port": "46656",
 
-        "seed": "",
-        "peer": "24ca011b211f6200e90916bef388aa057dc14259",
+        "seed": "9bc84e2b4fd1dbe1522fe2e3eecdce77b8398d76@haqq-mainnet-seed.itrocket.net:25656",
+        "peer": "24ca011b211f6200e90916bef388aa057dc14259@peer.haqq.mainnet.dteam.tech:46656",
+
+        "version": "",
 
         "pruning": true
       }
@@ -194,15 +194,19 @@
       "type": "mainnet",
       "description": "Quicksilver is a permissionless, sovereign Cosmos SDK zone providing liquid staking for the entire Interchain ecosystem.",
       "is_tendermint_chain": true,
-      "need_build_binary": false,
+      "need_build_binary": true,
 
       "links": {
-        "delegate": "",
-        "website": "https://quicksilver.zone/",
+        "delegate": "https://restake.app/quicksilver/quickvaloper1skmh8a7dskhwtyf6sgxfhexpx9r6xwyefefzjd/stake",
         "inflation": "https://quicksilver.api.explorers.guru/api/v1/chain",
+
         "git": "https://github.com/ingenuity-build/quicksilver",
-        "binary_download": "https://github.com/quicksilver-zone/quicksilver/releases/download/v1.4.7/quicksilverd-v1.4.7-amd64",
-        "explorer": ""
+        "binary_download": "",
+        "explorer": "https://ping.pub/quicksilver",
+
+        "twitter": "https://twitter.com/quicksilverzone",
+        "website": "https://quicksilver.zone/",
+        "github": "https://github.com/quicksilver-zone"
       },
 
       "services": {
@@ -234,13 +238,14 @@
         "denom_exponent": 6,
 
         "ticker": "qck",
-        "cg_ticker": "",
+        "cg_ticker": "quicksilver",
 
         "grpc_port": "9090",
-        "p2p_port": "26656",
 
-        "seed": "",
-        "peer": "d8e83c36c1c23f230e93a35667378299163de1f6",
+        "seed": "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:11156",
+        "peer": "d8e83c36c1c23f230e93a35667378299163de1f6@peer.quicksilver.mainnet.dteam.tech:26656",
+
+        "version": "",
 
         "pruning": true
       }
@@ -255,12 +260,16 @@
       "need_build_binary": true,
 
       "links": {
-        "delegate": "",
-        "website": "https://c4e.io/",
+        "delegate": "https://restake.app/chain4energy/c4evaloper1uz6mnly8w44h5maymtjl5fd8t8tzc3kmd4n3p3/stake",
         "inflation": "https://lcd.c4e.io/c4e/minter/v1beta1/inflation",
+
         "git": "https://github.com/chain4energy/c4e-chain",
         "binary_download": "",
-        "explorer": ""
+        "explorer": "https://ping.pub/chain4energy",
+
+        "twitter": "https://twitter.com/Chain4Energy",
+        "website": "https://c4e.io/",
+        "github": "https://github.com/chain4energy"
       },
 
       "services": {
@@ -278,7 +287,7 @@
         "genesis": true,
         "ibc": false,
         "peers": true,
-        "seeds": true,
+        "seeds": false,
         "useful-commands": true
       },
 
@@ -295,10 +304,11 @@
         "cg_ticker": "",
 
         "grpc_port": "9390",
-        "p2p_port": "56656",
 
         "seed": "",
-        "peer": "f9f40b8fd71cb973f8e17c49a81d43f40b14d82b",
+        "peer": "f9f40b8fd71cb973f8e17c49a81d43f40b14d82b@peer.c4e.mainnet.dteam.tech:56656",
+
+        "version": "",
 
         "pruning": true
       }

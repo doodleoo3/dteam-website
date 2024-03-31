@@ -6,6 +6,26 @@ import styles from "@/src/shared/ui/service-content-container/ServiceContentCont
 const TendermintEndpoints:FC<TendermintContentProps> = ({network}) => {
     const endpoints = network.services.endpoints;
 
+    if (network.name === "namada") {
+        return (
+            <div className={styles.container}>
+                {
+                    endpoints.api &&
+                    <ContentItem title={"Indexer"}>
+                        {`https://namadexer.testnet.dteam.tech`}
+                    </ContentItem>
+                }
+
+                {
+                    endpoints.rpc &&
+                    <ContentItem title={"Rpc"}>
+                        {`https://rpc.${network.name}.${network.type}.dteam.tech`}
+                    </ContentItem>
+                }
+            </div>
+        );
+    }
+
     return (
         <div className={styles.container}>
             {

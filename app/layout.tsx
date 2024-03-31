@@ -20,15 +20,15 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body style={{overflowX: "hidden"}}>
+        <StoreProvider>
             <Header />
-                <StoreProvider>
                     <PageContainer>
                         {children}
                         <FloatingBall left="10%" top="20%" size="30vw" animationDuration={3} />
                         <FloatingBall left="70%" top="50%" size="50vw" animationDuration={5} />
                     </PageContainer>
-                </StoreProvider>
             <Footer />
+        </StoreProvider>
         </body>
     </html>
   )

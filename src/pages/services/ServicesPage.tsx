@@ -20,14 +20,15 @@ const ServicesPage:FC<ServicesPageProps> = ({type}) => {
     return (
         <>
             <TopSectionWrapper
-                title="services"
+                title="Services"
                 type={type}
                 search={true}
                 selector={true}
                 getSearchQuery={getSearchQuery}
+                isPageWithServices={true}
             />
 
-            <ServicesList type={type} />
+            <ServicesList type={type} searchQuery={searchQuery}/>
         </>
     );
 };

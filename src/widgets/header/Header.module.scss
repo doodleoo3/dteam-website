@@ -2,9 +2,11 @@
   position: fixed;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  //justify-content: space-around;
+  justify-content: center;
   top: 0;
   width: 100vw;
+  //max-width: 100vw;
   border-bottom: 1px solid var(--secondary-color);
   background-color: var(--bg-content-color);
   min-height: 70px;
@@ -13,8 +15,10 @@
   opacity: 95%;
 }
 
+
+
 .nav__links {
-  min-width: 50%;
+  min-width: 60%;
   display: flex;
   justify-content: center;
 }
@@ -28,9 +32,18 @@
   margin: 0 15px;
 }
 
+.btn__wrapper, .header__element__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+
+  cursor: default !important;
+}
+
 .dteam__logo, .btn__wrapper{
   display: flex;
-  padding: 0 20px;
+  margin: 0 20px;
   justify-content: center;
   cursor: pointer;
 }
@@ -48,7 +61,7 @@
   background-color: var(--primary-color);
   color: var(--bg-content-color);
   border: 1px solid var(--primary-color);
-  padding: 5px 10px;
+  //padding: 5px 10px;
   cursor: pointer;
 }
 
@@ -58,18 +71,96 @@
   border-color: var(--secondary-color);
 }
 
-
-
 .mobile__menu__btn {
   display: none;
-  padding: 0 20px;
+  margin: 0 20px;
 }
 
 
+.mobile__nav {
+
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 70px);
+  background-color: var(--bg-content-color);
+  //justify-content: center;
+  flex-direction: column;
+
+  padding-top: 70px;
+
+
+  //padding: 70px 20px 0 20px;
+}
+
+.mobile__links {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+
+  &>* {
+    width: 100%;
+    height: 50px;
+    border-bottom: var(--border);
+
+    &>* {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+}
+
+.mobile__stake__wrapper {
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 50px;
+
+  &>* {
+    height: 100%;
+  }
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  width: 100%;
+
+  * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    width: 24px;
+
+    &:hover {
+      color: #ff9417;
+      cursor: pointer;
+    }
+  }
+}
 
 @media (max-width: 992px) {
   .header {
     justify-content: space-between;
+  }
+
+  .btn__wrapper, .header__element__wrapper {
+    width: inherit;
+  }
+
+  .header__element__wrapper {
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .nav__links {

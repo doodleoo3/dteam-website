@@ -30,6 +30,13 @@ export function useNetworkParams(network: INetwork | null) {
         }
     }, [tendermintParamsArray, network]);
 
+    if (network?.name === "namada") {
+        return {
+            chainId: params?.chainId,
+            nodeVersion: network?.other.version
+        }
+    }
+
     if (params?.chainId === "canto_7700-1") {
         return {
             chainId: params?.chainId,

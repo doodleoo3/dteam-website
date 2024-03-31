@@ -6,6 +6,7 @@ import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
 import axios from "axios";
 import LoadingBlock from "@/src/shared/ui/loading-block/LoadingBlock";
+import NamadaSnapshot from "@/src/widgets/services-content/namada/namada-snapshot/NamadaSnapshot";
 const TendermintSnapshot:FC<TendermintContentProps> = ({network}) => {
     const [snapshotData, setSnapshotData] = useState<ISnapshot | null>(null);
 
@@ -15,17 +16,23 @@ const TendermintSnapshot:FC<TendermintContentProps> = ({network}) => {
             const response = await axios.get<ISnapshot>(`https://data.dteam.tech/${network.name}/${network.type}/snapshot`);
             return response.data;
         } catch (e) {
-            throw Error()
+            throw Error("Error while get snapshot data")
         }
     }
 
     useEffect(() => {
         fetchSnapshotData().then(data => {
-            if (data !== null) {
+            if (data) {
                 setSnapshotData(data);
             }
         });
     }, []);
+
+    if (network.name === "namada") {
+        return (
+            <NamadaSnapshot network={network}/>
+        );
+    }
 
     return (
         <div className={styles.container}>

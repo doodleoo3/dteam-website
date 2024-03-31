@@ -11,9 +11,10 @@ interface NetworkListProps {
     networks: INetwork[];
     searchQuery: string;
     isServicePage: boolean;
+    isStakingPage?: boolean;
 }
 
-const NetworksList:FC<NetworkListProps> = React.memo(({networks, searchQuery, isServicePage}) => {
+const NetworksList:FC<NetworkListProps> = React.memo(({networks, searchQuery, isServicePage, isStakingPage}) => {
     const pathname = usePathname();
 
     const getServiceName = useCallback((pathname: string) => {
@@ -39,7 +40,7 @@ const NetworksList:FC<NetworkListProps> = React.memo(({networks, searchQuery, is
             {
                 filteredNetworks.length > 0
                     ? filteredNetworks.map(network => (
-                        <NetworkItem key={network.id} network={network} isServicePage={isServicePage} />
+                        <NetworkItem key={network.id} network={network} isServicePage={isServicePage} isStakingPage={isStakingPage} />
                     ))
                     : <h1>Networks not found</h1>
             }

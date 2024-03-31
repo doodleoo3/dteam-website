@@ -1,6 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
 import styles from "./StakingCalculator.module.scss";
-import { useApr } from "@/src/shared/hooks/useApr";
 import LoadingBlock from "@/src/shared/ui/loading-block/LoadingBlock";
 import {OverviewContentProps} from "@/src/app/models/ITendermintContentProps";
 
@@ -39,14 +38,14 @@ const StakingCalculator: FC<OverviewContentProps> = ({ network, valueOfStakedTok
         <div className={styles.calculator}>
             <div className={styles.title__wrapper}>
                 {apr !== null ? (
-                    <h2 className={styles.title}>{network.name} APR: {apr} / {stakeAmount}${network.other.ticker}</h2>
+                    <h2 className={styles.title} style={{textAlign: "center"}}>{network.name} APR: {apr} / {stakeAmount}${network.other.ticker}</h2>
                 ) : (
-                    <div style={{ display: 'flex' }}>
-                        <h2 style={{ marginRight: '10px' }} className={styles.title}>
+                    <div style={{ display: 'flex'}}>
+                        <h2 style={{ marginRight: '10px', textAlign: "center" }} className={styles.title}>
                             {network.name} APR:
                         </h2>
-                        <LoadingBlock width={100} />
-                        <h2 style={{ marginLeft: '10px' }}>({stakeAmount}${network.other.ticker})</h2>
+                        <div className={styles.loading__container}><LoadingBlock width={100}/></div>
+                        <h2 style={{marginLeft: '10px'}}>({stakeAmount}${network.other.ticker})</h2>
                     </div>
                 )}
                 <p>Annual Percentage Rate</p>

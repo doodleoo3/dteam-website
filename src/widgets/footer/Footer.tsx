@@ -45,12 +45,12 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                <div className={styles.links}>
-                    <h2>OTHER CHAIN SERVICES</h2>
-                    <ul>
-                        <li><ComingSoon>COMING SOON</ComingSoon></li>
-                    </ul>
-                </div>
+                {/*<div className={styles.links}>*/}
+                {/*    <h2>OTHER CHAIN SERVICES</h2>*/}
+                {/*    <ul>*/}
+                {/*        <li><ComingSoon>COMING SOON</ComingSoon></li>*/}
+                {/*    </ul>*/}
+                {/*</div>*/}
 
                 <div className={styles.links}>
                     <h2>WEBSITE NAV</h2>

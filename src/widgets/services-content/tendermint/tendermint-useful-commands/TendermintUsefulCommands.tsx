@@ -2,17 +2,25 @@ import React, {FC} from 'react';
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
+import NamadaUsefulCommands from "@/src/widgets/services-content/namada/namada-useful-commands/NamadaUsefulCommands";
 
 const TendermintUsefulCommands:FC<TendermintContentProps> = ({network}) => {
+    if (network.name === "namada") {
+        return (
+            <NamadaUsefulCommands network={network} />
+        );
+    }
+
     return (
         <div className={styles.container}>
             <ContentItem title={"Service operations"}>
                 {`#check logs
 sudo journalctl -u ${network.other.binary_name} -f
-
-#sync info
-${network.other.binary_name} status 2>&1 | jq .SyncInfo
-
+${
+''               
+// #sync info
+// ${network.other.binary_name} status 2>&1 | jq .SyncInfo          
+}
 #start service
 sudo systemctl start ${network.other.binary_name}
 
@@ -27,7 +35,7 @@ sudo systemctl restart ${network.other.binary_name}`}
                 {`#add new wallet
 ${network.other.binary_name} keys add wallet
 
-#restore executing wallet
+#restore existing wallet
 ${network.other.binary_name} keys add wallet --recover
 
 #delete wallet

@@ -11,7 +11,7 @@ const TendermintPeers:FC<TendermintContentProps> = ({network}) => {
             const response = await axios.get<ISnapshot>(`https://data.dteam.tech/${network.name}/${network.type}/snapshot`);
             return response.data.peers;
         } catch (e) {
-            throw Error()
+            throw Error("Error while fetching peers")
         }
     }
 
@@ -23,14 +23,30 @@ const TendermintPeers:FC<TendermintContentProps> = ({network}) => {
         });
     }, []);
 
+    if (network.name === "namada") {
+        return (
+            <div className={styles.container}>
+                <ContentItem title={"Live peers"}>
+                    {`${peers
+                        ?
+                        `PEERS="${network.other.peer},${peers}"`
+                        :
+                        `PEERS="${network.other.peer}"`
+                    }
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \\"$PEERS\\"/" $HOME/${network.other.working_dir}/config.toml`}
+                </ContentItem>
+            </div>
+        );
+    }
+
     return (
         <div className={styles.container}>
             <ContentItem title={"Live peers"}>
                 {`${peers
                     ?
-                    `PEERS="${network.other.peer}@peer.${network.name}.${network.type}.dteam.tech:${network.other.p2p_port},${peers}"`
+                    `PEERS="${network.other.peer},${peers}"`
                     :
-                    `PEERS="${network.other.peer}@peer.${network.name}.${network.type}.dteam.tech:${network.other.p2p_port}"`
+                    `PEERS="${network.other.peer}"`
                 }
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \\"$PEERS\\"/" $HOME/${network.other.working_dir}/config/config.toml`}
             </ContentItem>

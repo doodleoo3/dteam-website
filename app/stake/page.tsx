@@ -1,11 +1,13 @@
 import React from 'react';
-import PageTitle from "@/src/shared/ui/page-title/PageTitle";
+import {NetworkType} from "@/src/app/models/INetwork";
+import StakePage from "@/src/pages/stake/StakePage";
+
+export const dynamicParams = false
 
 const Page = () => {
+
     return (
-        <main>
-            <PageTitle>Stake</PageTitle>
-        </main>
+        <StakePage type={NetworkType.mainnet}/>
     );
 };
 

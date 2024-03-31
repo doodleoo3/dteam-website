@@ -3,11 +3,19 @@ import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import LoadingBlock from "@/src/shared/ui/loading-block/LoadingBlock";
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss"
+import NamadaInstallationGuide
+        from "@/src/widgets/services-content/namada/namada-installation-guide/NamadaInstallationGuide";
 
 const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVersion, chainId, peers}) => {
     // const [wallet, setWallet] = useState<string>("wallet");
     // const [moniker, setMoniker] = useState<string>("DTEAM_GUIDE");
     // const [port, setPort] = useState<number>(26);
+
+    if (network.name === "namada") {
+            return (
+                <NamadaInstallationGuide network={network} chainId={chainId} />
+            );
+    }
 
     return (
         <div className={styles.container}>
@@ -45,26 +53,29 @@ source $HOME/.bash_profile`}
                     ?
                     <ContentItem title={"BUILD BINARY"}>
                         {`cd $HOME
-git clone ${network.links.git} && cd ${network.other.main_dir}
+git clone ${network.links.git}
+cd ${network.other.main_dir}
 ${nodeVersion 
     ? `git checkout v${nodeVersion}` 
     : `git checkout ${<LoadingBlock width={100} />}`
 }
 make install
+
 ${network.other.binary_name} version --long | grep -e version -e commit`}
                     </ContentItem>
                     :
                     <ContentItem title={"DOWNLOAD BINARY"}>
-                        {`cd $HOME
-git clone ${network.links.git}
-cd ${network.other.main_dir}
-${network.name === "haqq"
-    ? `tar -xvzf ${network.links.binary_download.split('/').pop()}
-mv $HOME/${network.other.main_dir}/bin/${network.other.binary_name} $HOME/go/bin`
-    : `chmod +x ${network.links.binary_download.split('/').pop()}
-mv ${network.links.binary_download.split('/').pop()} $HOME/go/bin/${network.other.binary_name}
-`}
-
+                            {`cd $HOME
+${
+                                network.name === "lava"
+                                    ? `wget -O ${network.other.binary_name} ${network.links.binary_download}/v${nodeVersion}/${network.other.binary_name}-${nodeVersion}-linux-amd64`
+                                    : network.name === "selfchain"
+                                        ? `wget -O ${network.other.binary_name} ${network.links.binary_download}`
+                                        : ""
+                            }${network.name === "lava" || network.name === "selfchain" ? `
+chmod +x $HOME/${network.other.binary_name}
+mv $HOME/${network.other.binary_name} $HOME/go/bin/${network.other.binary_name}
+` : ""}
 ${network.other.binary_name} version --long | grep -e version -e commit`}
                     </ContentItem>
             }
@@ -87,13 +98,21 @@ wget -O $HOME/${network.other.working_dir}/config/addrbook.json https://download
             </ContentItem>
 
             <ContentItem title={"SET SEEDS AND PEERS"}>
-                {`SEEDS=
+                {`SEEDS="${network.other.seed}"
 ${peers
-    ? `PEERS="${network.other.peer}@peer.${network.name}.${network.type}.dteam.tech:${network.other.p2p_port},${peers}"`
-    : `PEERS="${network.other.peer}@peer.${network.name}.${network.type}.dteam.tech:${network.other.p2p_port}"`
+    ? `PEERS="${network.other.peer},${peers}"`
+    : `PEERS="${network.other.peer}"`
 }
 sed -i -e "s/^seeds *=.*/seeds = \\"$SEEDS\\"/; s/^persistent_peers *=.*/persistent_peers = \\"$PEERS\\"/" $HOME/${network.other.working_dir}/config/config.toml`}
             </ContentItem>
+
+{network.name === "babylon"
+    ?
+    <ContentItem title={"Change network to signet"}>
+            {`sed -i -e "s|^\\(network = \\).*|\\1\\"signet\\"|" $HOME/${network.other.working_dir}/config/app.toml`}
+    </ContentItem>
+    : <></>
+}
 
             <ContentItem title={"SET CUSTOM PORTS / OPTIONAL"}>
                     {`sed -i.bak -e "s%:1317%:\${${network.name.toUpperCase()}_PORT}317%g;
@@ -171,6 +190,7 @@ sudo systemctl enable ${network.other.binary_name}
 sudo systemctl restart ${network.other.binary_name}
 sudo journalctl -u ${network.other.binary_name} -f`}
             </ContentItem>
+
         </div>
     );
 };

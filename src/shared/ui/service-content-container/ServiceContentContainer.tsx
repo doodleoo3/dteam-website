@@ -66,14 +66,11 @@ const ServiceContentContainer: FC<ServiceContentContainerProps> = ({ networkName
             const response = await axios.get<ISnapshot>(`https://data.dteam.tech/${network.name}/${network.type}/snapshot`);
             return response.data.peers;
         } catch (e) {
-            throw Error()
+            return ""
         }
     }
 
     useEffect(() => {
-        console.log(networkName)
-        console.log(type)
-
         getCurrentNetwork(type, networkName);
     }, [networkName, type, getCurrentNetwork]);
 

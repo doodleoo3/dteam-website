@@ -8,10 +8,13 @@
       "need_build_binary": false,
 
       "links": {
-        "website": "",
         "git": "",
-        "binary_download": "",
-        "explorer": ""
+        "binary_download": "https://download.dteam.tech/selfchain/testnet/binary",
+        "explorer": "https://explorer-devnet.selfchain.xyz/self",
+
+        "twitter": "https://twitter.com/selfchainxyz",
+        "website": "https://selfchain.xyz/",
+        "github": "https://github.com/hotcrosscom"
       },
 
       "services": {
@@ -27,9 +30,9 @@
         },
         "addrbook": true,
         "genesis": true,
-        "ibc": false,
+        "ibc":  false,
         "peers": true,
-        "seeds": true,
+        "seeds": false,
         "useful-commands": true
       },
 
@@ -42,10 +45,11 @@
         "denom_exponent": 18,
 
         "grpc_port": "9790",
-        "p2p_port": "60856",
 
         "seed": "",
-        "peer": "6ba6446a0075b2710506377bfed86c8dde4bbc59",
+        "peer": "6ba6446a0075b2710506377bfed86c8dde4bbc59@peer.selfchain.testnet.dteam.tech:60856",
+
+        "version": "",
 
         "pruning": true
       }
@@ -59,10 +63,13 @@
       "need_build_binary": true,
 
       "links": {
-        "website": "",
-        "git": "",
+        "git": "https://github.com/chain4energy/c4e-chain",
         "binary_download": "",
-        "explorer": ""
+        "explorer": "https://ping.pub/chain4energy",
+
+        "twitter": "https://twitter.com/Chain4Energy",
+        "website": "https://c4e.io/",
+        "github": "https://github.com/chain4energy"
       },
 
       "services": {
@@ -80,7 +87,7 @@
         "genesis": true,
         "ibc": false,
         "peers": true,
-        "seeds": true,
+        "seeds": false,
         "useful-commands": true
       },
 
@@ -93,10 +100,11 @@
         "denom_exponent": 18,
 
         "grpc_port": "9990",
-        "p2p_port": "61056",
 
         "seed": "",
-        "peer": "09c378e9108236d2339e26f267102addb4ba7309",
+        "peer": "09c378e9108236d2339e26f267102addb4ba7309@peer.c4e.testnet.dteam.tech:61056",
+
+        "version": "",
 
         "pruning": true
       }
@@ -108,13 +116,16 @@
       "type": "testnet",
       "description": "Quicksilver is a permissionless, sovereign Cosmos SDK zone providing liquid staking for the entire Interchain ecosystem.",
       "is_tendermint_chain": true,
-      "need_build_binary": false,
+      "need_build_binary": true,
 
       "links": {
-        "website": "",
-        "git": "",
+        "git": "https://github.com/ingenuity-build/quicksilver",
         "binary_download": "",
-        "explorer": ""
+        "explorer": "https://ping.pub/quicksilver",
+
+        "twitter": "https://twitter.com/quicksilverzone",
+        "website": "https://quicksilver.zone/",
+        "github": "https://github.com/quicksilver-zone"
       },
 
       "services": {
@@ -145,10 +156,11 @@
         "denom_exponent": 18,
 
         "grpc_port": "9890",
-        "p2p_port": "60956",
 
-        "seed": "",
-        "peer": "16949909d970a8a5c0ac4239104262a1b885730c",
+        "seed": "78283975c2bee9b95bbf9408cc974cbab7bfe8ef@quicksilver-testnet-seed.itrocket.net:37656",
+        "peer": "16949909d970a8a5c0ac4239104262a1b885730c@peer.quicksilver.testnet.dteam.tech:60956",
+
+        "version": "",
 
         "pruning": true
       }
@@ -163,10 +175,13 @@
       "need_build_binary": false,
 
       "links": {
-        "website": "",
         "git": "",
-        "binary_download": "",
-        "explorer": ""
+        "binary_download": "https://github.com/lavanet/lava/releases/download",
+        "explorer": "https://lava.explorers.guru/",
+
+        "twitter": "https://twitter.com/lavanetxyz",
+        "website": "https://www.lavanet.xyz/",
+        "github": "https://github.com/lavanet"
       },
 
       "services": {
@@ -197,12 +212,140 @@
         "denom_exponent": 18,
 
         "grpc_port": "9590",
-        "p2p_port": "60656",
 
-        "seed": "",
-        "peer": "6d4e96c5e653f0ed7f905b1d53ef8d373af55ecf",
+        "seed": "eb7832932626c1c636d16e0beb49e0e4498fbd5e@lava-testnet-seed.itrocket.net:20656",
+        "peer": "6d4e96c5e653f0ed7f905b1d53ef8d373af55ecf@peer.lava.testnet.dteam.tech:60656",
+
+        "version": "",
 
         "pruning": true
+      }
+    },
+
+    {
+      "id": 995,
+      "name": "babylon",
+      "type": "testnet",
+      "description": "Babylon project designs security protocols that scale Bitcoin to secure the decentralized world. To this end, Babylon utilizes the three primary facets of Bitcoin: bitcoin the asset, Bitcoin the PoW-secured timestamping server, and Bitcoin the most censorship-resistant blockspace in the world.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "git": "https://github.com/babylonchain/babylon.git",
+        "binary_download": "",
+        "explorer": "https://testnet.babylon.explorers.guru/",
+
+        "twitter": "https://twitter.com/babylon_chain",
+        "website": "https://babylonchain.io/",
+        "github": "https://github.com/babylonchain"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": false
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc": false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "babylond",
+        "main_dir": "babylon",
+        "working_dir": ".babylond",
+
+        "denom": "ubbn",
+        "denom_exponent": 18,
+
+        "grpc_port": "16490",
+
+        "seed": "49b4685f16670e784a0fe78f37cd37d56c7aff0e@3.14.89.82:26656",
+        "peer": "bd365fdfe8b4971dcbf567223164d90d19968215@peer.babylon.testnet.dteam.tech:16456",
+
+        "version": "",
+
+        "pruning": false
+      }
+    },
+
+    {
+      "id": 994,
+      "name": "namada",
+      "type": "testnet",
+      "description": "Namada is a privacy-for-assets centric blockchain using zero-knowledge proof technology. Namada's cryptographical features give users asset-agnostic, interchain privacy, and is being built by the Anoma foundation.",
+      "is_tendermint_chain": false,
+      "need_build_binary": false,
+
+      "links": {
+        "git": "",
+        "binary_download": "",
+        "explorer": "https://namada.valopers.com/",
+
+        "twitter": "https://twitter.com/namada",
+        "website": "https://namada.net/",
+        "github": "https://github.com/anoma"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": false,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": false,
+          "json_rpc": false
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc": true,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "namadac",
+        "main_dir": "namada",
+        "working_dir": ".local/share/namada/shielded-expedition.88f17d1d14",
+
+        "denom": "naan",
+        "denom_exponent": 18,
+
+        "grpc_port": "",
+
+        "seed": "677f60b8f13e4a1e1b318d21aac7b21421dd7bce@seed.namada.testnet.dteam.tech:26656",
+        "peer": "5966d9059e49fa8898a0e5048c676ab52ca89fbc@peer.namada.testnet.dteam.tech:61156",
+
+        "version": "0.32.1",
+
+        "ibc": [
+          {
+            "name": "osmosis",
+            "wallet_link": "https://www.mintscan.io/osmosis-testnet/address/osmo16t4s4py87pylq5naas9shu8jmv4k28jk0kpj0j"
+          },
+          {
+            "name": "cosmos",
+            "wallet_link": "https://www.mintscan.io/cosmoshub-testnet/address/cosmos16t4s4py87pylq5naas9shu8jmv4k28jk8djzeq"
+          },
+          {
+            "name": "celestia",
+            "wallet_link": "https://www.mintscan.io/celestia-testnet/address/celestia16t4s4py87pylq5naas9shu8jmv4k28jkk8rjrd"
+          }
+        ],
+
+        "pruning": false
       }
     }
   ]

@@ -5,6 +5,18 @@ import DownloadFileBlock from "@/src/shared/ui/download-file-block/DownloadFileB
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
 
 const TendermintAddrbook:FC<TendermintContentProps> = ({network}) => {
+    if (network.name === "namada") {
+        return (
+            <div className={styles.container}>
+                <ContentItem title={"DOWNLOAD ADDRBOOK"}>
+                    {`wget -O $HOME/${network.other.working_dir}/cometbft/config/addrbook.json https://download.dteam.tech/${network.name
+                    }/${network.type}/addrbook`}
+                </ContentItem>
+                <DownloadFileBlock fileName={"addrbook.json"}/>
+            </div>
+        );
+    }
+
     return (
         <div className={styles.container}>
             <ContentItem title={"DOWNLOAD ADDRBOOK"}>

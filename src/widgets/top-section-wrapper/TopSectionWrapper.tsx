@@ -18,8 +18,9 @@ interface TopSectionWrapperProps {
     search: boolean;
     selector: boolean;
     getSearchQuery?: (searchQuery: string) => void;
+    isPageWithServices?: boolean
 }
-const TopSectionWrapper:FC<TopSectionWrapperProps> = ({title, type, networkName, getSearchQuery, service}) => {
+const TopSectionWrapper:FC<TopSectionWrapperProps> = ({title, type, networkName, getSearchQuery, service, selector, isPageWithServices}) => {
     const formattedTitle = title.replace(/-/g, ' ');
     
     const [findInMainnet, setFindInMainnet] = useState<boolean>(false)
@@ -57,8 +58,8 @@ const TopSectionWrapper:FC<TopSectionWrapperProps> = ({title, type, networkName,
                 : <PageTitle>{formattedTitle} <SecondaryColorText>/ {type}</SecondaryColorText></PageTitle>
             }
             <div className={styles.right__side__wrapper}>
-                {getSearchQuery && <Search getSearchQuery={getSearchQuery}/>}
-                {(findInMainnet && findInTestnet) || (!networkName)
+                {getSearchQuery && <Search getSearchQuery={getSearchQuery} isPageWithServices={isPageWithServices}/>}
+                {(findInMainnet && findInTestnet) || (!networkName) && selector
                     ? <TypeSelector />
                     : <TypeSelector withoutPair={true}/>
                 }
