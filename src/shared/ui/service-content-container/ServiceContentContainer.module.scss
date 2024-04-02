@@ -15,6 +15,7 @@
   }
 }
 
+
 .container {
   @extend %container;
 }
@@ -48,3 +49,25 @@
     text-decoration: underline;
   }
 }
+
+.snapshot__page__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-right: 50px;
+
+  &>.container {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  @media (max-width: 1200px) {
+    margin-right: 0;
+    width: 90%;
+  }
+}
+
+

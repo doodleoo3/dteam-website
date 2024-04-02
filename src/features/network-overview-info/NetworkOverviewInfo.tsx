@@ -9,11 +9,6 @@ import {faGlobe} from "@fortawesome/free-solid-svg-icons/faGlobe";
 
 const NetworkOverviewInfo:FC<OverviewContentProps> = ({network, nodeVersion, chainId, valueOfStakedTokens, amountOfTokens}) => {
 
-    useEffect(() => {
-        console.log(chainId)
-        console.log(nodeVersion)
-    }, []);
-
     return (
         <div className={styles.info}>
             <div className={styles.top__side__wrapper}>
