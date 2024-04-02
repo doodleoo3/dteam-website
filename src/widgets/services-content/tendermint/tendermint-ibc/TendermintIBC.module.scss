@@ -58,3 +58,12 @@
     }
   }
 }
+
+@media (max-width: 1200px) {
+  .container {
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin-right: 0;
+  }
+}

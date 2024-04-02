@@ -53,13 +53,19 @@ source $HOME/.bash_profile`}
                     ?
                     <ContentItem title={"BUILD BINARY"}>
                         {`cd $HOME
-git clone ${network.links.git}
+${network.name === "warden"
+? `git clone --depth 1 --branch v${nodeVersion} ${network.links.git}
+cd wardenprotocol/warden/cmd/wardend
+go build
+mv ${network.other.binary_name} $HOME/go/bin`
+: `git clone ${network.links.git}
 cd ${network.other.main_dir}
-${nodeVersion 
-    ? `git checkout v${nodeVersion}` 
-    : `git checkout ${<LoadingBlock width={100} />}`
+${nodeVersion
+? `git checkout v${nodeVersion}`
+: `git checkout ${<LoadingBlock width={100} />}`
 }
-make install
+make install`
+}
 
 ${network.other.binary_name} version --long | grep -e version -e commit`}
                     </ContentItem>

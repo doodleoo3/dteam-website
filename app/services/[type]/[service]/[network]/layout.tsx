@@ -5,7 +5,7 @@ import mainnets from "@/src/shared/lib/networks-data/mainnets.json";
 import testnets from "@/src/shared/lib/networks-data/testnets.json";
 import {ServicesEnum} from "@/src/app/models/IServices";
 import React from "react";
-import SeparateServicePage from "@/src/pages/separate-service-page/SeparateServicePage";
+import SeparateServicePage from "@/src/windows/separate-service-page/SeparateServicePage";
 
 export const metadata: Metadata = {
     title: 'SERVICES | DTEAM',

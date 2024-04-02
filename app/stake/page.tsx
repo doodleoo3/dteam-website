@@ -1,6 +1,6 @@
 import React from 'react';
 import {NetworkType} from "@/src/app/models/INetwork";
-import StakePage from "@/src/pages/stake/StakePage";
+import StakePage from "@/src/windows/stake/StakePage";
 
 export const dynamicParams = false
 

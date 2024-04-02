@@ -1,6 +1,6 @@
 import React from 'react';
 import {NetworkType} from "@/src/app/models/INetwork";
-import NetworksPage from "@/src/pages/networks/NetworksPage";
+import NetworksPage from "@/src/windows/networks/NetworksPage";
 
 export function generateStaticParams() {
     return [{ type: NetworkType.mainnet }, { type: NetworkType.testnet }]

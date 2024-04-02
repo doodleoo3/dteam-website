@@ -1,7 +1,7 @@
 import React from 'react';
 import {ServicesEnum} from "@/src/app/models/IServices";
 import {NetworkType} from "@/src/app/models/INetwork";
-import NetworksPage from "@/src/pages/networks/NetworksPage";
+import NetworksPage from "@/src/windows/networks/NetworksPage";
 
 export const dynamicParams = false
 

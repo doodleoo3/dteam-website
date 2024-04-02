@@ -1,6 +1,6 @@
 import React from 'react';
 import {NetworkType} from "@/src/app/models/INetwork";
-import ServicesPage from "@/src/pages/services/ServicesPage";
+import ServicesPage from "@/src/windows/services/ServicesPage";
 
 export const dynamicParams = false
 export function generateStaticParams() {

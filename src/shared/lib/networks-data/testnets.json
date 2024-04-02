@@ -1,20 +1,20 @@
   [
     {
       "id": 999,
-      "name": "selfchain",
+      "name": "warden",
       "type": "testnet",
-      "description": "Self chain is the first decentralized self-custody network and infrastructure service, revolutionizing key management through mpc-tss for keyless non-custodial wallet creation and management.",
+      "description": "The Warden Protocol is an intent-centric protocol, built on the Cosmos SDK, that enables various execution layers for interoperability, modular key management and account aggregation.",
       "is_tendermint_chain": true,
-      "need_build_binary": false,
+      "need_build_binary": true,
 
       "links": {
-        "git": "",
-        "binary_download": "https://download.dteam.tech/selfchain/testnet/binary",
-        "explorer": "https://explorer-devnet.selfchain.xyz/self",
+        "git": "https://github.com/warden-protocol/wardenprotocol/",
+        "binary_download": "",
+        "explorer": "https://testnet.itrocket.net/warden",
 
-        "twitter": "https://twitter.com/selfchainxyz",
-        "website": "https://selfchain.xyz/",
-        "github": "https://github.com/hotcrosscom"
+        "twitter": "https://twitter.com/wardenprotocol",
+        "website": "https://wardenprotocol.org/",
+        "github": "https://github.com/warden-protocol"
       },
 
       "services": {
@@ -32,22 +32,22 @@
         "genesis": true,
         "ibc":  false,
         "peers": true,
-        "seeds": false,
+        "seeds": true,
         "useful-commands": true
       },
 
       "other": {
-        "binary_name": "selfchaind",
-        "main_dir": "",
-        "working_dir": ".selfchain",
+        "binary_name": "wardend",
+        "main_dir": "wardenprotocol",
+        "working_dir": ".warden",
 
-        "denom": "uself",
+        "denom": "uward",
         "denom_exponent": 18,
 
-        "grpc_port": "9790",
+        "grpc_port": "9910",
 
-        "seed": "",
-        "peer": "6ba6446a0075b2710506377bfed86c8dde4bbc59@peer.selfchain.testnet.dteam.tech:60856",
+        "seed": "ff0885377c44d58164f29d356b9d3d3a755c6213@warden-testnet-seed.itrocket.net:18656",
+        "peer": "3c3151c2f7f1dd59fedd67edf5b420ad14f6127@peer.warden.testnet.dteam.tech:61256",
 
         "version": "",
 
@@ -346,6 +346,61 @@
         ],
 
         "pruning": false
+      }
+    },
+    {
+      "id": 993,
+      "name": "selfchain",
+      "type": "testnet",
+      "description": "Self chain is the first decentralized self-custody network and infrastructure service, revolutionizing key management through mpc-tss for keyless non-custodial wallet creation and management.",
+      "is_tendermint_chain": true,
+      "need_build_binary": false,
+
+      "links": {
+        "git": "",
+        "binary_download": "https://download.dteam.tech/selfchain/testnet/binary",
+        "explorer": "https://explorer-devnet.selfchain.xyz/self",
+
+        "twitter": "https://twitter.com/selfchainxyz",
+        "website": "https://selfchain.xyz/",
+        "github": "https://github.com/hotcrosscom"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": false
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": false,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "selfchaind",
+        "main_dir": "",
+        "working_dir": ".selfchain",
+
+        "denom": "uself",
+        "denom_exponent": 18,
+
+        "grpc_port": "9790",
+
+        "seed": "",
+        "peer": "6ba6446a0075b2710506377bfed86c8dde4bbc59@peer.selfchain.testnet.dteam.tech:60856",
+
+        "version": "",
+
+        "pruning": true
       }
     }
   ]
