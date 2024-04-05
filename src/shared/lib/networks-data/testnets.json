@@ -1,6 +1,61 @@
   [
     {
-      "id": 999,
+      "id": 998,
+      "name": "side",
+      "type": "testnet",
+      "description": "The Side Protocol is a modular infrastructure designed to scale Bitcoin. At its core is SIDE, a Bitcoin sidechain secured by BTC and serving as the settlement layer for zk-rollups within the modular stack.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "git": "https://github.com/sideprotocol/side",
+        "binary_download": "",
+        "explorer": "https://testnet.itrocket.net/side",
+
+        "twitter": "https://twitter.com/SideProtocol",
+        "website": "https://side.one/",
+        "github": "https://github.com/sideprotocol"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": false
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "sided",
+        "main_dir": "side",
+        "working_dir": ".side",
+
+        "denom": "uside",
+        "denom_exponent": 18,
+
+        "grpc_port": "63090",
+
+        "seed": "9c14080752bdfa33f4624f83cd155e2d3976e303@side-testnet-seed.itrocket.net:45656",
+        "peer": "19a0966b37f1023764b13c35936acfc43967b9f2@peer.side.testnet.dteam.tech:63656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
+      "id": 998,
       "name": "warden",
       "type": "testnet",
       "description": "The Warden Protocol is an intent-centric protocol, built on the Cosmos SDK, that enables various execution layers for interoperability, modular key management and account aggregation.",
