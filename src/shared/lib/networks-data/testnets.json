@@ -1,6 +1,61 @@
   [
     {
-      "id": 998,
+      "id": 991,
+      "name": "0g",
+      "type": "testnet",
+      "description": "0G The First Modular AI Chain Build with infinitely scalable programmable DA layer for AI DApps.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "git": "https://github.com/0glabs/0g-evmos.git",
+        "binary_download": "",
+        "explorer": "https://explorer.validatorvn.com/OG-Testnet",
+
+        "twitter": "https://twitter.com/0G_labs",
+        "website": "https://0g.ai/",
+        "github": "https://github.com/0glabs"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": true
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": false,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "evmosd",
+        "main_dir": "0g-evmos",
+        "working_dir": ".evmosd",
+
+        "denom": "aevmos",
+        "denom_exponent": 18,
+
+        "grpc_port": "64090",
+
+        "seed": "",
+        "peer": "bd79b2c385ca6fcab31e4305858358fbf16161c2@peer.0g.testnet.dteam.tech:64656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
+      "id": 999,
       "name": "side",
       "type": "testnet",
       "description": "The Side Protocol is a modular infrastructure designed to scale Bitcoin. At its core is SIDE, a Bitcoin sidechain secured by BTC and serving as the settlement layer for zk-rollups within the modular stack.",
@@ -110,7 +165,7 @@
       }
     },
     {
-      "id": 998,
+      "id": 997,
       "name": "c4e",
       "type": "testnet",
       "description": "Chain4Energy (C4E) is a sovereign global decentralized blockchain ecosystem. The Energy Marketplace which enables institutions and individuals to seamlessly participate in the renewable energy market accessing and offering a wide range of renewable energy solutions and services.",
@@ -166,7 +221,7 @@
     },
     
     {
-      "id": 997,
+      "id": 996,
       "name": "quicksilver",
       "type": "testnet",
       "description": "Quicksilver is a permissionless, sovereign Cosmos SDK zone providing liquid staking for the entire Interchain ecosystem.",
@@ -222,7 +277,7 @@
     },
 
     {
-      "id": 996,
+      "id": 995,
       "name": "lava",
       "type": "testnet",
       "description": "Lava is a decentralized network of top RPC and API providers that developers can subscribe to for access to any blockchain. Providers are rewarded for their quality of service, meaning apps and users get maximum speed, data integrity and uptime.",
@@ -278,7 +333,7 @@
     },
 
     {
-      "id": 995,
+      "id": 994,
       "name": "babylon",
       "type": "testnet",
       "description": "Babylon project designs security protocols that scale Bitcoin to secure the decentralized world. To this end, Babylon utilizes the three primary facets of Bitcoin: bitcoin the asset, Bitcoin the PoW-secured timestamping server, and Bitcoin the most censorship-resistant blockspace in the world.",
@@ -334,7 +389,7 @@
     },
 
     {
-      "id": 994,
+      "id": 993,
       "name": "namada",
       "type": "testnet",
       "description": "Namada is a privacy-for-assets centric blockchain using zero-knowledge proof technology. Namada's cryptographical features give users asset-agnostic, interchain privacy, and is being built by the Anoma foundation.",
@@ -404,7 +459,7 @@
       }
     },
     {
-      "id": 993,
+      "id": 992,
       "name": "selfchain",
       "type": "testnet",
       "description": "Self chain is the first decentralized self-custody network and infrastructure service, revolutionizing key management through mpc-tss for keyless non-custodial wallet creation and management.",
