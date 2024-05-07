@@ -6,7 +6,6 @@ import {
     ITokensPool,
     ITotalSupply,
     ITotalSupplyItem,
-    IValidator,
     IValidatorList
 } from "@/src/app/models/IApr";
 import {INetwork} from "@/src/app/models/INetwork";
@@ -14,8 +13,7 @@ import { RootState } from "../store";
 
 export const fetchTendermintApr = createAsyncThunk(
     'networks/fetchTendermintAPR',
-    async (network: INetwork, { rejectWithValue, getState}) => {
-        // console.log(`fetchTendermintApr called for network: ${network.id}`);
+    async (network: INetwork, {getState}) => {
 
         const state = (getState() as RootState);
         const currentApr = state.apr.tendermintAprArray.find((item) => item.id === network.id)?.apr;
@@ -66,7 +64,10 @@ export const fetchTendermintApr = createAsyncThunk(
             };
 
         } catch (error) {
-            return rejectWithValue(error);
+            return {
+                id: network.id,
+                apr: "Not available"
+            };
         }
     }
 );

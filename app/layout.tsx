@@ -22,7 +22,6 @@ export default function RootLayout({
         <body style={{overflowX: "hidden"}}>
         <StoreProvider>
             <Header />
-
                     <PageContainer>
                         {children}
                         <FloatingBall left="10%" top="20%" size="30vw" animationDuration={3} />
