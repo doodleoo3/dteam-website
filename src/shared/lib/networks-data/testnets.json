@@ -1,5 +1,226 @@
   [
     {
+      "id": 987,
+      "name": "celestia",
+      "type": "testnet",
+      "description": "Celestia is a modular data availability network that securely scales with the number of users, making it easy for anyone to launch their own blockchain.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "git": "https://github.com/celestiaorg/celestia-app.git",
+        "binary_download": "",
+        "explorer": "https://explorer.testnet.dteam.tech/celestia",
+
+        "twitter": "https://twitter.com/CelestiaOrg",
+        "website": "https://celestia.org/",
+        "github": "https://github.com/celestiaorg"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": true
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "celestia-appd",
+        "main_dir": "celestia-app",
+        "working_dir": ".celestia-app",
+
+        "denom": "utia",
+        "denom_exponent": 18,
+
+        "grpc_port": "34090",
+
+        "seed": "5d0bf034d6e6a8b5ee31a2f42f753f1107b3a00e@celestia-testnet-seed.itrocket.net:11656",
+        "peer": "13b0e6b33723581f493c9870bdd92ff45bc3e183@peer.celestia.testnet.dteam.tech:34656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
+      "id": 988,
+      "name": "dymension",
+      "type": "testnet",
+      "description": "Dymension is a home for easily deployable and lightning fast app-chains, called RollApps.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "git": "https://github.com/dymensionxyz/dymension.git",
+        "binary_download": "",
+        "explorer": "https://explorer.testnet.dteam.tech/dymension",
+
+        "twitter": "https://twitter.com/dymension",
+        "website": "https://dymension.xyz/",
+        "github": "https://github.com/dymensionxyz"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": true
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "dymd",
+        "main_dir": "dymension",
+        "working_dir": ".dymension",
+
+        "denom": "udym",
+        "denom_exponent": 18,
+
+        "grpc_port": "35090",
+
+        "seed": "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:20556",
+        "peer": "0701d1853ad9581111600b7666de243b364d8c2c@peer.dymension.testnet.dteam.tech:35656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
+      "id": 989,
+      "name": "artela",
+      "type": "testnet",
+      "description": "Artela offers a single, universal framework to extend the functionality of blockchain applications by the addition of chain-native modules.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "git": "https://github.com/artela-network/artela",
+        "binary_download": "",
+        "explorer": "https://explorer.testnet.dteam.tech/artela",
+
+        "twitter": "https://twitter.com/Artela_Network",
+        "website": "https://artela.network/",
+        "github": "https://github.com/artela-network"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": true
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "artelad",
+        "main_dir": "artela",
+        "working_dir": ".artelad",
+
+        "denom": "uart",
+        "denom_exponent": 18,
+
+        "grpc_port": "33090",
+
+        "seed": "8d0c626443a970034dc12df960ae1b1012ccd96a@artela-testnet-seed.itrocket.net:30656",
+        "peer": "360b5ac7650cbdafa2b2d75c12d2458d1317ad7f@peer.artela.testnet.dteam.tech:33656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
+      "id": 990,
+      "name": "crossfi",
+      "type": "testnet",
+      "description": "CrossFi Chain is a layer 1 blockchain with a modular architecture. It consists of two integral parts, Cosmos and EVM. Each part is responsible for its specific functionality, with their work completely synchronized as a single organism.",
+      "is_tendermint_chain": true,
+      "need_build_binary": false,
+
+      "links": {
+        "git": "https://github.com/crossfichain",
+        "binary_download": "",
+        "explorer": "https://explorer.testnet.dteam.tech/crossfi",
+
+        "twitter": "https://twitter.com/crossfichain",
+        "website": "https://crossfi.org/",
+        "github": "https://github.com/crossfichain"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": true
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "crossfid",
+        "main_dir": "",
+        "working_dir": ".mineplex-chain",
+
+        "denom": "mpx",
+        "denom_exponent": 18,
+
+        "grpc_port": "20090",
+
+        "seed": "dd83e3c7c4e783f8a46dbb010ec8853135d29df0@crossfi-testnet-seed.itrocket.net:36656",
+        "peer": "123d4bba4c0fa000ef6a56a71a6aeb2458ba3602@peer.crossfi.testnet.dteam.tech:20656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+
+    {
       "id": 991,
       "name": "0g",
       "type": "testnet",
@@ -10,7 +231,7 @@
       "links": {
         "git": "https://github.com/0glabs/0g-evmos.git",
         "binary_download": "",
-        "explorer": "https://explorer.validatorvn.com/OG-Testnet",
+        "explorer": "https://explorer.testnet.dteam.tech/0g",
 
         "twitter": "https://twitter.com/0G_labs",
         "website": "https://0g.ai/",
@@ -65,7 +286,7 @@
       "links": {
         "git": "https://github.com/sideprotocol/side",
         "binary_download": "",
-        "explorer": "https://testnet.itrocket.net/side",
+        "explorer": "https://explorer.testnet.dteam.tech/side",
 
         "twitter": "https://twitter.com/SideProtocol",
         "website": "https://side.one/",
@@ -120,7 +341,7 @@
       "links": {
         "git": "https://github.com/warden-protocol/wardenprotocol/",
         "binary_download": "",
-        "explorer": "https://testnet.itrocket.net/warden",
+        "explorer": "https://explorer.testnet.dteam.tech/warden",
 
         "twitter": "https://twitter.com/wardenprotocol",
         "website": "https://wardenprotocol.org/",
@@ -175,7 +396,7 @@
       "links": {
         "git": "https://github.com/chain4energy/c4e-chain",
         "binary_download": "",
-        "explorer": "https://ping.pub/chain4energy",
+        "explorer": "https://explorer.testnet.dteam.tech/chain4energy",
 
         "twitter": "https://twitter.com/Chain4Energy",
         "website": "https://c4e.io/",
@@ -231,7 +452,7 @@
       "links": {
         "git": "https://github.com/ingenuity-build/quicksilver",
         "binary_download": "",
-        "explorer": "https://ping.pub/quicksilver",
+        "explorer": "https://explorer.testnet.dteam.tech/quicksilver",
 
         "twitter": "https://twitter.com/quicksilverzone",
         "website": "https://quicksilver.zone/",
@@ -287,7 +508,7 @@
       "links": {
         "git": "",
         "binary_download": "https://github.com/lavanet/lava/releases/download",
-        "explorer": "https://lava.explorers.guru/",
+        "explorer": "https://explorer.testnet.dteam.tech/lava",
 
         "twitter": "https://twitter.com/lavanetxyz",
         "website": "https://www.lavanet.xyz/",
@@ -343,7 +564,7 @@
       "links": {
         "git": "https://github.com/babylonchain/babylon.git",
         "binary_download": "",
-        "explorer": "https://testnet.babylon.explorers.guru/",
+        "explorer": "https://explorer.testnet.dteam.tech/babylon",
 
         "twitter": "https://twitter.com/babylon_chain",
         "website": "https://babylonchain.io/",
@@ -469,7 +690,7 @@
       "links": {
         "git": "",
         "binary_download": "https://download.dteam.tech/selfchain/testnet/binary",
-        "explorer": "https://explorer-devnet.selfchain.xyz/self",
+        "explorer": "https://explorer.testnet.dteam.tech/selfchain",
 
         "twitter": "https://twitter.com/selfchainxyz",
         "website": "https://selfchain.xyz/",

@@ -14,7 +14,7 @@
 
         "git": "https://github.com/UptickNetwork/uptick",
         "binary_download": "",
-        "explorer": "https://ping.pub/uptick",
+        "explorer": "https://explorer.mainnet.dteam.tech/uptick",
 
         "twitter": "https://twitter.com/uptickproject",
         "website": "https://www.uptickproject.com/",
@@ -77,7 +77,7 @@
 
         "git": "https://github.com/Canto-Network/Canto",
         "binary_download": "",
-        "explorer": "https://ping.pub/canto",
+        "explorer": "https://explorer.mainnet.dteam.tech/canto",
 
         "twitter": "https://twitter.com/CantoPublic",
         "website": "https://canto.io/",
@@ -140,7 +140,7 @@
 
         "git": "https://github.com/haqq-network/haqq",
         "binary_download": "",
-        "explorer": "https://ping.pub/haqq",
+        "explorer": "https://explorer.mainnet.dteam.tech/haqq",
 
         "twitter": "https://twitter.com/The_HaqqNetwork",
         "website": "https://haqq.network/",
@@ -202,7 +202,7 @@
 
         "git": "https://github.com/ingenuity-build/quicksilver",
         "binary_download": "",
-        "explorer": "https://ping.pub/quicksilver",
+        "explorer": "https://explorer.mainnet.dteam.tech/quicksilver",
 
         "twitter": "https://twitter.com/quicksilverzone",
         "website": "https://quicksilver.zone/",
@@ -265,7 +265,7 @@
 
         "git": "https://github.com/chain4energy/c4e-chain",
         "binary_download": "",
-        "explorer": "https://ping.pub/chain4energy",
+        "explorer": "https://explorer.mainnet.dteam.tech/chain4energy",
 
         "twitter": "https://twitter.com/Chain4Energy",
         "website": "https://c4e.io/",
