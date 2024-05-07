@@ -5,6 +5,11 @@ import LoadingBlock from "@/src/shared/ui/loading-block/LoadingBlock";
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss"
 import NamadaInstallationGuide
         from "@/src/widgets/services-content/namada/namada-installation-guide/NamadaInstallationGuide";
+import WardenBuild from "@/src/entities/download-build-binary/WardenBuild";
+import DefaultBuild from "@/src/entities/download-build-binary/DefaultBuild";
+import SelfchainDownload from "@/src/entities/download-build-binary/SelfchainDownload";
+import LavaDownload from "@/src/entities/download-build-binary/LavaDownload";
+import CrossFiDownload from "@/src/entities/download-build-binary/CrossFiDownload";
 
 const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVersion, chainId, peers}) => {
     // const [wallet, setWallet] = useState<string>("wallet");
@@ -21,7 +26,7 @@ const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVe
         <div className={styles.container}>
             <ContentItem title={"INSTALL DEPENDENCIES"}>
                 {`sudo apt update
-apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y`}
+apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev lz4 -y`}
             </ContentItem>
 
             <ContentItem title={"INSTALL GO"}>
@@ -50,44 +55,24 @@ source $HOME/.bash_profile`}
             </ContentItem>
 
             {network.need_build_binary
-                    ?
-                    <ContentItem title={"BUILD BINARY"}>
-                        {`cd $HOME
-${network.name === "warden"
-? `git clone --depth 1 --branch v${nodeVersion} ${network.links.git}
-cd wardenprotocol/warden/cmd/wardend
-go build
-mv ${network.other.binary_name} $HOME/go/bin`
-: `git clone ${network.links.git}
-cd ${network.other.main_dir}
-${nodeVersion
-? `git checkout v${nodeVersion}`
-: `git checkout ${<LoadingBlock width={100} />}`
-}
-make install`
-}
-
-${network.other.binary_name} version --long | grep -e version -e commit`}
-                    </ContentItem>
-                    :
-                    <ContentItem title={"DOWNLOAD BINARY"}>
-                            {`cd $HOME
-${
-                                network.name === "lava"
-                                    ? `wget -O ${network.other.binary_name} ${network.links.binary_download}/v${nodeVersion}/${network.other.binary_name}-${nodeVersion}-linux-amd64`
-                                    : network.name === "selfchain"
-                                        ? `wget -O ${network.other.binary_name} ${network.links.binary_download}`
-                                        : ""
-                            }${network.name === "lava" || network.name === "selfchain" ? `
-chmod +x $HOME/${network.other.binary_name}
-mv $HOME/${network.other.binary_name} $HOME/go/bin/${network.other.binary_name}
-` : ""}
-${network.other.binary_name} version --long | grep -e version -e commit`}
-                    </ContentItem>
+                ?
+                <>
+                {network.name === "warden"
+                        ? <WardenBuild network={network} nodeVersion={nodeVersion}/>
+                        : <DefaultBuild network={network} nodeVersion={nodeVersion}/>
+                }
+                </>
+                :
+                <>
+                {network.name === "selfchain" && <SelfchainDownload network={network}/>}
+                {network.name === "lava" && <LavaDownload network={network} nodeVersion={nodeVersion}/>}
+                {network.name === "crossfi" && <CrossFiDownload network={network} nodeVersion={nodeVersion}/>}
+                </>
             }
 
             <ContentItem title={"CONFIG AND INITIALIZE NODE"}>
                 {`${network.other.binary_name} config keyring-backend os
+${network.other.binary_name} config node tcp://localhost:\${${network.name.toUpperCase()}_PORT}657
 ${chainId
     ? `${network.other.binary_name} config chain-id ${chainId}`
     : `${network.other.binary_name} config chain-id ${<LoadingBlock width={100}/>}`
@@ -171,7 +156,7 @@ sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \\"$SNAPSHOT_INTERV
             <ContentItem title={"CREATE SERVICE FILE"}>
                     {`sudo tee /etc/systemd/system/${network.other.binary_name}.service > /dev/null <<EOF
 [Unit]
-Description=${network.name} node
+Description=${network.name} ${network.type} node
 After=network-online.target
 [Service]
 User=$USER
@@ -187,7 +172,7 @@ EOF`}
 
             <ContentItem title={"DOWNLOAD SNAPSHOT / OPTIONAL"}>
                     {`${network.other.binary_name} tendermint unsafe-reset-all --home $HOME/${network.other.working_dir}
-curl https://download.${network.type}.${network.name}.dteam.tech/latest-snapshot | lz4 -dc - | tar -xf - -C $HOME/${network.other.working_dir}`}
+curl https://download.dteam.tech/${network.name}/${network.type}/latest-snapshot | lz4 -dc - | tar -xf - -C $HOME/${network.other.working_dir}`}
             </ContentItem>
 
             <ContentItem title={"ENABLE AND START SERVICE"} >
