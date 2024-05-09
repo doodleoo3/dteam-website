@@ -11,7 +11,10 @@ export function useNetworkParams(network: INetwork | null) {
         const item: TendermintParams | undefined = ParamsArray.find(item  => item.id === id);
 
         if (!item) {
-            throw new Error("Error receiving network params");
+            return {
+                chainId: "Not available",
+                nodeVersion: "Not available"
+            };
         }
 
         return {
