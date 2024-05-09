@@ -32,6 +32,8 @@ const ServicesList:FC<ServicesListProps> = ({type, searchQuery}) => {
             service.replace(/-/g, ' ').toLowerCase().includes(searchQuery.toLowerCase())
         );
 
+        filtered.sort((a, b) => a.localeCompare(b));
+
         setFilteredServices(filtered);
     }, [networksData, searchQuery]);
 
