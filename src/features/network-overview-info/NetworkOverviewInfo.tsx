@@ -1,11 +1,11 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 import styles from "./NetworkOverviewInfo.module.scss"
 import {OverviewContentProps} from "@/src/app/models/ITendermintContentProps";
 import LoadingBlock from "@/src/shared/ui/loading-block/LoadingBlock";
-import {useAmountAndValueOfStakedTokens} from "@/src/shared/hooks/useAmountAndValueOfStakedTokens"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDiscord, faGithub, faXTwitter} from "@fortawesome/free-brands-svg-icons";
 import {faGlobe} from "@fortawesome/free-solid-svg-icons/faGlobe";
+import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons/faMagnifyingGlass";
 
 const NetworkOverviewInfo:FC<OverviewContentProps> = ({network, nodeVersion, chainId, valueOfStakedTokens, amountOfTokens}) => {
 
@@ -15,9 +15,11 @@ const NetworkOverviewInfo:FC<OverviewContentProps> = ({network, nodeVersion, cha
                 <h2>OVERVIEW</h2>
 
                 <div className={styles.socials}>
-                    <a target="__blank" href={network.links.website}><FontAwesomeIcon icon={faGlobe}/></a>
-                    <a target="__blank" href={network.links.twitter}><FontAwesomeIcon icon={faXTwitter}/></a>
-                    <a target="__blank" href={network.links.github}><FontAwesomeIcon icon={faGithub}/></a>
+                    <a target="__blank" href={network.links.explorer}>Explorer <span className={styles.icon}><FontAwesomeIcon icon={faMagnifyingGlass}/></span></a>
+                    <a target="__blank" href={network.links.website}>Website <span className={styles.icon}><FontAwesomeIcon icon={faGlobe}/></span></a>
+                    <a target="__blank" href={network.links.twitter}>Twitter / X <span className={styles.icon}><FontAwesomeIcon icon={faXTwitter}/></span></a>
+                    <a target="__blank" href={network.links.github}>Github <span className={styles.icon}><FontAwesomeIcon icon={faGithub}/></span></a>
+                    <a target="__blank" href="">Discord <span className={styles.icon}><FontAwesomeIcon icon={faDiscord}/></span></a>
                 </div>
             </div>
 

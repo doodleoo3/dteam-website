@@ -24,14 +24,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 100%;
 
   .socials {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 24px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    & .icon {
+      font-size: 24px;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 10px;
+
+      border-bottom: var(--border);
+
+      &>*:last-child {
+        margin-left: 20px;
+      }
+    }
+
     &>* {
       margin: 20px 20px 0 20px;
     }
