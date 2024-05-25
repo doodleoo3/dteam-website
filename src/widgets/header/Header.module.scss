@@ -35,22 +35,35 @@
 .btn__wrapper, .header__element__wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
+
   width: 20%;
 
   cursor: default !important;
 }
 
+.header__element__wrapper {
+  justify-content: flex-start;
+
+  &>h1 {
+    margin-left: 50px;
+  }
+}
+
+.btn__wrapper {
+  justify-content: flex-end;
+}
+
 .dteam__logo, .btn__wrapper{
   display: flex;
-  margin: 0 20px;
-  justify-content: center;
+  //margin: 0 20px;
+  //justify-content: center;
   cursor: pointer;
 }
 
 .btn__wrapper a {
   min-height: 40px;
   min-width: 150px;
+  margin-right: 50px;
 }
 
 .stake__btn {
@@ -154,6 +167,12 @@
     justify-content: space-between;
   }
 
+  .header__element__wrapper {
+    &>h1 {
+      margin-left: 0;
+    }
+  }
+
   .btn__wrapper, .header__element__wrapper {
     width: inherit;
   }
@@ -161,6 +180,7 @@
   .header__element__wrapper {
     align-items: center;
     justify-content: flex-start;
+    margin-left: 20px;
   }
 
   .nav__links {

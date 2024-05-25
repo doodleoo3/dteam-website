@@ -22,11 +22,18 @@ const Header = () => {
         return (
             <>
                 <header className={styles.header}>
-                    <h1 className={styles.dteam__logo}>DTEAM</h1>
+                    <div className={styles.header__element__wrapper}>
+                        <h1 className={styles.dteam__logo}>
+                            <Link
+                                href="/"
+                            >DTEAM
+                            </Link>
+                        </h1>
+                    </div>
 
                     <button className={styles.mobile__menu__btn} onClick={() => dispatch(toggle())}>
                         {isOpen
-                            ? <FontAwesomeIcon icon={faXmark} />
+                            ? <FontAwesomeIcon icon={faXmark}/>
                             : <FontAwesomeIcon icon={faBars} />
                         }
                     </button>
@@ -91,7 +98,12 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <div className={styles.header__element__wrapper}>
-                <h1 className={styles.dteam__logo}>DTEAM</h1>
+                <h1 className={styles.dteam__logo}>
+                    <Link
+                        href="/"
+                    >DTEAM
+                    </Link>
+                </h1>
             </div>
 
             <button className={styles.mobile__menu__btn} onClick={() => dispatch(toggle())}>
