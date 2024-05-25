@@ -13,7 +13,12 @@ const TendermintGenesis:FC<TendermintContentProps> = ({network}) => {
                     }/${network.type}/genesis`}
                 </ContentItem>
 
-                <DownloadFileBlock fileName={"genesis.json"}/>
+                {/*<DownloadFileBlock fileName={"genesis.json"}/>*/}
+
+                <ContentItem title={"RESTART NODE AND CHECK LOGS"}>
+                    {`sudo systemctl restart ${network.other.binary_name}
+sudo journalctl -u ${network.other.binary_name} -f -o cat`}
+                </ContentItem>
             </div>
         );
     }
@@ -25,7 +30,12 @@ const TendermintGenesis:FC<TendermintContentProps> = ({network}) => {
                 }/${network.type}/genesis`}
             </ContentItem>
 
-            <DownloadFileBlock fileName={"genesis.json"}/>
+            {/*<DownloadFileBlock fileName={"genesis.json"}/>*/}
+
+            <ContentItem title={"RESTART NODE AND CHECK LOGS"}>
+                {`sudo systemctl restart ${network.other.binary_name}
+sudo journalctl -u ${network.other.binary_name} -f -o cat`}
+            </ContentItem>
         </div>
     );
 };

@@ -12,7 +12,12 @@ const TendermintAddrbook:FC<TendermintContentProps> = ({network}) => {
                     {`wget -O $HOME/${network.other.working_dir}/cometbft/config/addrbook.json https://download.dteam.tech/${network.name
                     }/${network.type}/addrbook`}
                 </ContentItem>
-                <DownloadFileBlock fileName={"addrbook.json"}/>
+                {/*<DownloadFileBlock fileName={"addrbook.json"}/>*/}
+
+                <ContentItem title={"RESTART NODE AND CHECK LOGS"}>
+                    {`sudo systemctl restart ${network.other.binary_name}
+sudo journalctl -u ${network.other.binary_name} -f -o cat`}
+                </ContentItem>
             </div>
         );
     }
@@ -24,7 +29,12 @@ const TendermintAddrbook:FC<TendermintContentProps> = ({network}) => {
                 }/${network.type}/addrbook`}
             </ContentItem>
 
-            <DownloadFileBlock fileName={"addrbook.json"}/>
+            {/*<DownloadFileBlock fileName={"addrbook.json"}/>*/}
+
+            <ContentItem title={"RESTART NODE AND CHECK LOGS"}>
+                {`sudo systemctl restart ${network.other.binary_name}
+sudo journalctl -u ${network.other.binary_name} -f -o cat`}
+            </ContentItem>
         </div>
     );
 };

@@ -12,6 +12,10 @@ const TendermintSeeds:FC<TendermintContentProps> = ({network}) => {
                     {`SEED="${network.other.seed}"
 sed -i.bak -e "s/^seed *=.*/seed = \\"$SEED\\"/" $HOME/${network.other.working_dir}/config.toml`}
                 </ContentItem>
+                <ContentItem title={"RESTART NODE AND CHECK LOGS"}>
+                    {`sudo systemctl restart ${network.other.binary_name}
+sudo journalctl -u ${network.other.binary_name} -f -o cat`}
+                </ContentItem>
             </div>
         );
     }
@@ -21,6 +25,10 @@ sed -i.bak -e "s/^seed *=.*/seed = \\"$SEED\\"/" $HOME/${network.other.working_d
             <ContentItem title={"Seed node"}>
                 {`SEED="${network.other.seed}"
 sed -i.bak -e "s/^seed *=.*/seed = \\"$SEED\\"/" $HOME/${network.other.working_dir}/config/config.toml`}
+            </ContentItem>
+            <ContentItem title={"RESTART NODE AND CHECK LOGS"}>
+                {`sudo systemctl restart ${network.other.binary_name}
+sudo journalctl -u ${network.other.binary_name} -f -o cat`}
             </ContentItem>
         </div>
     );

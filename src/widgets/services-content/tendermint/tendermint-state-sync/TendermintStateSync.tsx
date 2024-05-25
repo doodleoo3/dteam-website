@@ -18,7 +18,7 @@ ${network.other.binary_name} tendermint unsafe-reset-all --home $HOME/${network.
             <ContentItem title={"CONFIGURE STATE SYNC"}>
                 {`${peers
                     ?
-                    `PEERS="${network.other.peer},${peers}`
+                    `PEERS="${network.other.peer},${peers}"`
                     :
                     `PEERS="${network.other.peer}"`
                 }
@@ -40,8 +40,8 @@ mv $HOME/${network.other.working_dir}/priv_validator_state.json.backup $HOME/${n
             </ContentItem>
 
             <ContentItem title={"RESTART NODE AND CHECK LOGS"}>
-                {`systemctl restart ${network.other.binary_name}
-journalctl -u ${network.other.binary_name} -f -o cat`}
+                {`sudo systemctl restart ${network.other.binary_name}
+sudo journalctl -u ${network.other.binary_name} -f -o cat`}
             </ContentItem>
         </div>
     );

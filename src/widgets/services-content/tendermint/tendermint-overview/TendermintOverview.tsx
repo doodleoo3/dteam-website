@@ -3,19 +3,17 @@ import StakingCalculator from "@/src/features/staking-calculator/StakingCalculat
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import NetworkOverviewInfo from "@/src/features/network-overview-info/NetworkOverviewInfo";
 import styles from "./TendermintOverview.module.scss"
-import StakingPanel from "@/src/features/staking-panel/StakingPanel";
-import {useAmountAndValueOfStakedTokens} from "@/src/shared/hooks/useAmountAndValueOfStakedTokens";
-import {useApr} from "@/src/shared/hooks/useApr";
-const TendermintOverview:FC<TendermintContentProps> = ({network, chainId, nodeVersion}) => {
-    const { amount, value } = useAmountAndValueOfStakedTokens(network);
-    const apr = useApr(network);
+import {useTendermintNetworkParams} from "@/src/app/utils/useTendermintNetworkParams";
+import {NetworkType} from "@/src/app/models/INetwork";
+const TendermintOverview:FC<TendermintContentProps> = ({network}) => {
+    const networkParams = useTendermintNetworkParams(network.name, network.type);
 
     return (
         <div className={styles.overview__container}>
             <div className={styles.left__side__wrapper}>
-                <NetworkOverviewInfo network={network} chainId={chainId} nodeVersion={nodeVersion} valueOfStakedTokens={value} amountOfTokens={amount}/>
-                {network.type === "mainnet"
-                    ? <StakingCalculator network={network} valueOfStakedTokens={value} amountOfTokens={amount} apr={apr}/>
+                <NetworkOverviewInfo network={network} chainId={networkParams?.chain_id} nodeVersion={networkParams?.version} valueOfStakedTokens={networkParams?.staked_value} amountOfTokens={networkParams?.staked_tokens}/>
+                {network.type === NetworkType.mainnet
+                    ? <StakingCalculator network={network} valueOfStakedTokens={networkParams?.staked_value} amountOfTokens={networkParams?.staked_tokens} apr={`${networkParams?.apr}`}/>
                     : <></>
                 }
             </div>

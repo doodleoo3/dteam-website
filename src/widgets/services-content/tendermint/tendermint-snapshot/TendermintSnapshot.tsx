@@ -40,8 +40,8 @@ ${network.other.binary_name} tendermint unsafe-reset-all --home $HOME/${network.
 mv $HOME/${network.other.working_dir}/priv_validator_state.json.backup $HOME/${network.other.working_dir}/data/priv_validator_state.json`}
                 </ContentItem>
                 <ContentItem title={"RESTART NODE AND CHECK LOGS"}>
-                    {`systemctl restart ${network.other.binary_name}
-journalctl -u ${network.other.binary_name} -f -o cat`}
+                    {`sudo systemctl restart ${network.other.binary_name}
+sudo journalctl -u ${network.other.binary_name} -f -o cat`}
                 </ContentItem>
             </div>
         </div>

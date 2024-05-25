@@ -10,17 +10,16 @@ import DefaultBuild from "@/src/entities/download-build-binary/DefaultBuild";
 import SelfchainDownload from "@/src/entities/download-build-binary/SelfchainDownload";
 import LavaDownload from "@/src/entities/download-build-binary/LavaDownload";
 import CrossFiDownload from "@/src/entities/download-build-binary/CrossFiDownload";
+import ZeroGravityBuild from "@/src/entities/download-build-binary/ZeroGravityBuild";
+import CelestiaBuild from "@/src/entities/download-build-binary/CelestiaBuild";
 
 const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVersion, chainId, peers}) => {
-    // const [wallet, setWallet] = useState<string>("wallet");
-    // const [moniker, setMoniker] = useState<string>("DTEAM_GUIDE");
-    // const [port, setPort] = useState<number>(26);
 
-    if (network.name === "namada") {
+        if (network.name === "namada") {
             return (
                 <NamadaInstallationGuide network={network} chainId={chainId} />
             );
-    }
+        }
 
     return (
         <div className={styles.container}>
@@ -35,31 +34,30 @@ ver="1.21.3" && \\
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \\
 sudo rm -rf /usr/local/go && \\
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \\
-rm "go$ver.linux-amd64.tar.gz" && \\"
+rm "go$ver.linux-amd64.tar.gz" && \\
 echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile && \\
 source $HOME/.bash_profile && \\
 go version`}
             </ContentItem>
 
-            <ContentItem
-                title={"SET VARIABLES"}
-                // isInstallationGuidePage={true}
-                // setPort={setPort}
-                // setWallet={setWallet}
-                // setMoniker={setMoniker}
-            >
+            <ContentItem title={"SET VARIABLES"}>
                 {`echo "export WALLET="wallet"" >> $HOME/.bash_profile
 echo "export MONIKER="DTEAM_GUIDE"" >> $HOME/.bash_profile
-echo "export ${network.name.toUpperCase()}_PORT="26"" >> $HOME/.bash_profile
+echo "export PORT_${network.name.toUpperCase()}="26"" >> $HOME/.bash_profile
 source $HOME/.bash_profile`}
             </ContentItem>
 
             {network.need_build_binary
                 ?
                 <>
-                {network.name === "warden"
-                        ? <WardenBuild network={network} nodeVersion={nodeVersion}/>
-                        : <DefaultBuild network={network} nodeVersion={nodeVersion}/>
+                {network.name === "warden" || network.name === "0g" || network.name === "celestia"
+                    ?
+                    <>
+                            {network.name === "warden" && <WardenBuild network={network} nodeVersion={nodeVersion}/>}
+                            {network.name === "0g" && <ZeroGravityBuild network={network} nodeVersion={nodeVersion}/>}
+                            {network.name === "celestia" && <CelestiaBuild network={network} nodeVersion={nodeVersion}/>}
+                    </>
+                    : <DefaultBuild network={network} nodeVersion={nodeVersion}/>
                 }
                 </>
                 :
@@ -70,18 +68,35 @@ source $HOME/.bash_profile`}
                 </>
             }
 
-            <ContentItem title={"CONFIG AND INITIALIZE NODE"}>
-                {`${network.other.binary_name} config keyring-backend os
-${network.other.binary_name} config node tcp://localhost:\${${network.name.toUpperCase()}_PORT}657
+            {network.name === "initia"
+                ?
+                <ContentItem title={"CONFIG AND INITIALIZE NODE"}>
+                        {`${network.other.binary_name} config set keyring-backend os
+${network.other.binary_name} config set node tcp://localhost:\${PORT_${network.name.toUpperCase()}}657
 ${chainId
-    ? `${network.other.binary_name} config chain-id ${chainId}`
-    : `${network.other.binary_name} config chain-id ${<LoadingBlock width={100}/>}`
-}
+                            ? `${network.other.binary_name} config set chain-id ${chainId}`
+                            : `${network.other.binary_name} config set chain-id ${<LoadingBlock width={100}/>}`
+                        }
 ${chainId
-    ? `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${chainId}`
-    : `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${<LoadingBlock width={100} />}`
-}`}
-            </ContentItem>
+                            ? `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${chainId}`
+                            : `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${<LoadingBlock width={100} />}`
+                        }`}
+                </ContentItem>
+                :
+                <ContentItem title={"CONFIG AND INITIALIZE NODE"}>
+                        {`${network.other.binary_name} config keyring-backend os
+${network.other.binary_name} config node tcp://localhost:\${PORT_${network.name.toUpperCase()}}657
+${chainId
+                            ? `${network.other.binary_name} config chain-id ${chainId}`
+                            : `${network.other.binary_name} config chain-id ${<LoadingBlock width={100}/>}`
+                        }
+${chainId
+                            ? `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${chainId}`
+                            : `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${<LoadingBlock width={100} />}`
+                        }`}
+                </ContentItem>
+            }
+
 
             <ContentItem title={"DOWNLOAD GENESIS AND ADDRBOOK"}>
                 {`wget -O $HOME/${network.other.working_dir}/config/genesis.json https://download.dteam.tech/${network.name}/${network.type}/genesis
@@ -106,20 +121,20 @@ sed -i -e "s/^seeds *=.*/seeds = \\"$SEEDS\\"/; s/^persistent_peers *=.*/persist
 }
 
             <ContentItem title={"SET CUSTOM PORTS / OPTIONAL"}>
-                    {`sed -i.bak -e "s%:1317%:\${${network.name.toUpperCase()}_PORT}317%g;
-s%:8080%:\${${network.name.toUpperCase()}_PORT}080%g;
-s%:9090%:\${${network.name.toUpperCase()}_PORT}090%g;
-s%:9091%:\${${network.name.toUpperCase()}_PORT}091%g;
-s%:8545%:\${${network.name.toUpperCase()}_PORT}545%g;
-s%:8546%:\${${network.name.toUpperCase()}_PORT}546%g;
-s%:6065%:\${${network.name.toUpperCase()}_PORT}065%g" $HOME/${network.other.working_dir}/config/app.toml
+                    {`sed -i.bak -e "s%:1317%:\${PORT_${network.name.toUpperCase()}}317%g;
+s%:8080%:\${PORT_${network.name.toUpperCase()}}080%g;
+s%:9090%:\${PORT_${network.name.toUpperCase()}}090%g;
+s%:9091%:\${PORT_${network.name.toUpperCase()}}091%g;
+s%:8545%:\${PORT_${network.name.toUpperCase()}}545%g;
+s%:8546%:\${PORT_${network.name.toUpperCase()}}546%g;
+s%:6065%:\${PORT_${network.name.toUpperCase()}}065%g" $HOME/${network.other.working_dir}/config/app.toml
 
-sed -i.bak -e "s%:26658%:\${${network.name.toUpperCase()}_PORT}658%g;
-s%:26657%:\${${network.name.toUpperCase()}_PORT}657%g;
-s%:6060%:\${${network.name.toUpperCase()}_PORT}060%g;
-s%:26656%:\${${network.name.toUpperCase()}_PORT}656%g;
-s%^external_address = \\"\\"%external_address = \\"$(wget -qO- eth0.me):\${${network.name.toUpperCase()}_PORT}656\\"%;
-s%:26660%:\${${network.name.toUpperCase()}_PORT}660%g" $HOME/${network.other.working_dir}/config/config.toml`}
+sed -i.bak -e "s%:26658%:\${PORT_${network.name.toUpperCase()}}658%g;
+s%:26657%:\${PORT_${network.name.toUpperCase()}}657%g;
+s%:6060%:\${PORT_${network.name.toUpperCase()}}060%g;
+s%:26656%:\${PORT_${network.name.toUpperCase()}}656%g;
+s%^external_address = \\"\\"%external_address = \\"$(wget -qO- eth0.me):\${PORT_${network.name.toUpperCase()}}656\\"%;
+s%:26660%:\${PORT_${network.name.toUpperCase()}}660%g" $HOME/${network.other.working_dir}/config/config.toml`}
             </ContentItem>
 
             {
@@ -127,9 +142,9 @@ s%:26660%:\${${network.name.toUpperCase()}_PORT}660%g" $HOME/${network.other.wor
                     ?
                     <ContentItem title={"CONFIG PRUNING / OPTIONAL"}>
                             {`PRUNING="custom" && \\
-PRUNING_KEEP_RECENT="1000" && \\
+PRUNING_KEEP_RECENT="100" && \\
 PRUNING_KEEP_EVERY="0" && \\
-PRUNING_INTERVAL="10" && \\
+PRUNING_INTERVAL="50" && \\
 sed -i -e "s/^pruning *=.*/pruning = \\"$PRUNING\\"/" $HOME/${network.other.working_dir}/config/app.toml && \\
 sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \\"$PRUNING_KEEP_RECENT\\"/" $HOME/${network.other.working_dir}/config/app.toml && \\
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \\"$PRUNING_KEEP_EVERY\\"/" $HOME/${network.other.working_dir}/config/app.toml && \\
@@ -179,9 +194,8 @@ curl https://download.dteam.tech/${network.name}/${network.type}/latest-snapshot
                     {`sudo systemctl daemon-reload
 sudo systemctl enable ${network.other.binary_name}                    
 sudo systemctl restart ${network.other.binary_name}
-sudo journalctl -u ${network.other.binary_name} -f`}
+sudo journalctl -u ${network.other.binary_name} -f -o cat`}
             </ContentItem>
-
         </div>
     );
 };
