@@ -1,17 +1,16 @@
 'use client'
 
-import React, {ComponentType, FC, useCallback, useEffect, useMemo, useState} from 'react';
+import React, {ComponentType, FC, useEffect, useMemo, useState} from 'react';
 import {INetwork, NetworkType} from "@/src/app/models/INetwork";
 import {ServicesEnum} from "@/src/app/models/IServices";
 import mainnets from "@/src/shared/lib/networks-data/mainnets.json"
 import testnets from "@/src/shared/lib/networks-data/testnets.json"
-import {useNetworkParams} from "@/src/shared/hooks/useNetworkParams";
 import dynamic from "next/dynamic";
-import {useAppDispatch} from "@/src/app/store/hooks";
-import {fetchTendermintParams} from "@/src/app/store/action-creators/fetchTendermintParams";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import LoadingService from "@/src/shared/ui/loading-service/LoadingService";
-import axios from "axios";
+import {RootState} from '@/src/app/store/store';
+import {useSelector} from "react-redux";
+import {useTendermintNetworkParams} from "@/src/app/utils/useTendermintNetworkParams";
 
 type ServicesComponents = {
     [key in ServicesEnum]: ComponentType<TendermintContentProps>;
@@ -37,60 +36,43 @@ interface ServiceContentContainerProps {
     service: ServicesEnum;
 }
 
-const ServiceContentContainer: FC<ServiceContentContainerProps> = ({ networkName, service, type }) => {
-    const dispatch = useAppDispatch();
-
+const ServiceContentContainer: FC<ServiceContentContainerProps> = ({ networkName, service, type}) => {
     const [currentNetwork, setCurrentNetwork] = useState<INetwork | null>(null);
-    const { chainId, nodeVersion } = useNetworkParams(currentNetwork);
-    const [peers, setPeers] = useState<string | null>(null);
 
-    const getCurrentNetwork = useCallback((type: NetworkType, networkName: string) => {
+    const mainnetNetworks = useSelector((state: RootState) => state.networks.mainnetNetworks);
+    const testnetNetworks = useSelector((state: RootState) => state.networks.testnetNetworks);
+    const networkParams = useTendermintNetworkParams(networkName, type);
+
+    const getCurrentNetwork = (type: NetworkType, networkName: string) => {
         const networks = type === NetworkType.mainnet ? mainnets : testnets;
         const network = networks.find(n => n.name === networkName);
 
         if (network) {
-            dispatch(fetchTendermintParams(network));
-
             setCurrentNetwork(network);
-
-            fetchPeers(network).then(data => {
-                if (data !== null) {
-                    setPeers(data);
-                }
-            });
         }
-    }, [dispatch]);
-
-    async function fetchPeers(network: INetwork) {
-        try {
-            const response = await axios.get<ISnapshot>(`https://data.dteam.tech/${network.name}/${network.type}/snapshot`);
-            return response.data.peers;
-        } catch (e) {
-            return ""
-        }
-    }
+    };
 
     useEffect(() => {
         getCurrentNetwork(type, networkName);
-    }, [networkName, type, getCurrentNetwork]);
+    }, [type, networkName]);
 
     const ServiceComponent = useMemo(() => {
-        if (!currentNetwork) return <LoadingService/>;
+        if (mainnetNetworks.error || testnetNetworks.error) throw new Error()
+
+        if (!currentNetwork || mainnetNetworks.loading || testnetNetworks.loading) return <LoadingService/>;
 
         const Service = services[service];
         if (!Service) return null;
 
         return (
-            <Service network={currentNetwork} chainId={chainId} nodeVersion={nodeVersion} peers={peers}/>
+            <Service network={currentNetwork} chainId={networkParams?.chain_id} nodeVersion={networkParams?.version} peers={networkParams?.peers}/>
         );
-    }, [currentNetwork, service, chainId, nodeVersion, peers]);
+    }, [mainnetNetworks.error, mainnetNetworks.loading, testnetNetworks.error, testnetNetworks.loading, currentNetwork, service, networkParams?.chain_id, networkParams?.version, networkParams?.peers]);
 
     return (
         ServiceComponent
     );
 };
-
-// ServiceContentContainer.displayName = 'ServiceContentContainer';
 
 const ServiceContentContainerMemo = React.memo(ServiceContentContainer);
 
