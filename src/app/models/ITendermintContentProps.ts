@@ -12,7 +12,7 @@ export interface OverviewContentProps {
     nodeVersion?: string | null;
     chainId?: string | null;
     peers?: string | null;
-    valueOfStakedTokens: number | "not implemented" | null;
-    amountOfTokens: number | null;
+    valueOfStakedTokens: string | undefined;
+    amountOfTokens: number | undefined;
     apr?: string | null
 }
