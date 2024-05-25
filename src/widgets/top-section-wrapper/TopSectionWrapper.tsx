@@ -9,6 +9,7 @@ import TypeSelector from "@/src/features/type-selector/TypeSelector";
 import mainnets from "@/src/shared/lib/networks-data/mainnets.json";
 import testnets from "@/src/shared/lib/networks-data/testnets.json";
 import {IServices} from "@/src/app/models/IServices";
+import RpcStatus from "@/src/features/rpc-status/RpcStatus";
 
 interface TopSectionWrapperProps {
     title: string;
@@ -46,17 +47,39 @@ const TopSectionWrapper:FC<TopSectionWrapperProps> = ({title, type, networkName,
         })
     }, [networkName, service]);
 
+
     useEffect(() => {
         canSwitchable();
     }, [canSwitchable, service]);
     
     return (
         <section className={styles.wrapper}>
-            <Blank></Blank>
+            {networkName
+                ?
+                <div className={styles.left__side__wrapper}>
+                    <RpcStatus name={networkName} type={type}/>
+                </div>
+                :
+                <div className={styles.left__side__wrapper}>
+                    <Blank />
+                </div>
+            }
+
             {networkName
                 ? <PageTitle>{formattedTitle} <SecondaryColorText>/ {networkName} / {type}</SecondaryColorText></PageTitle>
                 : <PageTitle>{formattedTitle} <SecondaryColorText>/ {type}</SecondaryColorText></PageTitle>
             }
+
+            {networkName
+                ?
+                <div className={styles.mobile__rpc__status__wrapper}>
+                    <RpcStatus name={networkName} type={type}/>
+                </div>
+                :
+                null
+                // <Blank />
+            }
+
             <div className={styles.right__side__wrapper}>
                 {getSearchQuery && <Search getSearchQuery={getSearchQuery} isPageWithServices={isPageWithServices}/>}
                 {(findInMainnet && findInTestnet) || (!networkName) && selector
