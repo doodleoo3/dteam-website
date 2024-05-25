@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import ContentItem from "@/src/entities/content-item/ContentItem";
-import DownloadFileBlock from "@/src/shared/ui/download-file-block/DownloadFileBlock";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
 

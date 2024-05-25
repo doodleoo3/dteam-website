@@ -1,8 +1,7 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC} from 'react';
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
-import axios from "axios";
 
 const TendermintStateSync:FC<TendermintContentProps> = ({network, peers}) => {
 
