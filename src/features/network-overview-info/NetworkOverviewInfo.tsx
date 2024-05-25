@@ -35,8 +35,7 @@ const NetworkOverviewInfo:FC<OverviewContentProps> = ({network, nodeVersion, cha
                     {chainId
                         ? <p>{chainId}</p>
                         : <div className={styles.loading__container}><LoadingBlock width={100}/></div>
-
-                }
+                    }
             </div>
 
                 <div className={styles.params__item}>
@@ -44,7 +43,6 @@ const NetworkOverviewInfo:FC<OverviewContentProps> = ({network, nodeVersion, cha
                     {nodeVersion
                         ? <p>{nodeVersion}</p>
                         : <div className={styles.loading__container}><LoadingBlock width={100}/></div>
-
                     }
                 </div>
 
