@@ -23,7 +23,7 @@ const SeparateServicePage:FC<PropsWithChildren<ServiceServicePageProps>> = ({ser
                 service={service}
             />
             <ServicePageWrapper>
-                <ServiceSelector type={type} network={network}></ServiceSelector>
+                <ServiceSelector type={type} network={network} />
                 {children}
             </ServicePageWrapper>
         </>
