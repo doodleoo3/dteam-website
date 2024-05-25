@@ -7,7 +7,7 @@ const Page = ({ params, }: { params: {type: NetworkType, service: ServicesEnum, 
     const { type, service, network } = params
 
     return (
-        <ServiceContentContainer networkName={network} type={type} service={service}/>
+        <ServiceContentContainer networkName={network} type={type} service={service} />
     );
 };
 
