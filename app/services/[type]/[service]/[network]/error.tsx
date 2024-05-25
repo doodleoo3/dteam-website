@@ -14,7 +14,7 @@ export default function Error({
     return (
         <div className={styles.error__container}>
             <h1>Something went wrong</h1>
-            <p>You can contact us on <a href="">Twitter</a> or <a href="">Discord</a> so we can start fixing the problem as soon as possible.</p>
+            <p>Contact us on <a href="">Twitter</a> or <a href="">Discord</a> so we can start fixing the problem as soon as possible.</p>
         </div>
     )
 }
