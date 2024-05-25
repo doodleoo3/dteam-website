@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from "./RpcStatus.module.scss";
 import {useTendermintNetworkParams} from "@/src/app/utils/useTendermintNetworkParams";
