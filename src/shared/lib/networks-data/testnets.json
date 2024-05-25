@@ -1,5 +1,60 @@
   [
     {
+      "id": 986,
+      "name": "initia",
+      "type": "testnet",
+      "description": "Initia is a network for interwoven rollups. Binding a highly interwoven system of modular networks through architectural ownership of the L1 orchestration layer, L2 network, and the communication protocol.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "git": "https://github.com/initia-labs/initia.git",
+        "binary_download": "",
+        "explorer": "https://scan.testnet.initia.xyz/initiation-1",
+
+        "twitter": "https://twitter.com/initiaFDN",
+        "website": "https://initia.xyz/",
+        "github": "https://github.com/initia-labs"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": false
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": false,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "initiad",
+        "main_dir": "initia",
+        "working_dir": ".initia",
+
+        "denom": "uinit",
+        "denom_exponent": 18,
+
+        "grpc_port": "34090",
+
+        "seed": "",
+        "peer": "9d499aff7caaae0205f2689b0a4a154badf2cea7@peer.initia.testnet.dteam.tech:34656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
       "id": 987,
       "name": "celestia",
       "type": "testnet",
@@ -229,7 +284,7 @@
       "need_build_binary": true,
 
       "links": {
-        "git": "https://github.com/0glabs/0g-evmos.git",
+        "git": "https://github.com/0glabs/0g-chain.git",
         "binary_download": "",
         "explorer": "https://explorer.testnet.dteam.tech/0g",
 
@@ -258,17 +313,17 @@
       },
 
       "other": {
-        "binary_name": "evmosd",
-        "main_dir": "0g-evmos",
-        "working_dir": ".evmosd",
+        "binary_name": "0gchaind",
+        "main_dir": "0g-chain",
+        "working_dir": ".0gchain",
 
-        "denom": "aevmos",
+        "denom": "ua0gi",
         "denom_exponent": 18,
 
         "grpc_port": "64090",
 
         "seed": "",
-        "peer": "bd79b2c385ca6fcab31e4305858358fbf16161c2@peer.0g.testnet.dteam.tech:64656",
+        "peer": "f3c912cf5653e51ee94aaad0589a3d176d31a19d@peer.0g.testnet.dteam.tech:64656",
 
         "version": "",
 
