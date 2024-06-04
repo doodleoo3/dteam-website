@@ -41,12 +41,12 @@ const NetworkItem:FC<NetworkItemProps> = React.memo(({network, isServicePage, is
                         <div className={styles.apr__container}>
                             {(network.type === NetworkType.mainnet && !isServicePage) || pathname?.includes("stake") ?
                                 <>
-                                    {networkParams?.apr && networkParams?.apr !== "not available" ? <p>apr: {networkParams.apr}%</p> : null}
+                                    {networkParams?.apr && networkParams?.apr !== "not available" ? <p>apr: {networkParams.apr}%</p> : <></>}
 
-                                    {mainnetNetworks.error || testnetNetworks.error || networkParams?.apr === "not available" ? <p>apr: not available</p> : null}
+                                    {mainnetNetworks.error || testnetNetworks.error || networkParams?.apr === "not available" ? <p>apr: not available</p> : <></>}
 
-                                    {(mainnetNetworks.loading || testnetNetworks.loading || !networkParams?.apr) && (!mainnetNetworks.error || !testnetNetworks.error) ? <LoadingBlock width={100} /> : null}
-                                </> : null
+                                    {(mainnetNetworks.loading || testnetNetworks.loading || !networkParams?.apr) && (!mainnetNetworks.error || !testnetNetworks.error) ? <LoadingBlock width={100} /> : <></>}
+                                </> : <></>
                             }
                         </div>
                     </div>
@@ -69,20 +69,23 @@ const NetworkItem:FC<NetworkItemProps> = React.memo(({network, isServicePage, is
                 <div className={styles.text__wrapper}>
                     <h2>{network.name}</h2>
 
-                    <div className={styles.apr__container}>
-                        {(network.type === NetworkType.mainnet && !isServicePage) || pathname?.includes("stake") ?
-                            <>
-                                {networkParams?.apr && networkParams?.apr !== "not available" ?
-                                    <p>apr: {networkParams.apr}%</p> : null}
+                    {network.type !== NetworkType.testnet
+                        ? <div className={styles.apr__container}>
+                            {(network.type === NetworkType.mainnet && !isServicePage) || pathname?.includes("stake") ?
+                                <>
+                                    {networkParams?.apr && networkParams?.apr !== "not available" ?
+                                        <p>apr: {networkParams.apr}%</p> : <></>}
 
-                                {mainnetNetworks.error || testnetNetworks.error || networkParams?.apr === "not available" ?
-                                    <p>apr: not available</p> : null}
+                                    {mainnetNetworks.error || testnetNetworks.error || networkParams?.apr === "not available" ?
+                                        <p>apr: not available</p> : <></>}
 
-                                {(mainnetNetworks.loading || testnetNetworks.loading || !networkParams?.apr) && (!mainnetNetworks.error || !testnetNetworks.error) ?
-                                    <LoadingBlock width={100}/> : null}
-                            </> : null
-                        }
-                    </div>
+                                    {(mainnetNetworks.loading || testnetNetworks.loading || !networkParams?.apr) && (!mainnetNetworks.error || !testnetNetworks.error) ?
+                                        <LoadingBlock width={100}/> : <></>}
+                                </> : <></>
+                            }
+                        </div> : <></>
+                    }
+
                 </div>
             </div>
 
