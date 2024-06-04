@@ -1,5 +1,115 @@
   [
     {
+      "id": 984,
+      "name": "kopi",
+      "type": "testnet",
+      "description": "The Kopi Protocol is the latest innovative project in decentralized finance (DeFi), offering a decentralized exchange (DEX), money market, and its proprietary supply-managed coins, known as kCoins.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "git": "https://github.com/kopi-money/kopi.git",
+        "binary_download": "",
+        "explorer": "https://explorer.testnet.dteam.tech/kopi",
+
+        "twitter": "https://x.com/kopi_money",
+        "website": "https://kopi.money/",
+        "github": "https://github.com/kopi-money"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": true,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": false
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": false,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "kopid",
+        "main_dir": "kopi",
+        "working_dir": ".kopid",
+
+        "denom": "ukopi",
+        "denom_exponent": 6,
+
+        "grpc_port": "28090",
+
+        "seed": "",
+        "peer": "8110004236ae77169890b3deb8b10a8780baef13@peer.kopi.testnet.dteam.tech:28656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
+      "id": 985,
+      "name": "nubit",
+      "type": "testnet",
+      "description": "Nubit is a scalable and the first Bitcoin-native data availability layer, secured by Bitcoin, for the Bitcoin community.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "git": "https://github.com/RiemaLabs/nubit-validator.git",
+        "binary_download": "",
+        "explorer": "https://explorer.testnet.dteam.tech/nubit",
+
+        "twitter": "https://x.com/nubit_org",
+        "website": "https://www.nubit.org/",
+        "github": "https://github.com/RiemaLabs"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": false,
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": false
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": false,
+        "useful-commands": true
+      },
+
+      "other": {
+        "binary_name": "nubit-validatord",
+        "main_dir": "nubit-validator",
+        "working_dir": ".nubit-validator",
+
+        "denom": "unub",
+        "denom_exponent": 6,
+
+        "grpc_port": "27090",
+
+        "seed": "",
+        "peer": "dcfbdaf13f1fd3b2d7b7e9eea9221324133de32a@peer.nubit.testnet.dteam.tech:27656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
       "id": 986,
       "name": "initia",
       "type": "testnet",
@@ -44,10 +154,10 @@
         "denom": "uinit",
         "denom_exponent": 18,
 
-        "grpc_port": "34090",
+        "grpc_port": "26090",
 
         "seed": "",
-        "peer": "9d499aff7caaae0205f2689b0a4a154badf2cea7@peer.initia.testnet.dteam.tech:34656",
+        "peer": "f19576937e9df10fbc5fba7a2cfd39a96c33bd32@peer.initia.testnet.dteam.tech:26656",
 
         "version": "",
 
@@ -219,62 +329,6 @@
         "pruning": true
       }
     },
-    {
-      "id": 990,
-      "name": "crossfi",
-      "type": "testnet",
-      "description": "CrossFi Chain is a layer 1 blockchain with a modular architecture. It consists of two integral parts, Cosmos and EVM. Each part is responsible for its specific functionality, with their work completely synchronized as a single organism.",
-      "is_tendermint_chain": true,
-      "need_build_binary": false,
-
-      "links": {
-        "git": "https://github.com/crossfichain",
-        "binary_download": "",
-        "explorer": "https://explorer.testnet.dteam.tech/crossfi",
-
-        "twitter": "https://twitter.com/crossfichain",
-        "website": "https://crossfi.org/",
-        "github": "https://github.com/crossfichain"
-      },
-
-      "services": {
-        "overview": true,
-        "installation-guide": true,
-        "snapshot": true,
-        "state-sync": true,
-        "endpoints": {
-          "api": true,
-          "rpc": true,
-          "grpc": true,
-          "json_rpc": true
-        },
-        "addrbook": true,
-        "genesis": true,
-        "ibc":  false,
-        "peers": true,
-        "seeds": true,
-        "useful-commands": true
-      },
-
-      "other": {
-        "binary_name": "crossfid",
-        "main_dir": "",
-        "working_dir": ".mineplex-chain",
-
-        "denom": "mpx",
-        "denom_exponent": 18,
-
-        "grpc_port": "20090",
-
-        "seed": "dd83e3c7c4e783f8a46dbb010ec8853135d29df0@crossfi-testnet-seed.itrocket.net:36656",
-        "peer": "123d4bba4c0fa000ef6a56a71a6aeb2458ba3602@peer.crossfi.testnet.dteam.tech:20656",
-
-        "version": "",
-
-        "pruning": true
-      }
-    },
-
     {
       "id": 991,
       "name": "0g",

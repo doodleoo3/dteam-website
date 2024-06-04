@@ -301,7 +301,7 @@
         "denom_exponent": 6,
 
         "ticker": "c4e",
-        "cg_ticker": "",
+        "cg_ticker": "chain4energy",
 
         "grpc_port": "9390",
 
