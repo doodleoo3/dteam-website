@@ -68,14 +68,14 @@ source $HOME/.bash_profile`}
                 </>
             }
 
-            {network.name === "initia"
+            {network.name === "initia" || network.name === "kopi"
                 ?
                 <ContentItem title={"CONFIG AND INITIALIZE NODE"}>
-                        {`${network.other.binary_name} config set keyring-backend os
-${network.other.binary_name} config set node tcp://localhost:\${PORT_${network.name.toUpperCase()}}657
+                        {`${network.other.binary_name} config set client keyring-backend os
+${network.other.binary_name} config set client node tcp://localhost:\${PORT_${network.name.toUpperCase()}}657
 ${chainId
-                            ? `${network.other.binary_name} config set chain-id ${chainId}`
-                            : `${network.other.binary_name} config set chain-id ${<LoadingBlock width={100}/>}`
+                            ? `${network.other.binary_name} config set client chain-id ${chainId}`
+                            : `${network.other.binary_name} config set client chain-id ${<LoadingBlock width={100}/>}`
                         }
 ${chainId
                             ? `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${chainId}`
