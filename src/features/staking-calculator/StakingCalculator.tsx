@@ -98,7 +98,7 @@ const StakingCalculator: FC<OverviewContentProps> = ({ network, valueOfStakedTok
                                 : <p>0$</p>
                             }
                         </>
-                        : <div className={styles.loading__container}><LoadingBlock width={75}/></div>
+                        : <p>0$</p>
                     }
                 </div>
 
@@ -118,7 +118,7 @@ const StakingCalculator: FC<OverviewContentProps> = ({ network, valueOfStakedTok
                                 : <p>0$</p>
                             }
                         </>
-                        : <div className={styles.loading__container}><LoadingBlock width={75}/></div>
+                        : <p>0$</p>
                     }
                 </div>
 
@@ -138,7 +138,7 @@ const StakingCalculator: FC<OverviewContentProps> = ({ network, valueOfStakedTok
                                 : <p>0$</p>
                             }
                         </>
-                        : <div className={styles.loading__container}><LoadingBlock width={75}/></div>
+                        : <p>0$</p>
                     }
                 </div>
             </div>
