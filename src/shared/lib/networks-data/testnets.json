@@ -14,13 +14,14 @@
 
         "twitter": "https://x.com/kopi_money",
         "website": "https://kopi.money/",
-        "github": "https://github.com/kopi-money"
+        "github": "https://github.com/kopi-money",
+        "discord": "https://discord.gg/R87tmyWrxf"
       },
 
       "services": {
         "overview": true,
         "installation-guide": true,
-        "snapshot": true,
+        "snapshot": false,
         "state-sync": true,
         "endpoints": {
           "api": true,
@@ -69,7 +70,8 @@
 
         "twitter": "https://x.com/nubit_org",
         "website": "https://www.nubit.org/",
-        "github": "https://github.com/RiemaLabs"
+        "github": "https://github.com/RiemaLabs",
+        "discord": "https://discord.gg/nubit"
       },
 
       "services": {
@@ -124,7 +126,8 @@
 
         "twitter": "https://twitter.com/initiaFDN",
         "website": "https://initia.xyz/",
-        "github": "https://github.com/initia-labs"
+        "github": "https://github.com/initia-labs",
+        "discord": "https://discord.gg/initia"
       },
 
       "services": {
@@ -179,7 +182,8 @@
 
         "twitter": "https://twitter.com/CelestiaOrg",
         "website": "https://celestia.org/",
-        "github": "https://github.com/celestiaorg"
+        "github": "https://github.com/celestiaorg",
+        "discord": "https://discord.gg/YrXs6nV4Ra"
       },
 
       "services": {
@@ -234,7 +238,8 @@
 
         "twitter": "https://twitter.com/dymension",
         "website": "https://dymension.xyz/",
-        "github": "https://github.com/dymensionxyz"
+        "github": "https://github.com/dymensionxyz",
+        "discord": "https://discord.gg/dymension"
       },
 
       "services": {
@@ -289,7 +294,8 @@
 
         "twitter": "https://twitter.com/Artela_Network",
         "website": "https://artela.network/",
-        "github": "https://github.com/artela-network"
+        "github": "https://github.com/artela-network",
+        "discord": "https://discord.gg/artela"
       },
 
       "services": {
@@ -344,7 +350,8 @@
 
         "twitter": "https://twitter.com/0G_labs",
         "website": "https://0g.ai/",
-        "github": "https://github.com/0glabs"
+        "github": "https://github.com/0glabs",
+        "discord": "https://discord.gg/0glabs"
       },
 
       "services": {
@@ -399,13 +406,14 @@
 
         "twitter": "https://twitter.com/SideProtocol",
         "website": "https://side.one/",
-        "github": "https://github.com/sideprotocol"
+        "github": "https://github.com/sideprotocol",
+        "discord": "https://discord.gg/sideprotocol"
       },
 
       "services": {
         "overview": true,
         "installation-guide": true,
-        "snapshot": true,
+        "snapshot": false,
         "state-sync": true,
         "endpoints": {
           "api": true,
@@ -454,7 +462,8 @@
 
         "twitter": "https://twitter.com/wardenprotocol",
         "website": "https://wardenprotocol.org/",
-        "github": "https://github.com/warden-protocol"
+        "github": "https://github.com/warden-protocol",
+        "discord": "https://discord.gg/wardenprotocol"
       },
 
       "services": {
@@ -509,13 +518,14 @@
 
         "twitter": "https://twitter.com/Chain4Energy",
         "website": "https://c4e.io/",
-        "github": "https://github.com/chain4energy"
+        "github": "https://github.com/chain4energy",
+        "discord": "https://discord.gg/chain4energy"
       },
 
       "services": {
         "overview": true,
         "installation-guide": true,
-        "snapshot": true,
+        "snapshot": false,
         "state-sync": true,
         "endpoints": {
           "api": true,
@@ -565,13 +575,14 @@
 
         "twitter": "https://twitter.com/quicksilverzone",
         "website": "https://quicksilver.zone/",
-        "github": "https://github.com/quicksilver-zone"
+        "github": "https://github.com/quicksilver-zone",
+        "discord": "https://discord.gg/aJbrVTfsa8"
       },
 
       "services": {
         "overview": true,
         "installation-guide": true,
-        "snapshot": true,
+        "snapshot": false,
         "state-sync": true,
         "endpoints": {
           "api": true,
@@ -621,13 +632,14 @@
 
         "twitter": "https://twitter.com/lavanetxyz",
         "website": "https://www.lavanet.xyz/",
-        "github": "https://github.com/lavanet"
+        "github": "https://github.com/lavanet",
+        "discord": "https://discord.gg/xsepvRwbXP"
       },
 
       "services": {
         "overview": true,
         "installation-guide": true,
-        "snapshot": true,
+        "snapshot": false,
         "state-sync": true,
         "endpoints": {
           "api": true,
@@ -677,13 +689,14 @@
 
         "twitter": "https://twitter.com/babylon_chain",
         "website": "https://babylonchain.io/",
-        "github": "https://github.com/babylonchain"
+        "github": "https://github.com/babylonchain",
+        "discord": "https://discord.gg/babylonglobal"
       },
 
       "services": {
         "overview": true,
         "installation-guide": true,
-        "snapshot": true,
+        "snapshot": false,
         "state-sync": true,
         "endpoints": {
           "api": true,
@@ -733,13 +746,14 @@
 
         "twitter": "https://twitter.com/namada",
         "website": "https://namada.net/",
-        "github": "https://github.com/anoma"
+        "github": "https://github.com/anoma",
+        "discord": "https://discord.gg/namada"
       },
 
       "services": {
         "overview": true,
         "installation-guide": true,
-        "snapshot": true,
+        "snapshot": false,
         "state-sync": false,
         "endpoints": {
           "api": true,
@@ -803,13 +817,14 @@
 
         "twitter": "https://twitter.com/selfchainxyz",
         "website": "https://selfchain.xyz/",
-        "github": "https://github.com/hotcrosscom"
+        "github": "https://github.com/hotcrosscom",
+        "discord": "https://discord.gg/selfchainxyz"
       },
 
       "services": {
         "overview": true,
         "installation-guide": true,
-        "snapshot": true,
+        "snapshot": false,
         "state-sync": true,
         "endpoints": {
           "api": true,
