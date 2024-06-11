@@ -19,7 +19,7 @@ const NetworkOverviewInfo:FC<OverviewContentProps> = ({network, nodeVersion, cha
                     <a target="__blank" href={network.links.website}>Website <span className={styles.icon}><FontAwesomeIcon icon={faGlobe}/></span></a>
                     <a target="__blank" href={network.links.twitter}>Twitter / X <span className={styles.icon}><FontAwesomeIcon icon={faXTwitter}/></span></a>
                     <a target="__blank" href={network.links.github}>Github <span className={styles.icon}><FontAwesomeIcon icon={faGithub}/></span></a>
-                    <a target="__blank" href="">Discord <span className={styles.icon}><FontAwesomeIcon icon={faDiscord}/></span></a>
+                    <a target="__blank" href={network.links.discord}>Discord <span className={styles.icon}><FontAwesomeIcon icon={faDiscord}/></span></a>
                 </div>
             </div>
 
@@ -53,7 +53,7 @@ const NetworkOverviewInfo:FC<OverviewContentProps> = ({network, nodeVersion, cha
                         <h3>Staked tokens with DTEAM: </h3>
                         {amountOfTokens
                             ? <p>{amountOfTokens.toFixed(0)}${network.other.ticker}</p>
-                            : <div className={styles.loading__container}><LoadingBlock width={100}/></div>
+                            : <p>Not available</p>
                         }
                     </div>
 
