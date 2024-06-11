@@ -42,6 +42,7 @@ export interface ILinks {
     website: string;
     github: string;
     twitter: string;
+    discord: string;
 }
 
 export interface IOther {
