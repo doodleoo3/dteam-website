@@ -10,6 +10,7 @@ interface NetworkParams {
     staked_tokens: number;
     staked_value: string;
     version: string;
+    validator_status: string;
     rpc_status: string;
     peers: string;
 }
@@ -20,8 +21,8 @@ export const useTendermintNetworkParams = (name: string, type: string): NetworkP
 
     if (!network) return undefined;
 
-    const { apr, chain_id, last_time_updated, staked_tokens, staked_value, version, rpc_status, peers } = network;
+    const { apr, chain_id, last_time_updated, staked_tokens, staked_value, version, validator_status, rpc_status, peers } = network;
 
-    return { apr, chain_id, last_time_updated, staked_tokens, staked_value, version, rpc_status, peers };
+    return { apr, chain_id, last_time_updated, staked_tokens, staked_value, validator_status, version, rpc_status, peers };
 };
 
