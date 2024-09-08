@@ -23,7 +23,7 @@ const ServiceSelector:FC<ServiceSelectorProps> = ({type, network}) => {
     const [isMobile, setIsMobile] = useState<boolean>(false);
 
     const selectedNetwork = networks.find(net => net.type === type && net.name === network);
-
+    const [currentService, setCurrentService] = useState<string>("overview")
 
     useEffect(() => {
         const handleResize = () => {
@@ -40,8 +40,17 @@ const ServiceSelector:FC<ServiceSelectorProps> = ({type, network}) => {
         return () => window.removeEventListener('resize', handleResize);
     }, [type, network]);
 
+    useEffect(() => {
+        setCurrentService(getCurrentService(pathname))
+    }, [pathname]);
+
     const toggleServices = () => {
         setIsExpanded(!isExpanded);
+    };
+
+    const getCurrentService = (pathname: string) => {
+        const segments = pathname.split('/').filter(Boolean);
+        return segments[2] || 'overview';
     };
 
     const renderServices = () => {
@@ -83,7 +92,16 @@ const ServiceSelector:FC<ServiceSelectorProps> = ({type, network}) => {
     };
 
     return (
-        <>
+        <div className={styles.list__container}>
+            {/*<p className={styles.additional__navigation}>*/}
+            {/*    <Link href={`/networks/mainnet`}>networks</Link> / <Link href={`/services/mainnet`}>services</Link> / <Link*/}
+            {/*    href={`/services/mainnet/${currentService}`}>{currentService.toUpperCase().replace(/-/g, ' ')}</Link> / <span>{network}</span>*/}
+            {/*</p>*/}
+
+            <p className={styles.additional__navigation}>
+               <Link href={`/services/mainnet`}>services</Link> / <Link href={`/services/mainnet/${currentService}`}>{currentService.toUpperCase().replace(/-/g, ' ')}</Link> / <span>{network}</span>
+            </p>
+
             <ul className={styles.mobile__list}>
 
                 <li className={`${styles.link} ${isExpanded ? styles.active : ""}`}
@@ -103,9 +121,7 @@ const ServiceSelector:FC<ServiceSelectorProps> = ({type, network}) => {
             <ul className={styles.list}>
                 {renderServices()}
             </ul>
-        </>
-
-
+        </div>
     );
 };
 
