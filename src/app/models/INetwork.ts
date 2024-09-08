@@ -1,29 +1,29 @@
 import {IServices} from "@/src/app/models/IServices";
 
-export interface IChainId {
-    result: {
-        peers: [ { node_info: { network: string } } ]
-    }
+// export interface IChainId {
+//     result: {
+//         peers: [ { node_info: { network: string } } ]
+//     }
+//
+// }
 
-}
+// export interface INodeVersion {
+//     result: {
+//         response: {
+//             version: string
+//         }
+//     }
+// }
 
-export interface INodeVersion {
-    result: {
-        response: {
-            version: string
-        }
-    }
-}
+// export interface TendermintParams {
+//     id: number,
+//     chainId: string,
+//     nodeVersion: string
+// }
 
 interface IBCItem {
     name: string;
     wallet_link: string;
-}
-
-export interface TendermintParams {
-    id: number,
-    chainId: string,
-    nodeVersion: string
 }
 
 export enum NetworkType {
@@ -36,13 +36,19 @@ export interface ILinks {
     inflation?: string;
 
     binary_download: string;
-    git: string;
-    explorer: string;
+    git_network_repo: string;
 
+    explorer: string;
     website: string;
     github: string;
     twitter: string;
     discord: string;
+}
+
+export interface ITx {
+    gas: string;
+    gas_adjustment: number;
+    gas_prices: number;
 }
 
 export interface IOther {
@@ -50,6 +56,7 @@ export interface IOther {
     main_dir: string; //example: canto
     working_dir: string; //example: cantod
     valoper_address?: string;
+    min_gas_price: number;
 
     denom: string;
     denom_exponent: number;
@@ -64,7 +71,8 @@ export interface IOther {
 
     version?: string //hardcoded node version
 
-    ibc?: IBCItem[]
+    ibc?: IBCItem[];
+    ibc_wallet?: string;
 
     pruning: boolean;
 }
@@ -78,5 +86,6 @@ export interface INetwork {
     need_build_binary: boolean;
     links: ILinks;
     services: IServices;
+    tx: ITx;
     other: IOther;
 }
