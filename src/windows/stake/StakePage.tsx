@@ -20,7 +20,7 @@ const StakePage:FC<StakePageProps> = ({type}) => {
     return (
         <>
             <TopSectionWrapper
-                title="Stake"
+                title="Staking"
                 type={type}
                 search={true}
                 selector={false}
