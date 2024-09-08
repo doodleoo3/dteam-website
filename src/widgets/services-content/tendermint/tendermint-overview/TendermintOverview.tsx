@@ -11,7 +11,7 @@ const TendermintOverview:FC<TendermintContentProps> = ({network}) => {
     return (
         <div className={styles.overview__container}>
             <div className={styles.left__side__wrapper}>
-                <NetworkOverviewInfo network={network} chainId={networkParams?.chain_id} nodeVersion={networkParams?.version} valueOfStakedTokens={networkParams?.staked_value} amountOfTokens={networkParams?.staked_tokens}/>
+                <NetworkOverviewInfo network={network} chainId={networkParams?.chain_id} nodeVersion={networkParams?.version} validatorStatus={networkParams?.validator_status} valueOfStakedTokens={networkParams?.staked_value} amountOfTokens={networkParams?.staked_tokens}/>
                 {network.type === NetworkType.mainnet
                     ? <StakingCalculator network={network} valueOfStakedTokens={networkParams?.staked_value} amountOfTokens={networkParams?.staked_tokens} apr={`${networkParams?.apr}`}/>
                     : <></>
