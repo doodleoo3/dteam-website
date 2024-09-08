@@ -7,7 +7,7 @@ const CelestiaBuild:FC<TendermintContentProps> = ({network, nodeVersion}) => {
         <ContentItem title={"BUILD BINARY"}>
             {`cd $HOME
 rm -rf ${network.other.main_dir}
-git clone ${network.links.git}
+git clone ${network.links.git_network_repo}
 cd ${network.other.main_dir}
 git checkout tags/v${nodeVersion} -b v${nodeVersion}
 make install
