@@ -29,7 +29,7 @@
   flex-wrap: wrap;
   padding: 20px;
 
-  &>div {
+  &>a>div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,9 +41,9 @@
       }
     }
 
-    a {
-      font-size: var(--font-size-m) !important;
-    }
+    //a {
+    //  font-size: var(--font-size-m) !important;
+    //}
   }
 
   //&:nth-child(3n) {
