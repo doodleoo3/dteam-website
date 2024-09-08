@@ -4,14 +4,25 @@ import React, {FC} from 'react';
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
-import NamadaSnapshot from "@/src/widgets/services-content/namada/namada-snapshot/NamadaSnapshot";
 import SnapshotInfo from "@/src/features/snaphot-info/SnapshotInfo";
-const TendermintSnapshot:FC<TendermintContentProps> = ({network}) => {
+import dynamic from "next/dynamic";
+// import NamadaSnapshot from "@/src/widgets/services-content/namada/namada-snapshot/NamadaSnapshot";
+// import StorySnapshot from "@/src/widgets/services-content/story/story-snapshot/StorySnapshot";
 
+const NamadaSnapshot = dynamic(() => import("@/src/widgets/services-content/namada/namada-snapshot/NamadaSnapshot"))
+const StorySnapshot = dynamic(() => import("@/src/widgets/services-content/story/story-snapshot/StorySnapshot"))
+
+const TendermintSnapshot:FC<TendermintContentProps> = ({network}) => {
 
     if (network.name === "namada") {
         return (
             <NamadaSnapshot network={network}/>
+        );
+    }
+
+    if (network.name === "story") {
+        return (
+          <StorySnapshot network={network}/>
         );
     }
 
