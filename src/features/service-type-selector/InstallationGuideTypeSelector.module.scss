@@ -1,0 +1,62 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  min-height: 50px;
+  //margin-bottom: 10px;
+}
+
+.button {
+  min-width: 100px;
+  padding: 3px 10px;
+  cursor: pointer;
+  color: var(--secondary-color);
+  background-color: var(--bg-content-color);
+  border: 1px solid var(--secondary-color);
+  box-shadow: var(--box-shadow);
+
+  &:hover {
+    color: var(--primary-color) !important;
+  }
+}
+
+.active__button {
+  color: var(--primary-color);
+}
+
+@media (max-width: 1294px) {
+  .wrapper {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .wrapper {
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px; /* Устанавливаем промежуток для этого разрешения */
+  }
+
+  .button {
+    width: 48%;
+    margin: 0; /* Убираем старые маржины */
+  }
+}
+
+@media (max-width: 576px) {
+  .wrapper {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px; /* Устанавливаем промежуток для этого разрешения */
+  }
+
+  .button {
+    width: 100%;
+    margin: 0; /* Убираем старые маржины */
+  }
+}
