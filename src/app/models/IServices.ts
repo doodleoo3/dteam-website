@@ -13,20 +13,26 @@ export enum ServicesEnum {
 }
 
 export interface IServices {
-    "overview": boolean
-    "installation-guide": boolean
-    "snapshot": boolean
-    "state-sync": boolean
+    "overview": boolean;
+    "installation-guide": {
+        "consensus": boolean;
+        "cosmovisor"?: boolean;
+        "bridge"?: boolean;
+        "full"?: boolean;
+        "light"?: boolean;
+    };
+    "snapshot": boolean;
+    "state-sync": boolean;
     "endpoints": {
-        "api": boolean
-        "rpc": boolean
-        "grpc": boolean
-        "json_rpc": boolean
-    }
-    "addrbook": boolean
-    "genesis": boolean
-    "ibc"?: boolean
-    "peers": boolean
-    "seeds": boolean
-    "useful-commands": boolean
+        "api": boolean;
+        "rpc": boolean;
+        "grpc": boolean;
+        "json_rpc": boolean;
+    };
+    "addrbook": boolean;
+    "genesis": boolean;
+    "ibc"?: boolean;
+    "peers": boolean;
+    "seeds": boolean;
+    "useful-commands": boolean;
 }
