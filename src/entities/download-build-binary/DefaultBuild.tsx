@@ -7,7 +7,7 @@ const DefaultBuild:FC<TendermintContentProps> = ({network, nodeVersion}) => {
     return (
         <ContentItem title={"BUILD BINARY"}>
             {`cd $HOME
-git clone ${network.links.git}
+git clone ${network.links.git_network_repo}
 cd ${network.other.main_dir}
 ${nodeVersion
     ? `git checkout v${nodeVersion}`
