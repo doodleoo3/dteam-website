@@ -6,7 +6,7 @@ const ZeroGravityBuild:FC<TendermintContentProps> = ({network, nodeVersion}) => 
     return (
         <ContentItem title={"BUILD BINARY"}>
             {`cd $HOME
-git clone -b v${nodeVersion} ${network.links.git}
+git clone -b v${nodeVersion} ${network.links.git_network_repo}
 ./0g-chain/networks/testnet/install.sh
 source .profile
 
