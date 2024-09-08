@@ -1,9 +1,10 @@
 import React from 'react';
 import PageTitle from "@/src/shared/ui/page-title/PageTitle";
 import styles from "./HomePage.module.scss"
-import PyramidScene from "@/src/shared/ui/pyramid/PyramidScene";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDiscord, faGithub, faXTwitter} from '@fortawesome/free-brands-svg-icons'
+import dynamic from "next/dynamic";
+const ThreeDModel = dynamic(() => import('@/src/shared/ui/three-d-model/ThreeDModel'), { ssr: false });
 const HomePage = () => {
     return (
         <>
@@ -12,7 +13,7 @@ const HomePage = () => {
                 <div className={styles.left__side}>
                     <h1>DTEAM</h1>
                     <p>
-                        DTEAM is a reliable validator. We provides the best and most up-to-date services on the market as well as create useful tools for the project community, node operators and developers.
+                        DTEAM is a trusted validator. We offer the best and most up-to-date services on the market and create useful tools for the project community, node operators and developers.
                     </p>
                     <div className={styles.socials__container}>
                         <a target="__blank" href="https://twitter.com/dteamtech"><FontAwesomeIcon icon={faXTwitter} /></a>
@@ -22,7 +23,7 @@ const HomePage = () => {
                 </div>
 
                 <div className={styles.right__side}>
-                    <PyramidScene/>
+                    <ThreeDModel url="/objs/d_sphere.obj" color="#B9B9B9FF" />
                 </div>
             </div>
         </>
