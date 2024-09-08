@@ -8,9 +8,32 @@ import React from "react";
 import FloatingBall from "@/src/shared/ui/floating-ball/FloatingBall";
 
 export const metadata: Metadata = {
-  title: 'DTEAM',
-  description: 'DTEAM is a reliable validator. We provides the best and most up-to-date services on the market as well as create useful tools for the project community, node operators and developers.',
-}
+    title: "DTEAM",
+    description: "DTEAM is a reliable validator. We provide the best and most up-to-date services on the market and create useful tools for the project community, node operators and developers.",
+    keywords: ["DTEAM", "validator", "services", "community", "staking"],
+    metadataBase: new URL("https://dteam.tech"),
+    openGraph: {
+        title: "DTEAM",
+        description: "DTEAM is a reliable validator. We provide the best and most up-to-date services on the market and create useful tools for the project community, node operators and developers.",
+        url: "https://dteam.tech",
+        type: "website",
+        images: [
+            {
+                url: "https://raw.githubusercontent.com/DTEAMTECH/identity/main/opengraph_main.png",
+                width: 1200,
+                height: 630,
+                alt: "DTEAM",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        site: "@dteamtech",
+        title: "DTEAM",
+        description: "DTEAM is a reliable validator. We provide the best and most up-to-date services on the market and create useful tools for the project community, node operators and developers.",
+        images: "https://raw.githubusercontent.com/DTEAMTECH/identity/main/opengraph_main.png",
+    },
+};
 
 export default function RootLayout({
   children,
