@@ -7,9 +7,43 @@ import {ServicesEnum} from "@/src/app/models/IServices";
 import React from "react";
 import SeparateServicePage from "@/src/windows/separate-service-page/SeparateServicePage";
 
-export const metadata: Metadata = {
-    title: 'SERVICES | DTEAM',
-    description: 'DTEAM is a reliable validator. We provides the best and most up-to-date services on the market as well as create useful tools for the project community, node operators and developers.',
+
+export async function generateMetadata({ params }): Promise<Metadata> {
+    const { type, service, network } = params;
+    const formattedService = service.replace(/\b\w/g, c => c.toUpperCase())
+    const formattedNetwork = network.charAt(0).toUpperCase() + network.slice(1)
+    const baseUrl = "https://dteam.tech";
+    const title = `${formattedService.replace(/-/g, ' ')} | ${formattedNetwork} | DTEAM`;
+    const description = `Explore the ${formattedService} service on ${formattedNetwork} ${type.replace(/\b\w/g, c => c.toUpperCase())}. DTEAM is a reliable validator. We provide the best and most up-to-date services on the market and create useful tools for the project community, node operators and developers.`;
+    const imageUrl = "https://raw.githubusercontent.com/DTEAMTECH/identity/main/opengraph_main.png";
+
+    return {
+        title,
+        description,
+        keywords: [service, network, type, "DTEAM", "validator", "services", "community", "staking"],
+        metadataBase: new URL(baseUrl),
+        openGraph: {
+            title,
+            description,
+            url: baseUrl,
+            type: "website",
+            images: [
+                {
+                    url: imageUrl,
+                    width: 1200,
+                    height: 630,
+                    alt: `DTEAM ${service} ${network}`,
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            site: "@dteamtech",
+            title,
+            description,
+            images: imageUrl,
+        },
+    };
 }
 
 export const dynamicParams = false
