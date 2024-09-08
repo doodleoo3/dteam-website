@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from "./Footer.module.scss"
 import Link from "next/link";
-import ComingSoon from "@/src/shared/ui/coming-soon/ComingSoon";
 
 const Footer = () => {
     return (
