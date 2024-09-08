@@ -15,7 +15,10 @@ import {faDiscord, faGithub, faXTwitter} from "@fortawesome/free-brands-svg-icon
 const Header = () => {
     const pathname = usePathname()
     const dispatch = useDispatch();
-
+    const handleMenuToggle = () => {
+        window.scrollTo(0, 0); // Прокрутка к началу страницы
+        dispatch(toggle());
+    };
     const isOpen = useSelector((state: RootState) => state.mobileMenu.isOpen);
 
     if (isOpen) {
@@ -31,7 +34,7 @@ const Header = () => {
                         </h1>
                     </div>
 
-                    <button className={styles.mobile__menu__btn} onClick={() => dispatch(toggle())}>
+                    <button className={styles.mobile__menu__btn} onClick={handleMenuToggle}>
                         {isOpen
                             ? <FontAwesomeIcon icon={faXmark}/>
                             : <FontAwesomeIcon icon={faBars} />
@@ -106,7 +109,7 @@ const Header = () => {
                 </h1>
             </div>
 
-            <button className={styles.mobile__menu__btn} onClick={() => dispatch(toggle())}>
+            <button className={styles.mobile__menu__btn} onClick={handleMenuToggle}>
                 <FontAwesomeIcon icon={faBars}/>
             </button>
 
