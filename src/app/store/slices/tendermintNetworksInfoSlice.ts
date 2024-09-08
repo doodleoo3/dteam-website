@@ -8,6 +8,7 @@ interface NetworkAPI {
     last_time_updated: string;
     name: string;
     rpc_status: string;
+    validator_status: string;
     staked_tokens: number;
     staked_value: string;
     type: string;
