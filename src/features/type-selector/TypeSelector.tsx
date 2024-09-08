@@ -21,8 +21,18 @@ const TypeSelector:FC<TypeSelectorProps> = ({withoutPair}) => {
 
     const handleButtonClick = (type: NetworkType) => {
         const regex = new RegExp(`${NetworkType.mainnet}|${NetworkType.testnet}`);
+
         if (pathname) {
-            const newPath = pathname.replace(regex, type);
+            let newPath = pathname.replace(regex, type);
+
+            const pathParts = pathname.split('/');
+
+            if (pathParts.length >= 5 && pathParts[2] === networkType) {
+                pathParts[2] = type;
+                pathParts[3] = 'overview';
+                newPath = pathParts.join('/');
+            }
+
             setNetworkType(type);
             router.push(newPath);
         }
