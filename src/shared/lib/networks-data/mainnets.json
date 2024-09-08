@@ -12,7 +12,7 @@
         "delegate": "https://restake.app/uptick/uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr/stake",
         "inflation": "https://api.uptick.mainnet.dteam.tech/cosmos/mint/v1beta1/inflation",
 
-        "git": "https://github.com/UptickNetwork/uptick",
+        "git_network_repo": "https://github.com/UptickNetwork/uptick",
         "binary_download": "",
         "explorer": "https://explorer.mainnet.dteam.tech/uptick",
 
@@ -24,7 +24,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
         "snapshot": true,
         "state-sync": true,
         "endpoints": {
@@ -41,11 +44,18 @@
         "useful-commands": true
       },
 
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 16000000000
+      },
+
       "other": {
         "binary_name": "uptickd",
         "main_dir": "uptick",
         "working_dir": ".uptickd",
         "valoper_address": "uptickvaloper1ggcjcfkjtdkuykjey38x8pwm7cvkm9w0amyvsr",
+        "min_gas_price": 13000000000,
 
         "denom": "auptick",
         "denom_exponent": 18,
@@ -53,10 +63,10 @@
         "ticker": "uptick",
         "cg_ticker": "",
 
-        "grpc_port": "9690",
+        "grpc_port": "27090",
 
-        "seed": "e71bae28852a0b603f7360ec17fe91e7f065f324@uptick-mainnet-seed.itrocket.net:35656",
-        "peer": "1e818e2244c9ba2ea3de0d6d7788b50a0d1c4812@peer.uptick.mainnet.dteam.tech:60756",
+        "seed": "9f94d8d989e56287b96abb3db1156b44e7536988@seed.uptick.mainnet.dteam.tech:39656",
+        "peer": "e8110e6c803fb4f16637ac76359fab7c605d4896@peer.uptick.mainnet.dteam.tech:27656",
 
         "version": "",
 
@@ -76,7 +86,7 @@
         "delegate": "https://restake.app/canto/cantovaloper1ys0fa3rdn3668fn5lfxazsv7g94jamu7n3qa8v/stake",
         "inflation": "https://api.canto.mainnet.dteam.tech/canto/inflation/v1/epoch_mint_provision",
 
-        "git": "https://github.com/Canto-Network/Canto",
+        "git_network_repo": "https://github.com/Canto-Network/Canto",
         "binary_download": "",
         "explorer": "https://explorer.mainnet.dteam.tech/canto",
 
@@ -88,7 +98,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
         "snapshot": true,
         "state-sync": true,
         "endpoints": {
@@ -105,11 +118,18 @@
         "useful-commands": true
       },
 
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 2000000000000
+      },
+
       "other": {
         "binary_name": "cantod",
         "main_dir": "Canto",
         "working_dir": ".cantod",
         "valoper_address": "cantovaloper1ys0fa3rdn3668fn5lfxazsv7g94jamu7n3qa8v",
+        "min_gas_price": 1000000000000,
 
         "denom": "acanto",
         "denom_exponent": 18,
@@ -117,10 +137,10 @@
         "ticker": "canto",
         "cg_ticker": "canto",
 
-        "grpc_port": "9190",
+        "grpc_port": "26090",
 
-        "seed": "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:15556",
-        "peer": "49d40f97da4725689f91191b1f53f9322c584c95@peer.canto.mainnet.dteam.tech:36656",
+        "seed": "9a84c3bb8b5e86fc79c05867fecc22387cb6d3ed@seed.canto.mainnet.dteam.tech:37656",
+        "peer": "9254f022b3e1485eb3fc5c8f91f67b994dff306c@peer.canto.mainnet.dteam.tech:26656",
 
         "version": "",
 
@@ -140,7 +160,7 @@
         "delegate": "https://restake.app/haqq/haqqvaloper1gygy6q8dvpmwy6ps2yj8d503up3hssuv9gv6yu/stake",
         "inflation": "https://haqq.api.explorers.guru/api/v1/chain",
 
-        "git": "https://github.com/haqq-network/haqq",
+        "git_network_repo": "https://github.com/haqq-network/haqq",
         "binary_download": "",
         "explorer": "https://explorer.mainnet.dteam.tech/haqq",
 
@@ -152,7 +172,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
         "snapshot": true,
         "state-sync": true,
         "endpoints": {
@@ -169,21 +192,28 @@
         "useful-commands": true
       },
 
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 25000000000
+      },
+
       "other": {
         "binary_name": "haqqd",
         "main_dir": "haqq",
         "working_dir": ".haqqd",
         "valoper_address": "haqqvaloper1gygy6q8dvpmwy6ps2yj8d503up3hssuv9gv6yu",
+        "min_gas_price": 250000000,
 
         "denom": "aISLM",
         "denom_exponent": 18,
         "ticker": "islm",
         "cg_ticker": "islamic-coin",
 
-        "grpc_port": "9290",
+        "grpc_port": "28090",
 
-        "seed": "9bc84e2b4fd1dbe1522fe2e3eecdce77b8398d76@haqq-mainnet-seed.itrocket.net:25656",
-        "peer": "24ca011b211f6200e90916bef388aa057dc14259@peer.haqq.mainnet.dteam.tech:46656",
+        "seed": "2a150208073ea033c7cac0d86eec9c019ef31024@seed.haqq.mainnet.dteam.tech:35656",
+        "peer": "7c153a83a6974dbebc362de942627cb45263796f@peer.haqq.mainnet.dteam.tech:28656",
 
         "version": "",
 
@@ -203,7 +233,7 @@
         "delegate": "https://restake.app/quicksilver/quickvaloper1skmh8a7dskhwtyf6sgxfhexpx9r6xwyefefzjd/stake",
         "inflation": "https://quicksilver.api.explorers.guru/api/v1/chain",
 
-        "git": "https://github.com/ingenuity-build/quicksilver",
+        "git_network_repo": "https://github.com/ingenuity-build/quicksilver",
         "binary_download": "",
         "explorer": "https://explorer.mainnet.dteam.tech/quicksilver",
 
@@ -215,7 +245,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
         "snapshot": true,
         "state-sync": true,
         "endpoints": {
@@ -232,11 +265,18 @@
         "useful-commands": true
       },
 
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.00025
+      },
+
       "other": {
         "binary_name": "quicksilverd",
         "main_dir": "quicksilver",
         "working_dir": ".quicksilverd",
         "valoper_address": "quickvaloper1skmh8a7dskhwtyf6sgxfhexpx9r6xwyefefzjd",
+        "min_gas_price": 0.0001,
 
         "denom": "uqck",
         "denom_exponent": 6,
@@ -244,10 +284,10 @@
         "ticker": "qck",
         "cg_ticker": "quicksilver",
 
-        "grpc_port": "9090",
+        "grpc_port": "29090",
 
-        "seed": "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:11156",
-        "peer": "d8e83c36c1c23f230e93a35667378299163de1f6@peer.quicksilver.mainnet.dteam.tech:26656",
+        "seed": "19463cd0f2e838393f3414b3bbd38fa7817b0ec4@seed.quicksilver.mainnet.dteam.tech:38656",
+        "peer": "d25fd9c32ee974fa365c533d667555f5f2ccd089@peer.quicksilver.mainnet.dteam.tech:29656",
 
         "version": "",
 
@@ -267,7 +307,7 @@
         "delegate": "https://restake.app/chain4energy/c4evaloper1uz6mnly8w44h5maymtjl5fd8t8tzc3kmd4n3p3/stake",
         "inflation": "https://lcd.c4e.io/c4e/minter/v1beta1/inflation",
 
-        "git": "https://github.com/chain4energy/c4e-chain",
+        "git_network_repo": "https://github.com/chain4energy/c4e-chain",
         "binary_download": "",
         "explorer": "https://explorer.mainnet.dteam.tech/chain4energy",
 
@@ -279,7 +319,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
         "snapshot": true,
         "state-sync": true,
         "endpoints": {
@@ -292,8 +335,14 @@
         "genesis": true,
         "ibc": false,
         "peers": true,
-        "seeds": false,
+        "seeds": true,
         "useful-commands": true
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.025
       },
 
       "other": {
@@ -301,6 +350,7 @@
         "main_dir": "c4e-chain",
         "working_dir": ".c4e-chain",
         "valoper_address": "c4evaloper1uz6mnly8w44h5maymtjl5fd8t8tzc3kmd4n3p3",
+        "min_gas_price": 0.01,
 
         "denom": "uc4e",
         "denom_exponent": 6,
@@ -308,10 +358,246 @@
         "ticker": "c4e",
         "cg_ticker": "chain4energy",
 
-        "grpc_port": "9390",
+        "grpc_port": "30090",
 
-        "seed": "",
-        "peer": "f9f40b8fd71cb973f8e17c49a81d43f40b14d82b@peer.c4e.mainnet.dteam.tech:56656",
+        "seed": "4c97d663e96a685d02b598dee22323d7a4e569d6@seed.c4e.mainnet.dteam.tech:36656",
+        "peer": "00eb92db69a4848f8ac1c84e7b8b2d9b01b95dff@peer.c4e.mainnet.dteam.tech:30656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
+      "id": 6,
+      "name": "dymension",
+      "type": "mainnet",
+      "description": "Dymension is a home for easily deployable and lightning fast app-chains, called RollApps.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "delegate": "https://restake.app/dymension/dymvaloper10f5j9klmnnllknr3g4k5myq0gglh0c7t5khpxf/stake",
+
+        "git_network_repo": "https://github.com/dymensionxyz/dymension.git",
+        "binary_download": "",
+        "explorer": "https://explorer.mainnet.dteam.tech/dymension",
+
+        "twitter": "https://twitter.com/dymension",
+        "website": "https://dymension.xyz/",
+        "github": "https://github.com/dymensionxyz",
+        "discord": "https://discord.gg/dymension"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": true
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 5000000000
+      },
+
+      "other": {
+        "binary_name": "dymd",
+        "main_dir": "dymension",
+        "working_dir": ".dymension",
+        "valoper_address": "dymvaloper10f5j9klmnnllknr3g4k5myq0gglh0c7t5khpxf",
+        "min_gas_price": 5000000000,
+
+        "denom": "udym",
+        "denom_exponent": 18,
+
+        "ticker": "dym",
+        "cg_ticker": "dymension",
+
+        "grpc_port": "29090",
+
+        "seed": "a413834999fa34ae17d6a32a36017bceb68783ca@seed.dymension.mainnet.dteam.tech:29656",
+        "peer": "e3522d6de016578ac0935c4c55e13e4aac6f0693@peer.dymension.mainnet.dteam.tech:29656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
+      "id": 7,
+      "name": "celestia",
+      "type": "mainnet",
+      "description": "Celestia is a modular data availability network that securely scales with the number of users, making it easy for anyone to launch their own blockchain.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "delegate": "https://restake.app/celestia/celestiavaloper1h8zg3zpkqchs48tfke7rvv4t575yumqvtwcnqk/stake",
+
+        "git_network_repo": "https://github.com/celestiaorg/celestia-app.git",
+        "binary_download": "",
+        "explorer": "https://explorer.mainnet.dteam.tech/celestia",
+
+        "twitter": "https://twitter.com/CelestiaOrg",
+        "website": "https://celestia.org/",
+        "github": "https://github.com/celestiaorg",
+        "discord": "https://discord.gg/YrXs6nV4Ra"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true,
+          "bridge": true,
+          "light": true,
+          "full": true
+        },
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": false
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.02
+      },
+
+      "other": {
+        "binary_name": "celestia-appd",
+        "main_dir": "celestia-app",
+        "working_dir": ".celestia-app",
+        "valoper_address": "celestiavaloper1h8zg3zpkqchs48tfke7rvv4t575yumqvtwcnqk",
+        "min_gas_price": 0.002,
+
+        "denom": "utia",
+        "denom_exponent": 6,
+
+        "ticker": "tia",
+        "cg_ticker": "celestia",
+
+        "grpc_port": "28090",
+
+        "seed": "9b1d22c3a78487d1a664a4b6a331fce527d14fb4@seed.celestia.mainnet.dteam.tech:27656",
+        "peer": "076c9cc9de3039819a98522aeea39e8c72b49682@peer.celestia.mainnet.dteam.tech:28656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
+      "id": 8,
+      "name": "selfchain",
+      "type": "mainnet",
+      "description": "Self chain is the first decentralized self-custody network and infrastructure service, revolutionizing key management through mpc-tss for keyless non-custodial wallet creation and management.",
+      "is_tendermint_chain": true,
+      "need_build_binary": false,
+
+      "links": {
+        "delegate": "https://restake.app/self/selfvaloper1c2a7qmttja5cay4wd3k05s78emgnvtdps3zsex/stake",
+
+        "git_network_repo": "",
+        "binary_download": "https://download.dteam.tech/selfchain/mainnet/binary",
+        "explorer": "https://explorer.mainnet.dteam.tech/selfchain",
+
+        "twitter": "https://twitter.com/selfchainxyz",
+        "website": "https://selfchain.xyz/",
+        "github": "https://github.com/hotcrosscom",
+        "discord": "https://discord.gg/selfchainxyz"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": false
+        },
+        "snapshot": false,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": false
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  true,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.025
+      },
+
+      "other": {
+        "binary_name": "selfchaind",
+        "main_dir": "",
+        "working_dir": ".selfchain",
+        "valoper_address": "selfvaloper1c2a7qmttja5cay4wd3k05s78emgnvtdps3zsex",
+        "min_gas_price": 0.005,
+
+        "denom": "uslf",
+        "denom_exponent": 6,
+
+        "ticker": "SLF",
+        "cg_ticker": "selfchain",
+
+        "ibc_wallet": "https://explorer.mainnet.dteam.tech/selfchain/account/self16t4s4py87pylq5naas9shu8jmv4k28jkzx07hf",
+
+        "ibc": [
+          {
+            "name": "osmosis",
+            "wallet_link": "https://www.mintscan.io/osmosis/address/osmo16t4s4py87pylq5naas9shu8jmv4k28jk0kpj0j"
+          },
+          {
+            "name": "cosmos",
+            "wallet_link": "https://www.mintscan.io/cosmos/address/cosmos16t4s4py87pylq5naas9shu8jmv4k28jk8djzeq"
+          },
+          {
+            "name": "axelar",
+            "wallet_link": "https://www.mintscan.io/axelar/address/axelar16t4s4py87pylq5naas9shu8jmv4k28jkrry2jp"
+          }
+        ],
+
+        "grpc_port": "31090",
+
+        "seed": "5848c2846bd2ea36ecb6e440fabc48e1893aefe2@seed.selfchain.mainnet.dteam.tech:34656",
+        "peer": "f238d6a52578975198ceac2b0c2b004d49d5613f@peer.selfchain.mainnet.dteam.tech:31656",
 
         "version": "",
 
