@@ -1,27 +1,162 @@
   [
     {
-      "id": 984,
-      "name": "kopi",
+      "id": 981,
+      "name": "nillion",
       "type": "testnet",
-      "description": "The Kopi Protocol is the latest innovative project in decentralized finance (DeFi), offering a decentralized exchange (DEX), money market, and its proprietary supply-managed coins, known as kCoins.",
+      "description": "Nillion decentralizes trust for sensitive data in the same way that blockchains decentralized transactions.",
       "is_tendermint_chain": true,
       "need_build_binary": true,
 
       "links": {
-        "git": "https://github.com/kopi-money/kopi.git",
+        "git_network_repo": "https://github.com/NillionNetwork/nilchain",
         "binary_download": "",
-        "explorer": "https://explorer.testnet.dteam.tech/kopi",
+        "explorer": "https://explorer.testnet.dteam.tech/nillion",
 
-        "twitter": "https://x.com/kopi_money",
-        "website": "https://kopi.money/",
-        "github": "https://github.com/kopi-money",
-        "discord": "https://discord.gg/R87tmyWrxf"
+        "twitter": "https://twitter.com/nillionnetwork",
+        "website": "https://nillion.com/",
+        "github": "https://github.com/NillionNetwork",
+        "discord": "https://discord.gg/nillionnetwork"
       },
 
       "services": {
         "overview": true,
-        "installation-guide": true,
-        "snapshot": false,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": false
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc": false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.00025
+      },
+
+      "other": {
+        "binary_name": "nilchaind",
+        "main_dir": "nilchain",
+        "working_dir": ".nillionapp",
+        "min_gas_price": 0.0001,
+
+        "denom": "unil",
+        "denom_exponent": 6,
+
+        "grpc_port": "36090",
+
+        "seed": "7347961edee2ff216462efb729a873fbc794b809@seed.nillion.testnet.dteam.tech:33656",
+        "peer": "d03462f00cb95a4e0db9ef3c9fd330b0c796c2e1@peer.nillion.testnet.dteam.tech:36656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
+      "id": 982,
+      "name": "lava",
+      "type": "testnet",
+      "description": "Lava is a decentralized network of top RPC and API providers that developers can subscribe to for access to any blockchain. Providers are rewarded for their quality of service, meaning apps and users get maximum speed, data integrity and uptime.",
+      "is_tendermint_chain": true,
+      "need_build_binary": false,
+
+      "links": {
+        "git_network_repo": "",
+        "binary_download": "https://github.com/lavanet/lava/releases/download",
+        "explorer": "https://explorer.testnet.dteam.tech/lava",
+
+        "twitter": "https://twitter.com/lavanetxyz",
+        "website": "https://www.lavanet.xyz/",
+        "github": "https://github.com/lavanet",
+        "discord": "https://discord.gg/xsepvRwbXP"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": true,
+          "rpc": true,
+          "grpc": true,
+          "json_rpc": false
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc": false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": true
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.025
+      },
+
+      "other": {
+        "binary_name": "lavad",
+        "main_dir": "lava",
+        "working_dir": ".lava",
+        "min_gas_price": 0.025,
+
+        "denom": "ulava",
+        "denom_exponent": 6,
+
+        "grpc_port": "30090",
+
+        "seed": "fee8928362b444206fc3d3ed44ea22a53eaf5ac3@seed.lava.testnet.dteam.tech:31656",
+        "peer": "325a6922ac5fa5803f312e07a3894fbc525c4285@peer.lava.testnet.dteam.tech:30656",
+
+        "version": "",
+
+        "pruning": true
+      }
+    },
+    {
+      "id": 983,
+      "name": "symphony",
+      "type": "testnet",
+      "description": "The first self-balancing stablecoin.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "git_network_repo": "https://github.com/Orchestra-Labs/symphony.git",
+        "binary_download": "",
+        "explorer": "https://explorer.testnet.dteam.tech/symphony",
+
+        "twitter": "https://x.com/orchestra_labs",
+        "website": "https://orchestralabs.org/",
+        "github": "https://github.com/Orchestra-Labs",
+        "discord": "https://discord.com/invite/symphonyblockchain"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
+        "snapshot": true,
         "state-sync": true,
         "endpoints": {
           "api": true,
@@ -33,26 +168,97 @@
         "genesis": true,
         "ibc":  false,
         "peers": true,
-        "seeds": false,
+        "seeds": true,
         "useful-commands": true
       },
 
-      "other": {
-        "binary_name": "kopid",
-        "main_dir": "kopi",
-        "working_dir": ".kopid",
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.04
+      },
 
-        "denom": "ukopi",
+      "other": {
+        "binary_name": "symphonyd",
+        "main_dir": "symphony",
+        "working_dir": ".symphonyd",
+        "min_gas_price": 0.025,
+
+        "denom": "note",
         "denom_exponent": 6,
 
         "grpc_port": "28090",
 
-        "seed": "",
-        "peer": "8110004236ae77169890b3deb8b10a8780baef13@peer.kopi.testnet.dteam.tech:28656",
+        "seed": "ac90552fa858ebc136a09113fb1d3ec6803e76ba@seed.symphony.testnet.dteam.tech:30656",
+        "peer": "dd649cb732e8d7462e58e7ee621120a71d8d5e35@peer.symphony.testnet.dteam.tech:28656",
 
         "version": "",
 
         "pruning": true
+      }
+    },
+    {
+      "id": 984,
+      "name": "story",
+      "type": "testnet",
+      "description": "Story is the World's IP Blockchain, onramping Programmable IP to power the next generation of AI, DeFi, and consumer applications.",
+      "is_tendermint_chain": true,
+      "need_build_binary": true,
+
+      "links": {
+        "git_network_repo": "https://github.com/piplabs/story.git",
+        "binary_download": "",
+        "explorer": "https://testnet.storyscan.xyz/",
+
+        "twitter": "https://x.com/StoryProtocol",
+        "website": "https://www.story.foundation/",
+        "github": "https://github.com/storyprotocol",
+        "discord": "https://discord.com/invite/storyprotocol"
+      },
+
+      "services": {
+        "overview": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": false
+        },
+        "snapshot": true,
+        "state-sync": true,
+        "endpoints": {
+          "api": false,
+          "rpc": true,
+          "grpc": false,
+          "json_rpc": true
+        },
+        "addrbook": true,
+        "genesis": true,
+        "ibc":  false,
+        "peers": true,
+        "seeds": true,
+        "useful-commands": false
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.025
+      },
+
+      "other": {
+        "binary_name": "story",
+        "main_dir": "story",
+        "working_dir": ".story/story",
+        "min_gas_price": 0.025,
+
+        "denom": "IP",
+        "denom_exponent": 1,
+
+        "seed": "6fc1491d5b8b859c1fafbe129fe4c0f842836a79@seed.story.testnet.dteam.tech:32656",
+        "peer": "10f4a5147c5ae2e4707e9077aad44dd1c3fc7cd3@peer.story.testnet.dteam.tech:37656",
+
+        "version": "0.9.11",
+
+        "pruning": false
       }
     },
     {
@@ -64,7 +270,7 @@
       "need_build_binary": true,
 
       "links": {
-        "git": "https://github.com/RiemaLabs/nubit-validator.git",
+        "git_network_repo": "https://github.com/RiemaLabs/nubit-validator.git",
         "binary_download": "",
         "explorer": "https://explorer.testnet.dteam.tech/nubit",
 
@@ -76,7 +282,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": false,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
         "snapshot": true,
         "state-sync": true,
         "endpoints": {
@@ -93,10 +302,17 @@
         "useful-commands": true
       },
 
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.025
+      },
+
       "other": {
         "binary_name": "nubit-validatord",
         "main_dir": "nubit-validator",
         "working_dir": ".nubit-validator",
+        "min_gas_price": 0.025,
 
         "denom": "unub",
         "denom_exponent": 6,
@@ -112,27 +328,33 @@
       }
     },
     {
-      "id": 986,
-      "name": "initia",
+      "id": 987,
+      "name": "celestia",
       "type": "testnet",
-      "description": "Initia is a network for interwoven rollups. Binding a highly interwoven system of modular networks through architectural ownership of the L1 orchestration layer, L2 network, and the communication protocol.",
+      "description": "Celestia is a modular data availability network that securely scales with the number of users, making it easy for anyone to launch their own blockchain.",
       "is_tendermint_chain": true,
       "need_build_binary": true,
 
       "links": {
-        "git": "https://github.com/initia-labs/initia.git",
+        "git_network_repo": "https://github.com/celestiaorg/celestia-app.git",
         "binary_download": "",
-        "explorer": "https://scan.testnet.initia.xyz/initiation-1",
+        "explorer": "https://explorer.testnet.dteam.tech/celestia",
 
-        "twitter": "https://twitter.com/initiaFDN",
-        "website": "https://initia.xyz/",
-        "github": "https://github.com/initia-labs",
-        "discord": "https://discord.gg/initia"
+        "twitter": "https://twitter.com/CelestiaOrg",
+        "website": "https://celestia.org/",
+        "github": "https://github.com/celestiaorg",
+        "discord": "https://discord.gg/YrXs6nV4Ra"
       },
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true,
+          "bridge": true,
+          "light": true,
+          "full": true
+        },
         "snapshot": true,
         "state-sync": true,
         "endpoints": {
@@ -145,78 +367,29 @@
         "genesis": true,
         "ibc":  false,
         "peers": true,
-        "seeds": false,
-        "useful-commands": true
-      },
-
-      "other": {
-        "binary_name": "initiad",
-        "main_dir": "initia",
-        "working_dir": ".initia",
-
-        "denom": "uinit",
-        "denom_exponent": 18,
-
-        "grpc_port": "26090",
-
-        "seed": "",
-        "peer": "f19576937e9df10fbc5fba7a2cfd39a96c33bd32@peer.initia.testnet.dteam.tech:26656",
-
-        "version": "",
-
-        "pruning": true
-      }
-    },
-    {
-      "id": 987,
-      "name": "celestia",
-      "type": "testnet",
-      "description": "Celestia is a modular data availability network that securely scales with the number of users, making it easy for anyone to launch their own blockchain.",
-      "is_tendermint_chain": true,
-      "need_build_binary": true,
-
-      "links": {
-        "git": "https://github.com/celestiaorg/celestia-app.git",
-        "binary_download": "",
-        "explorer": "https://explorer.testnet.dteam.tech/celestia",
-
-        "twitter": "https://twitter.com/CelestiaOrg",
-        "website": "https://celestia.org/",
-        "github": "https://github.com/celestiaorg",
-        "discord": "https://discord.gg/YrXs6nV4Ra"
-      },
-
-      "services": {
-        "overview": true,
-        "installation-guide": true,
-        "snapshot": true,
-        "state-sync": true,
-        "endpoints": {
-          "api": true,
-          "rpc": true,
-          "grpc": true,
-          "json_rpc": true
-        },
-        "addrbook": true,
-        "genesis": true,
-        "ibc":  false,
-        "peers": true,
         "seeds": true,
         "useful-commands": true
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.002
       },
 
       "other": {
         "binary_name": "celestia-appd",
         "main_dir": "celestia-app",
         "working_dir": ".celestia-app",
+        "min_gas_price": 0.002,
 
         "denom": "utia",
-        "denom_exponent": 18,
+        "denom_exponent": 6,
 
-        "grpc_port": "34090",
+        "grpc_port": "27090",
 
-        "seed": "5d0bf034d6e6a8b5ee31a2f42f753f1107b3a00e@celestia-testnet-seed.itrocket.net:11656",
-        "peer": "13b0e6b33723581f493c9870bdd92ff45bc3e183@peer.celestia.testnet.dteam.tech:34656",
+        "seed": "70e8a8941f32dc5f696e46ee836c27620e773065@seed.celestia.testnet.dteam.tech:26656",
+        "peer": "6ed983017167d96c62b166725250940deb783563@peer.celestia.testnet.dteam.tech:27656",
 
         "version": "",
 
@@ -232,7 +405,7 @@
       "need_build_binary": true,
 
       "links": {
-        "git": "https://github.com/dymensionxyz/dymension.git",
+        "git_network_repo": "https://github.com/dymensionxyz/dymension.git",
         "binary_download": "",
         "explorer": "https://explorer.testnet.dteam.tech/dymension",
 
@@ -244,7 +417,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
         "snapshot": true,
         "state-sync": true,
         "endpoints": {
@@ -259,76 +435,27 @@
         "peers": true,
         "seeds": true,
         "useful-commands": true
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 5000000000
       },
 
       "other": {
         "binary_name": "dymd",
         "main_dir": "dymension",
         "working_dir": ".dymension",
+        "min_gas_price": 5000000000,
 
-        "denom": "udym",
+        "denom": "adym",
         "denom_exponent": 18,
 
-        "grpc_port": "35090",
+        "grpc_port": "26090",
 
-        "seed": "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:20556",
-        "peer": "0701d1853ad9581111600b7666de243b364d8c2c@peer.dymension.testnet.dteam.tech:35656",
-
-        "version": "",
-
-        "pruning": true
-      }
-    },
-    {
-      "id": 989,
-      "name": "artela",
-      "type": "testnet",
-      "description": "Artela offers a single, universal framework to extend the functionality of blockchain applications by the addition of chain-native modules.",
-      "is_tendermint_chain": true,
-      "need_build_binary": true,
-
-      "links": {
-        "git": "https://github.com/artela-network/artela",
-        "binary_download": "",
-        "explorer": "https://explorer.testnet.dteam.tech/artela",
-
-        "twitter": "https://twitter.com/Artela_Network",
-        "website": "https://artela.network/",
-        "github": "https://github.com/artela-network",
-        "discord": "https://discord.gg/artela"
-      },
-
-      "services": {
-        "overview": true,
-        "installation-guide": true,
-        "snapshot": true,
-        "state-sync": true,
-        "endpoints": {
-          "api": true,
-          "rpc": true,
-          "grpc": true,
-          "json_rpc": true
-        },
-        "addrbook": true,
-        "genesis": true,
-        "ibc":  false,
-        "peers": true,
-        "seeds": true,
-        "useful-commands": true
-      },
-
-      "other": {
-        "binary_name": "artelad",
-        "main_dir": "artela",
-        "working_dir": ".artelad",
-
-        "denom": "uart",
-        "denom_exponent": 18,
-
-        "grpc_port": "33090",
-
-        "seed": "8d0c626443a970034dc12df960ae1b1012ccd96a@artela-testnet-seed.itrocket.net:30656",
-        "peer": "360b5ac7650cbdafa2b2d75c12d2458d1317ad7f@peer.artela.testnet.dteam.tech:33656",
+        "seed": "7bcaec0b0a3cc23288e56fa62a8ccc47398ca80d@seed.dymension.testnet.dteam.tech:28656",
+        "peer": "fa38da9a2195eb234e8ba9ab9ddbcccc24ddd06e@peer.dymension.testnet.dteam.tech:26656",
 
         "version": "",
 
@@ -344,7 +471,7 @@
       "need_build_binary": true,
 
       "links": {
-        "git": "https://github.com/0glabs/0g-chain.git",
+        "git_network_repo": "https://github.com/0glabs/0g-chain.git",
         "binary_download": "",
         "explorer": "https://explorer.testnet.dteam.tech/0g",
 
@@ -356,7 +483,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
         "snapshot": true,
         "state-sync": true,
         "endpoints": {
@@ -369,78 +499,29 @@
         "genesis": true,
         "ibc":  false,
         "peers": true,
-        "seeds": false,
+        "seeds": true,
         "useful-commands": true
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.025
       },
 
       "other": {
         "binary_name": "0gchaind",
         "main_dir": "0g-chain",
         "working_dir": ".0gchain",
+        "min_gas_price": 0.025,
 
         "denom": "ua0gi",
-        "denom_exponent": 18,
+        "denom_exponent": 6,
 
-        "grpc_port": "64090",
+        "grpc_port": "31090",
 
-        "seed": "",
-        "peer": "f3c912cf5653e51ee94aaad0589a3d176d31a19d@peer.0g.testnet.dteam.tech:64656",
-
-        "version": "",
-
-        "pruning": true
-      }
-    },
-    {
-      "id": 999,
-      "name": "side",
-      "type": "testnet",
-      "description": "The Side Protocol is a modular infrastructure designed to scale Bitcoin. At its core is SIDE, a Bitcoin sidechain secured by BTC and serving as the settlement layer for zk-rollups within the modular stack.",
-      "is_tendermint_chain": true,
-      "need_build_binary": true,
-
-      "links": {
-        "git": "https://github.com/sideprotocol/side",
-        "binary_download": "",
-        "explorer": "https://explorer.testnet.dteam.tech/side",
-
-        "twitter": "https://twitter.com/SideProtocol",
-        "website": "https://side.one/",
-        "github": "https://github.com/sideprotocol",
-        "discord": "https://discord.gg/sideprotocol"
-      },
-
-      "services": {
-        "overview": true,
-        "installation-guide": true,
-        "snapshot": false,
-        "state-sync": true,
-        "endpoints": {
-          "api": true,
-          "rpc": true,
-          "grpc": true,
-          "json_rpc": false
-        },
-        "addrbook": true,
-        "genesis": true,
-        "ibc":  false,
-        "peers": true,
-        "seeds": true,
-        "useful-commands": true
-      },
-
-      "other": {
-        "binary_name": "sided",
-        "main_dir": "side",
-        "working_dir": ".side",
-
-        "denom": "uside",
-        "denom_exponent": 18,
-
-        "grpc_port": "63090",
-
-        "seed": "9c14080752bdfa33f4624f83cd155e2d3976e303@side-testnet-seed.itrocket.net:45656",
-        "peer": "19a0966b37f1023764b13c35936acfc43967b9f2@peer.side.testnet.dteam.tech:63656",
+        "seed": "014933ab30a3fa684522e14069469e5c94779d5e@seed.0g.testnet.dteam.tech:40656",
+        "peer": "f3c912cf5653e51ee94aaad0589a3d176d31a19d@peer.0g.testnet.dteam.tech:31656",
 
         "version": "",
 
@@ -456,7 +537,7 @@
       "need_build_binary": true,
 
       "links": {
-        "git": "https://github.com/warden-protocol/wardenprotocol/",
+        "git_network_repo": "https://github.com/warden-protocol/wardenprotocol/",
         "binary_download": "",
         "explorer": "https://explorer.testnet.dteam.tech/warden",
 
@@ -468,7 +549,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
         "snapshot": true,
         "state-sync": true,
         "endpoints": {
@@ -485,18 +569,25 @@
         "useful-commands": true
       },
 
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.025
+      },
+
       "other": {
         "binary_name": "wardend",
         "main_dir": "wardenprotocol",
         "working_dir": ".warden",
+        "min_gas_price": 0.025,
 
         "denom": "uward",
-        "denom_exponent": 18,
+        "denom_exponent": 6,
 
-        "grpc_port": "9910",
+        "grpc_port": "26090",
 
-        "seed": "ff0885377c44d58164f29d356b9d3d3a755c6213@warden-testnet-seed.itrocket.net:18656",
-        "peer": "3c3151c2f7f1dd59fedd67edf5b420ad14f6127@peer.warden.testnet.dteam.tech:61256",
+        "seed": "5b9dbac96dbed4b5434c1cba8bb369bf730f0be6@seed.warden.testnet.dteam.tech:41656",
+        "peer": "e850365a8232650623f30356c77583939b896327@peer.warden.testnet.dteam.tech:26656",
 
         "version": "",
 
@@ -512,7 +603,7 @@
       "need_build_binary": true,
 
       "links": {
-        "git": "https://github.com/chain4energy/c4e-chain",
+        "git_network_repo": "https://github.com/chain4energy/c4e-chain",
         "binary_download": "",
         "explorer": "https://explorer.testnet.dteam.tech/chain4energy",
 
@@ -524,7 +615,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
         "snapshot": false,
         "state-sync": true,
         "endpoints": {
@@ -541,18 +635,25 @@
         "useful-commands": true
       },
 
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.025
+      },
+
       "other": {
         "binary_name": "c4ed",
         "main_dir": "c4e-chain",
         "working_dir": ".c4e-chain",
+        "min_gas_price": 0.025,
 
         "denom": "uc4e",
-        "denom_exponent": 18,
+        "denom_exponent": 6,
 
-        "grpc_port": "9990",
+        "grpc_port": "31090",
 
         "seed": "",
-        "peer": "09c378e9108236d2339e26f267102addb4ba7309@peer.c4e.testnet.dteam.tech:61056",
+        "peer": "09c378e9108236d2339e26f267102addb4ba7309@peer.c4e.testnet.dteam.tech:31656",
 
         "version": "",
 
@@ -569,7 +670,7 @@
       "need_build_binary": true,
 
       "links": {
-        "git": "https://github.com/ingenuity-build/quicksilver",
+        "git_network_repo": "https://github.com/ingenuity-build/quicksilver",
         "binary_download": "",
         "explorer": "https://explorer.testnet.dteam.tech/quicksilver",
 
@@ -581,7 +682,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": true
+        },
         "snapshot": false,
         "state-sync": true,
         "endpoints": {
@@ -596,210 +700,31 @@
         "peers": true,
         "seeds": true,
         "useful-commands": true
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.00025
       },
 
       "other": {
         "binary_name": "quicksilverd",
         "main_dir": "quicksilver",
         "working_dir": ".quicksilverd",
+        "min_gas_price": 0.0001,
 
         "denom": "uqck",
-        "denom_exponent": 18,
+        "denom_exponent": 6,
 
-        "grpc_port": "9890",
+        "grpc_port": "27090",
 
-        "seed": "78283975c2bee9b95bbf9408cc974cbab7bfe8ef@quicksilver-testnet-seed.itrocket.net:37656",
-        "peer": "16949909d970a8a5c0ac4239104262a1b885730c@peer.quicksilver.testnet.dteam.tech:60956",
-
-        "version": "",
-
-        "pruning": true
-      }
-    },
-
-    {
-      "id": 995,
-      "name": "lava",
-      "type": "testnet",
-      "description": "Lava is a decentralized network of top RPC and API providers that developers can subscribe to for access to any blockchain. Providers are rewarded for their quality of service, meaning apps and users get maximum speed, data integrity and uptime.",
-      "is_tendermint_chain": true,
-      "need_build_binary": false,
-
-      "links": {
-        "git": "",
-        "binary_download": "https://github.com/lavanet/lava/releases/download",
-        "explorer": "https://explorer.testnet.dteam.tech/lava",
-
-        "twitter": "https://twitter.com/lavanetxyz",
-        "website": "https://www.lavanet.xyz/",
-        "github": "https://github.com/lavanet",
-        "discord": "https://discord.gg/xsepvRwbXP"
-      },
-
-      "services": {
-        "overview": true,
-        "installation-guide": true,
-        "snapshot": false,
-        "state-sync": true,
-        "endpoints": {
-          "api": true,
-          "rpc": true,
-          "grpc": true,
-          "json_rpc": false
-        },
-        "addrbook": true,
-        "genesis": true,
-        "ibc": false,
-        "peers": true,
-        "seeds": true,
-        "useful-commands": true
-      },
-
-      "other": {
-        "binary_name": "lavad",
-        "main_dir": "lava",
-        "working_dir": ".lava",
-
-        "denom": "ulava",
-        "denom_exponent": 18,
-
-        "grpc_port": "9590",
-
-        "seed": "eb7832932626c1c636d16e0beb49e0e4498fbd5e@lava-testnet-seed.itrocket.net:20656",
-        "peer": "6d4e96c5e653f0ed7f905b1d53ef8d373af55ecf@peer.lava.testnet.dteam.tech:60656",
+        "seed": "a524b9500564b489cce4e5b899530e368fd3b786@seed.quicksilver.testnet.dteam.tech:42656",
+        "peer": "16949909d970a8a5c0ac4239104262a1b885730c@peer.quicksilver.testnet.dteam.tech:27656",
 
         "version": "",
 
         "pruning": true
-      }
-    },
-
-    {
-      "id": 994,
-      "name": "babylon",
-      "type": "testnet",
-      "description": "Babylon project designs security protocols that scale Bitcoin to secure the decentralized world. To this end, Babylon utilizes the three primary facets of Bitcoin: bitcoin the asset, Bitcoin the PoW-secured timestamping server, and Bitcoin the most censorship-resistant blockspace in the world.",
-      "is_tendermint_chain": true,
-      "need_build_binary": true,
-
-      "links": {
-        "git": "https://github.com/babylonchain/babylon.git",
-        "binary_download": "",
-        "explorer": "https://explorer.testnet.dteam.tech/babylon",
-
-        "twitter": "https://twitter.com/babylon_chain",
-        "website": "https://babylonchain.io/",
-        "github": "https://github.com/babylonchain",
-        "discord": "https://discord.gg/babylonglobal"
-      },
-
-      "services": {
-        "overview": true,
-        "installation-guide": true,
-        "snapshot": false,
-        "state-sync": true,
-        "endpoints": {
-          "api": true,
-          "rpc": true,
-          "grpc": true,
-          "json_rpc": false
-        },
-        "addrbook": true,
-        "genesis": true,
-        "ibc": false,
-        "peers": true,
-        "seeds": true,
-        "useful-commands": true
-      },
-
-      "other": {
-        "binary_name": "babylond",
-        "main_dir": "babylon",
-        "working_dir": ".babylond",
-
-        "denom": "ubbn",
-        "denom_exponent": 18,
-
-        "grpc_port": "16490",
-
-        "seed": "49b4685f16670e784a0fe78f37cd37d56c7aff0e@3.14.89.82:26656",
-        "peer": "bd365fdfe8b4971dcbf567223164d90d19968215@peer.babylon.testnet.dteam.tech:16456",
-
-        "version": "",
-
-        "pruning": false
-      }
-    },
-
-    {
-      "id": 993,
-      "name": "namada",
-      "type": "testnet",
-      "description": "Namada is a privacy-for-assets centric blockchain using zero-knowledge proof technology. Namada's cryptographical features give users asset-agnostic, interchain privacy, and is being built by the Anoma foundation.",
-      "is_tendermint_chain": false,
-      "need_build_binary": false,
-
-      "links": {
-        "git": "",
-        "binary_download": "",
-        "explorer": "https://namada.valopers.com/",
-
-        "twitter": "https://twitter.com/namada",
-        "website": "https://namada.net/",
-        "github": "https://github.com/anoma",
-        "discord": "https://discord.gg/namada"
-      },
-
-      "services": {
-        "overview": true,
-        "installation-guide": true,
-        "snapshot": false,
-        "state-sync": false,
-        "endpoints": {
-          "api": true,
-          "rpc": true,
-          "grpc": false,
-          "json_rpc": false
-        },
-        "addrbook": true,
-        "genesis": true,
-        "ibc": true,
-        "peers": true,
-        "seeds": true,
-        "useful-commands": true
-      },
-
-      "other": {
-        "binary_name": "namadac",
-        "main_dir": "namada",
-        "working_dir": ".local/share/namada/shielded-expedition.88f17d1d14",
-
-        "denom": "naan",
-        "denom_exponent": 18,
-
-        "grpc_port": "",
-
-        "seed": "677f60b8f13e4a1e1b318d21aac7b21421dd7bce@seed.namada.testnet.dteam.tech:26656",
-        "peer": "5966d9059e49fa8898a0e5048c676ab52ca89fbc@peer.namada.testnet.dteam.tech:61156",
-
-        "version": "0.32.1",
-
-        "ibc": [
-          {
-            "name": "osmosis",
-            "wallet_link": "https://www.mintscan.io/osmosis-testnet/address/osmo16t4s4py87pylq5naas9shu8jmv4k28jk0kpj0j"
-          },
-          {
-            "name": "cosmos",
-            "wallet_link": "https://www.mintscan.io/cosmoshub-testnet/address/cosmos16t4s4py87pylq5naas9shu8jmv4k28jk8djzeq"
-          },
-          {
-            "name": "celestia",
-            "wallet_link": "https://www.mintscan.io/celestia-testnet/address/celestia16t4s4py87pylq5naas9shu8jmv4k28jkk8rjrd"
-          }
-        ],
-
-        "pruning": false
       }
     },
     {
@@ -811,7 +736,7 @@
       "need_build_binary": false,
 
       "links": {
-        "git": "",
+        "git_network_repo": "",
         "binary_download": "https://download.dteam.tech/selfchain/testnet/binary",
         "explorer": "https://explorer.testnet.dteam.tech/selfchain",
 
@@ -823,7 +748,10 @@
 
       "services": {
         "overview": true,
-        "installation-guide": true,
+        "installation-guide": {
+          "consensus": true,
+          "cosmovisor": false
+        },
         "snapshot": false,
         "state-sync": true,
         "endpoints": {
@@ -836,22 +764,29 @@
         "genesis": true,
         "ibc":  false,
         "peers": true,
-        "seeds": false,
+        "seeds": true,
         "useful-commands": true
+      },
+
+      "tx": {
+        "gas": "auto",
+        "gas_adjustment": 1.5,
+        "gas_prices": 0.025
       },
 
       "other": {
         "binary_name": "selfchaind",
         "main_dir": "",
         "working_dir": ".selfchain",
+        "min_gas_price": 0.025,
 
         "denom": "uself",
-        "denom_exponent": 18,
+        "denom_exponent": 6,
 
-        "grpc_port": "9790",
+        "grpc_port": "28090",
 
-        "seed": "",
-        "peer": "6ba6446a0075b2710506377bfed86c8dde4bbc59@peer.selfchain.testnet.dteam.tech:60856",
+        "seed": "274a534627d09edc85f791a16f8571c375853eee@seed.selfchain.testnet.dteam.tech:43656",
+        "peer": "6ba6446a0075b2710506377bfed86c8dde4bbc59@peer.selfchain.testnet.dteam.tech:28656",
 
         "version": "",
 
