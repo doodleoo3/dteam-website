@@ -21,7 +21,10 @@ export interface IServices {
         "full"?: boolean;
         "light"?: boolean;
     };
-    "snapshot": boolean;
+    "snapshot": {
+        "pruned": boolean;
+        "archive": boolean;
+    };
     "state-sync": boolean;
     "endpoints": {
         "api": boolean;
