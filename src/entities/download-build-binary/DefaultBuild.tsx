@@ -9,10 +9,7 @@ const DefaultBuild:FC<TendermintContentProps> = ({network, nodeVersion}) => {
             {`cd $HOME
 git clone ${network.links.git_network_repo}
 cd ${network.other.main_dir}
-${nodeVersion
-    ? `git checkout v${nodeVersion}`
-    : `git checkout ${<LoadingBlock width={100} />}`
-}
+${nodeVersion && `git checkout v${nodeVersion}`}
 make install
 
 ${network.other.binary_name} version --long | grep -e version -e commit`}
