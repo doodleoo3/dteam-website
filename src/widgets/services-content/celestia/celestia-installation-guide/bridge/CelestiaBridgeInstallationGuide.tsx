@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
-import InstallationGuideTypeSelector from "@/src/features/service-type-selector/InstallationGuideTypeSelector";
+import InstallationGuideTypeSelector from "@/src/features/service-type-selector/installation-guide/InstallationGuideTypeSelector";
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import {NetworkType} from "@/src/app/models/INetwork";
 
@@ -35,7 +35,7 @@ go version`}
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-git checkout tags/v0.15.0
+git checkout tags/v0.16.0
 make build
 make install
 make cel-key
