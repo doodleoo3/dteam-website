@@ -5,16 +5,22 @@ import axios from "axios";
 import {INetwork} from "@/src/app/models/INetwork";
 
 interface ISnapshotInfo {
-    network: INetwork
+    network: INetwork;
+    snapshotType: string | null | undefined;
 }
 
-const SnapshotInfo:FC<ISnapshotInfo> = ({network}) => {
+const SnapshotInfo:FC<ISnapshotInfo> = ({network, snapshotType}) => {
     const [snapshotData, setSnapshotData] = useState<ISnapshot | null>(null);
 
     const currentTime = Date.now();
-    async function fetchSnapshotData() {
+    async function fetchSnapshotData(snapshotType: string) {
         try {
-            const response = await axios.get<ISnapshot>(`https://data.dteam.tech/${network.name}/${network.type}/snapshot`);
+            let response = await axios.get<ISnapshot>(`https://data.dteam.tech/${network.name}/${network.type}/snapshot`);
+
+            if (snapshotType === "archive") {
+                response = await axios.get<ISnapshot>(`https://data.dteam.tech/${network.name}/${network.type}/snapshot-archive`);
+            }
+
             return response.data;
         } catch (e) {
             throw Error("Error while get snapshot data")
@@ -22,17 +28,19 @@ const SnapshotInfo:FC<ISnapshotInfo> = ({network}) => {
     }
 
     useEffect(() => {
-        fetchSnapshotData().then(data => {
-            if (data) {
-                setSnapshotData(data);
-            }
-        });
-    }, []);
+        if (snapshotType) {
+            fetchSnapshotData(snapshotType).then(data => {
+                if (data) {
+                    setSnapshotData(data);
+                }
+            });
+        }
+    }, [snapshotType]);
 
     return (
         <div className={styles.snap__info__container}>
             <div className={styles.latest__snapshot}>
-                <h2>Latest snapshot</h2>
+                <h2>Latest {snapshotType} snapshot</h2>
                 {snapshotData
                     ?
                     <>
@@ -55,7 +63,13 @@ const SnapshotInfo:FC<ISnapshotInfo> = ({network}) => {
                         </div>
                         <div>
                             <h3>URL: </h3>
-                            <p>{`https://download.dteam.tech/${network.name}/${network.type}/latest-snapshot`}</p>
+                            {
+                                snapshotType === "archive"
+                                    ?
+                                    <p>{`https://download.dteam.tech/${network.name}/${network.type}/latest-archive-snapshot`}</p>
+                                    :
+                                    <p>{`https://download.dteam.tech/${network.name}/${network.type}/latest-snapshot`}</p>
+                            }
                         </div>
                     </>
                     :
@@ -80,14 +94,20 @@ const SnapshotInfo:FC<ISnapshotInfo> = ({network}) => {
                         </div>
                         <div>
                             <h3>URL: </h3>
-                            <span>{`https://download.dteam.tech/${network.name}/${network.type}/latest-snapshot`}</span>
+                            {
+                                snapshotType === "archive"
+                                    ?
+                                    <p>{`https://download.dteam.tech/${network.name}/${network.type}/latest-archive-snapshot`}</p>
+                                    :
+                                    <p>{`https://download.dteam.tech/${network.name}/${network.type}/latest-snapshot`}</p>
+                            }
                         </div>
                     </>
                 }
             </div>
 
             <div className={styles.past__snapshot}>
-                <h2>Past snapshot</h2>
+                <h2>Past {snapshotType} snapshot</h2>
                 {snapshotData
                     ?
                     <>
@@ -110,7 +130,13 @@ const SnapshotInfo:FC<ISnapshotInfo> = ({network}) => {
                         </div>
                         <div>
                             <h3>URL: </h3>
-                            <p>{`https://download.dteam.tech/${network.name}/${network.type}/past-snapshot`}</p>
+                            {
+                                snapshotType === "archive"
+                                    ?
+                                    <p>{`https://download.dteam.tech/${network.name}/${network.type}/past-archive-snapshot`}</p>
+                                    :
+                                    <p>{`https://download.dteam.tech/${network.name}/${network.type}/past-snapshot`}</p>
+                            }
                         </div>
                     </>
                     :
@@ -135,7 +161,13 @@ const SnapshotInfo:FC<ISnapshotInfo> = ({network}) => {
                         </div>
                         <div>
                             <h3>URL: </h3>
-                            <span>{`https://download.dteam.tech/${network.name}/${network.type}/latest-snapshot`}</span>
+                            {
+                                snapshotType === "archive"
+                                    ?
+                                    <p>{`https://download.dteam.tech/${network.name}/${network.type}/past-archive-snapshot`}</p>
+                                    :
+                                    <p>{`https://download.dteam.tech/${network.name}/${network.type}/past-snapshot`}</p>
+                            }
                         </div>
                     </>
                 }
