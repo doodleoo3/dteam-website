@@ -5,6 +5,8 @@ export interface TendermintContentProps {
     nodeVersion?: string | null;
     chainId?: string | null;
     peers?: string | null;
+    snapshotType?: string | null;
+    installationGuideType?: string | null;
 }
 
 export interface OverviewContentProps {
