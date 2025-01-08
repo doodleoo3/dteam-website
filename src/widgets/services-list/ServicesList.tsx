@@ -1,18 +1,18 @@
 'use client'
 
-import React, {FC, useEffect, useState} from 'react';
-import styles from "./ServicesList.module.scss"
+import React, { FC, useEffect, useState } from 'react';
+import styles from "./ServicesList.module.scss";
 import Link from "next/link";
-import {NetworkType} from "@/src/app/models/INetwork";
-import mainnets from "@/src/shared/lib/networks-data/mainnets.json"
-import testnets from "@/src/shared/lib/networks-data/testnets.json"
+import { NetworkType } from "@/src/app/models/INetwork";
+import mainnets from "@/src/shared/lib/networks-data/mainnets.json";
+import testnets from "@/src/shared/lib/networks-data/testnets.json";
 
 interface ServicesListProps {
     type: NetworkType;
     searchQuery: string;
 }
 
-const ServicesList:FC<ServicesListProps> = ({type, searchQuery}) => {
+const ServicesList: FC<ServicesListProps> = ({ type, searchQuery }) => {
     const initialData = type === "mainnet" ? mainnets : testnets;
     const [networksData, setNetworksData] = useState(initialData);
     const [filteredServices, setFilteredServices] = useState<string[]>([]);
@@ -22,7 +22,10 @@ const ServicesList:FC<ServicesListProps> = ({type, searchQuery}) => {
 
         networksData.forEach((network: any) => {
             Object.entries(network.services).forEach(([key, value]: [string, any]) => {
-                if (value === true) {
+                if (
+                    value === true ||
+                    (typeof value === 'object' && Object.values(value).some((subValue) => subValue === true))
+                ) {
                     allServices.add(key);
                 }
             });
@@ -49,15 +52,9 @@ const ServicesList:FC<ServicesListProps> = ({type, searchQuery}) => {
         <div className={styles.list}>
             {
                 filteredServices.length > 0
-                    ?
-                    <>
-                        {filteredServices.map((service: string) => (
-                            renderServiceLink(service)
-                        ))}
-                    </>
+                    ? filteredServices.map((service: string) => renderServiceLink(service))
                     : <h1>Services not found</h1>
             }
-
         </div>
     );
 };
