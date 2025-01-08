@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
-import InstallationGuideTypeSelector from "@/src/features/service-type-selector/InstallationGuideTypeSelector";
+import InstallationGuideTypeSelector from "@/src/features/service-type-selector/installation-guide/InstallationGuideTypeSelector";
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import WardenBuild from "@/src/entities/download-build-binary/WardenBuild";
 import ZeroGravityBuild from "@/src/entities/download-build-binary/ZeroGravityBuild";
@@ -11,6 +11,7 @@ import LavaDownload from "@/src/entities/download-build-binary/LavaDownload";
 import CrossFiDownload from "@/src/entities/download-build-binary/CrossFiDownload";
 import LoadingBlock from "@/src/shared/ui/loading-block/LoadingBlock";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
+import InjectiveBuild from "@/src/entities/download-build-binary/InjectiveBuild";
 
 const TendermintInstallationGuideWithCosmovisor:FC<TendermintContentProps> = ({network, nodeVersion, chainId, peers}) => {
     return (
@@ -49,7 +50,7 @@ source $HOME/.bash_profile`}
                 {network.need_build_binary
                     ?
                     <>
-                        {network.name === "warden" || network.name === "0g" || network.name === "celestia"
+                        {network.name === "warden" || network.name === "0g" || network.name === "celestia" || network.name === "injective"
                             ?
                             <>
                                 {network.name === "warden" &&
@@ -58,6 +59,8 @@ source $HOME/.bash_profile`}
                                     <ZeroGravityBuild network={network} nodeVersion={nodeVersion}/>}
                                 {network.name === "celestia" &&
                                     <CelestiaBuild network={network} nodeVersion={nodeVersion}/>}
+                                {network.name === "injective" &&
+                                    <InjectiveBuild network={network} nodeVersion={nodeVersion}/>}
                             </>
                             : <DefaultBuild network={network} nodeVersion={nodeVersion}/>
                         }
@@ -67,40 +70,23 @@ source $HOME/.bash_profile`}
                         {network.name === "selfchain" && <SelfchainDownload network={network}/>}
                         {network.name === "lava" &&
                             <LavaDownload network={network} nodeVersion={nodeVersion}/>}
-                        {network.name === "crossfi" &&
-                            <CrossFiDownload network={network} nodeVersion={nodeVersion}/>}
                     </>
                 }
 
-                {network.name === "initia" || network.name === "kopi"
+                {network.name === "initia" || network.name === "kopi" || network.name === "nillion" || network.name === "injective"
                     ?
                     <ContentItem title={"CONFIG AND INITIALIZE NODE"}>
-                        {`${network.other.binary_name} config set client keyring-backend os
-${network.other.binary_name} config set client node tcp://localhost:\${PORT_${network.name.toUpperCase()}}657
-${chainId
-                            ? `${network.other.binary_name} config set client chain-id ${chainId}`
-                            : `${network.other.binary_name} config set client chain-id ${<LoadingBlock
-                                width={100}/>}`
-                        }
-${chainId
-                            ? `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${chainId}`
-                            : `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${<LoadingBlock
-                                width={100}/>}`
-                        }`}
+                        {`${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${chainId}
+${network.other.binary_name} config set client chain-id ${chainId}
+${network.other.binary_name} config set client keyring-backend os
+${network.other.binary_name} config set client node tcp://localhost:\${PORT_${network.name.toUpperCase()}}657`}
                     </ContentItem>
                     :
                     <ContentItem title={"CONFIG AND INITIALIZE NODE"}>
-                        {`${network.other.binary_name} config keyring-backend os
-${network.other.binary_name} config node tcp://localhost:\${PORT_${network.name.toUpperCase()}}657
-${chainId
-                            ? `${network.other.binary_name} config chain-id ${chainId}`
-                            : `${network.other.binary_name} config chain-id ${<LoadingBlock width={100}/>}`
-                        }
-${chainId
-                            ? `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${chainId}`
-                            : `${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${<LoadingBlock
-                                width={100}/>}`
-                        }`}
+                        {`${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${chainId}
+${network.other.binary_name} config chain-id ${chainId}
+${network.other.binary_name} config keyring-backend os
+${network.other.binary_name} config node tcp://localhost:\${PORT_${network.name.toUpperCase()}}657`}
                     </ContentItem>
                 }
 
