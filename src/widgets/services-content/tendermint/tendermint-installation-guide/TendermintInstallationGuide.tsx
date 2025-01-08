@@ -6,7 +6,7 @@ import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss"
 
 import ContentItem from "@/src/entities/content-item/ContentItem";
-import InstallationGuideTypeSelector from "@/src/features/service-type-selector/InstallationGuideTypeSelector";
+import InstallationGuideTypeSelector from "@/src/features/service-type-selector/installation-guide/InstallationGuideTypeSelector";
 import LoadingService from "@/src/shared/ui/loading-service/LoadingService";
 
 import WardenBuild from "@/src/entities/download-build-binary/WardenBuild";
@@ -15,18 +15,15 @@ import SelfchainDownload from "@/src/entities/download-build-binary/SelfchainDow
 import LavaDownload from "@/src/entities/download-build-binary/LavaDownload";
 import ZeroGravityBuild from "@/src/entities/download-build-binary/ZeroGravityBuild";
 import CelestiaBuild from "@/src/entities/download-build-binary/CelestiaBuild";
-
-// import StoryInstallationGuide
-//     from "@/src/widgets/services-content/story/story-installation-guide/StoryInstallationGuide";
-// import NamadaInstallationGuide from "@/src/widgets/services-content/namada/namada-installation-guide/NamadaInstallationGuide";
+import InjectiveBuild from "@/src/entities/download-build-binary/InjectiveBuild";
 
 const CelestiaBridgeInstallationGuide = dynamic(() => import("@/src/widgets/services-content/celestia/celestia-installation-guide/bridge/CelestiaBridgeInstallationGuide"), {loading: LoadingService})
 const CelestiaFullInstallationGuide = dynamic(() => import("@/src/widgets/services-content/celestia/celestia-installation-guide/full/CelestiaFullInstallationGuide"), {loading: LoadingService})
 const CelestiaLightInstallationGuide = dynamic(() => import("@/src/widgets/services-content/celestia/celestia-installation-guide/light/CelestiaLightInstallationGuide"), {loading: LoadingService})
 const TendermintInstallationGuideWithCosmovisor = dynamic(() => import("@/src/widgets/services-content/tendermint/tendermint-installation-guide/TendermintInstallationGuideWithCosmovisor"), {loading: LoadingService})
-const StoryInstallationGuide = dynamic(() => import("@/src/widgets/services-content/story/story-installation-guide/StoryInstallationGuide"))
-const NamadaInstallationGuide = dynamic(() => import("@/src/widgets/services-content/namada/namada-installation-guide/NamadaInstallationGuide"))
-
+const StoryInstallationGuideWithCosmovisor = dynamic(() => import("@/src/widgets/services-content/story/story-installation-guide/StoryInstallationGuideWithCosmovisor"), {loading: LoadingService})
+const StoryInstallationGuide = dynamic(() => import("@/src/widgets/services-content/story/story-installation-guide/StoryInstallationGuide"), {loading: LoadingService})
+const NamadaInstallationGuide = dynamic(() => import("@/src/widgets/services-content/namada/namada-installation-guide/NamadaInstallationGuide"), {loading: LoadingService})
 
 const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVersion, chainId, peers}) => {
     const searchParams = useSearchParams();
@@ -41,26 +38,22 @@ const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVe
 
     if (network.name === "namada") {
         return (
-            <NamadaInstallationGuide network={network} chainId={chainId} />
+            <NamadaInstallationGuide network={network} chainId={chainId} installationGuideType={type} />
         );
     }
 
     if (network.name === "story") {
-        return (
-           <StoryInstallationGuide network={network} peers={peers} />
-        );
-    }
-
-    if (type === "cosmovisor") {
-        return (
-            <TendermintInstallationGuideWithCosmovisor network={network} nodeVersion={nodeVersion} chainId={chainId} peers={peers} />
-        );
+        if (type === "consensus") {
+            return (
+                <StoryInstallationGuide network={network} peers={peers} installationGuideType={type} />
+            );
+        }
+        return <StoryInstallationGuideWithCosmovisor network={network} nodeVersion={nodeVersion} chainId={chainId} peers={peers} />
     }
 
     if (type === "bridge" && network.name === "celestia") {
         return (
             <CelestiaBridgeInstallationGuide network={network} />
-            // <TendermintInstallationGuideWithCosmovisor network={network} nodeVersion={nodeVersion} chainId={chainId} peers={peers} />
         );
     }
 
@@ -76,13 +69,17 @@ const TendermintInstallationGuide:FC<TendermintContentProps> = ({network, nodeVe
         );
     }
 
+    if (type === "cosmovisor") {
+        return (
+            <TendermintInstallationGuideWithCosmovisor network={network} nodeVersion={nodeVersion} chainId={chainId} peers={peers} />
+        );
+    }
+
     return (
         <div className={styles.container__with__types}>
                 <InstallationGuideTypeSelector network={network}/>
 
                 <div className={styles.types__content__container}>
-
-
                         <ContentItem title={"INSTALL DEPENDENCIES"}>
                                 {`sudo apt update
 sudo apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev lz4 -y`}
@@ -110,7 +107,7 @@ source $HOME/.bash_profile`}
                         {network.need_build_binary
                             ?
                             <>
-                                    {network.name === "warden" || network.name === "0g" || network.name === "celestia"
+                                    {network.name === "warden" || network.name === "0g" || network.name === "celestia" || network.name === "injective"
                                         ?
                                         <>
                                                 {network.name === "warden" &&
@@ -119,6 +116,8 @@ source $HOME/.bash_profile`}
                                                     <ZeroGravityBuild network={network} nodeVersion={nodeVersion}/>}
                                                 {network.name === "celestia" &&
                                                     <CelestiaBuild network={network} nodeVersion={nodeVersion}/>}
+                                                {network.name === "injective" &&
+                                                    <InjectiveBuild network={network} nodeVersion={nodeVersion}/>}
                                         </>
                                         : <DefaultBuild network={network} nodeVersion={nodeVersion}/>
                                     }
@@ -131,7 +130,7 @@ source $HOME/.bash_profile`}
                             </>
                         }
 
-                        {network.name === "initia" || network.name === "kopi" || network.name === "nillion"
+                        {network.name === "initia" || network.name === "kopi" || network.name === "nillion" || network.name === "injective"
                             ?
                             <ContentItem title={"CONFIG AND INITIALIZE NODE"}>
                                     {`${network.other.binary_name} init "DTEAM_GUIDE" --chain-id ${chainId}
@@ -223,7 +222,7 @@ After=network-online.target
 [Service]
 User=$USER
 WorkingDirectory=$HOME/${network.other.working_dir}
-ExecStart=$(which ${network.other.binary_name}) start --home $HOME/${network.other.working_dir}
+ExecStart=$(which ${network.other.binary_name}) start
 Restart=on-failure
 RestartSec=5
 LimitNOFILE=65535
