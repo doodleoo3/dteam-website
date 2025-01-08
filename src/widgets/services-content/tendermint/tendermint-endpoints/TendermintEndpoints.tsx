@@ -2,27 +2,24 @@ import React, {FC} from 'react';
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
+import dynamic from "next/dynamic";
+
+const NamadaEndpoints = dynamic(() => import("@/src/widgets/services-content/namada/namada-endpoints/NamadaEndpoints"))
+
+const StoryEndpoints = dynamic(() => import("@/src/widgets/services-content/story/story-endpoints/StoryEndpoints"))
 
 const TendermintEndpoints:FC<TendermintContentProps> = ({network}) => {
     const endpoints = network.services.endpoints;
 
     if (network.name === "namada") {
         return (
-            <div className={styles.container}>
-                {
-                    endpoints.api &&
-                    <ContentItem title={"Indexer"}>
-                        {`https://namadexer.testnet.dteam.tech`}
-                    </ContentItem>
-                }
+            <NamadaEndpoints network={network} />
+        );
+    }
 
-                {
-                    endpoints.rpc &&
-                    <ContentItem title={"Rpc"}>
-                        {`https://rpc.${network.name}.${network.type}.dteam.tech`}
-                    </ContentItem>
-                }
-            </div>
+    if (network.name === "story") {
+        return (
+            <StoryEndpoints network={network} />
         );
     }
 
