@@ -1,36 +1,47 @@
 'use client'
 
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss";
 import SnapshotInfo from "@/src/features/snaphot-info/SnapshotInfo";
 import dynamic from "next/dynamic";
-// import NamadaSnapshot from "@/src/widgets/services-content/namada/namada-snapshot/NamadaSnapshot";
-// import StorySnapshot from "@/src/widgets/services-content/story/story-snapshot/StorySnapshot";
+import {useRouter, useSearchParams} from "next/navigation";
+import SnapshotTypeSelector from "@/src/features/service-type-selector/snapshot/SnapshotTypeSelector";
 
 const NamadaSnapshot = dynamic(() => import("@/src/widgets/services-content/namada/namada-snapshot/NamadaSnapshot"))
 const StorySnapshot = dynamic(() => import("@/src/widgets/services-content/story/story-snapshot/StorySnapshot"))
 
-const TendermintSnapshot:FC<TendermintContentProps> = ({network}) => {
+const TendermintSnapshot:FC<TendermintContentProps> = ({network, chainId}) => {
+    const searchParams = useSearchParams();
+    const type = searchParams.get('type');
+    const router = useRouter();
+
+    useEffect(() => {
+        if (type === null) {
+            router.push(`/services/${network.type}/snapshot/${network.name}?type=pruned`);
+        }
+    }, []);
 
     if (network.name === "namada") {
         return (
-            <NamadaSnapshot network={network}/>
+            <NamadaSnapshot network={network} snapshotType={type} chainId={chainId}/>
         );
     }
 
     if (network.name === "story") {
         return (
-          <StorySnapshot network={network}/>
+            <StorySnapshot network={network} snapshotType={type}/>
         );
     }
 
     return (
-        <div className={styles.snapshot__page__wrapper}>
-            <SnapshotInfo network={network}/>
+        <div className={styles.container__with__types}>
+            <SnapshotInfo network={network} snapshotType={type}/>
 
-            <div className={styles.container}>
+            <SnapshotTypeSelector network={network}/>
+
+            <div className={styles.types__content__container}>
                 <ContentItem title={"INSTALL DEPENDENCIES"}>
                     {`sudo apt update
 sudo apt-get install snapd lz4 -y`}
@@ -44,10 +55,18 @@ cp $HOME/${network.other.working_dir}/data/priv_validator_state.json $HOME/${net
 rm -rf $HOME/${network.other.working_dir}/data
 ${network.other.binary_name} tendermint unsafe-reset-all --home $HOME/${network.other.working_dir}/ --keep-addr-book`}
                 </ContentItem>
-                <ContentItem title={"DOWNLOAD SNAPSHOT"}>
-                    {`curl -o - -L https://download.dteam.tech/${network.name}/${network.type}/latest-snapshot  | lz4 -c -d - | tar -x -C $HOME/${network.other.working_dir}
+                {type === "archive"
+                    ?
+                    <ContentItem title={"DOWNLOAD ARCHIVE SNAPSHOT"}>
+                        {`curl -o - -L https://download.dteam.tech/${network.name}/${network.type}/latest-archive-snapshot  | lz4 -c -d - | tar -x -C $HOME/${network.other.working_dir}
 mv $HOME/${network.other.working_dir}/priv_validator_state.json.backup $HOME/${network.other.working_dir}/data/priv_validator_state.json`}
-                </ContentItem>
+                    </ContentItem>
+                    :
+                    <ContentItem title={"DOWNLOAD PRUNED SNAPSHOT"}>
+                        {`curl -o - -L https://download.dteam.tech/${network.name}/${network.type}/latest-snapshot  | lz4 -c -d - | tar -x -C $HOME/${network.other.working_dir}
+mv $HOME/${network.other.working_dir}/priv_validator_state.json.backup $HOME/${network.other.working_dir}/data/priv_validator_state.json`}
+                    </ContentItem>
+                }
                 <ContentItem title={"RESTART NODE AND CHECK LOGS"}>
                     {`sudo systemctl restart ${network.other.binary_name}
 sudo journalctl -u ${network.other.binary_name} -f -o cat`}
@@ -56,6 +75,7 @@ sudo journalctl -u ${network.other.binary_name} -f -o cat`}
         </div>
 
     );
+
 };
 
 export default TendermintSnapshot;
