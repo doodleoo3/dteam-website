@@ -2,18 +2,23 @@ import React, {FC} from 'react';
 import styles from "@/src/shared/ui/service-content-container/ServiceContentContainer.module.scss"
 import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
+import InstallationGuideTypeSelector
+    from "@/src/features/service-type-selector/installation-guide/InstallationGuideTypeSelector";
 
 const NamadaInstallationGuide:FC<TendermintContentProps> = ({network, peers}) => {
         return (
-            <div className={styles.container}>
+            <div className={styles.container__with__types}>
+                <InstallationGuideTypeSelector network={network}/>
+
+                <div className={styles.types__content__container}>
                     <ContentItem title={"INSTALL DEPENDENCIES"}>
-                            {`sudo apt update
+                        {`sudo apt update
 apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y`}
                     </ContentItem>
 
                     <ContentItem title={"INSTALL GO"}>
-                            {`cd $HOME && \\
-ver="1.21.3" && \\
+                        {`cd $HOME && \\
+ver="1.22.3" && \\
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \\
 sudo rm -rf /usr/local/go && \\
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \\
@@ -24,37 +29,39 @@ go version`}
                     </ContentItem>
 
                     <ContentItem title={"SET VARIABLES"}>
-                            {`echo "export MONIKER="DTEAM_GUIDE"" >> $HOME/.bash_profile
+                        {`echo "export MONIKER="DTEAM_GUIDE"" >> $HOME/.bash_profile
 echo "export ${network.name.toUpperCase()}_PORT="26"" >> $HOME/.bash_profile
 source $HOME/.bash_profile`}
                     </ContentItem>
 
+                    <ContentItem title={"CREATE DIRECTORIES"}>
+                        {`mkdir -p "$HOME/.story/story"
+mkdir -p "$HOME/.story/geth"`}
+                    </ContentItem>
+
                     <ContentItem title={"Build geth binary"}>
                         {`cd $HOME
-rm -rf ${network.other.binary_name}-geth
-git clone https://github.com/piplabs/story-geth.git
-cd ${network.other.main_dir}-geth
-git checkout v0.9.2
-make geth
-cp ./build/bin/geth $HOME/go/bin/story-geth
-    
+wget -O story-geth https://github.com/piplabs/story-geth/releases/download/v0.11.0/geth-linux-amd64
+chmod +x $HOME/story-geth
+mv $HOME/story-geth $HOME/go/bin/
+
 story-geth version`}
                     </ContentItem>
 
                     <ContentItem title={"Build consensus binary"}>
-                            {`cd $HOME
+                        {`cd $HOME
 rm -rf ${network.other.binary_name}
 git clone https://github.com/piplabs/story.git
 cd ${network.other.main_dir}
-git checkout v0.9.11
+git checkout v${network.other.version}
 go build -o story ./client
-cp story $HOME/go/bin
+mv $HOME/story/story $HOME/go/bin/
 
 story version`}
                     </ContentItem>
 
                     <ContentItem title={"CONFIG AND INITIALIZE NODE"}>
-                        {`${network.other.binary_name} init --network iliad --moniker "DTEAM_GUIDE"`}
+                        {`${network.other.binary_name} init --network odyssey --moniker "DTEAM_GUIDE"`}
                     </ContentItem>
 
                     <ContentItem title={"DOWNLOAD GENESIS AND ADDRBOOK"}>
@@ -65,14 +72,14 @@ wget -O $HOME/${network.other.working_dir}/config/addrbook.json https://download
                     <ContentItem title={"SET SEEDS AND PEERS"}>
                         {`SEEDS="${network.other.seed}"
 ${peers
-                        ? `PEERS="${network.other.peer},${peers}"`
-                        : `PEERS="${network.other.peer}"`
+                            ? `PEERS="${network.other.peer},${peers}"`
+                            : `PEERS="${network.other.peer}"`
                         }
 sed -i -e "s/^seeds *=.*/seeds = \\"$SEEDS\\"/; s/^persistent_peers *=.*/persistent_peers = \\"$PEERS\\"/" $HOME/${network.other.working_dir}/config/config.toml`}
                     </ContentItem>
 
                     <ContentItem title={"SET CUSTOM PORTS / OPTIONAL"}>
-                    {`sed -i.bak -e "s%:26658%:\${PORT_${network.name.toUpperCase()}}658%g;
+                        {`sed -i.bak -e "s%:26658%:\${PORT_${network.name.toUpperCase()}}658%g;
 s%:26657%:\${PORT_${network.name.toUpperCase()}}657%g;
 s%:6060%:\${PORT_${network.name.toUpperCase()}}060%g;
 s%:26656%:\${PORT_${network.name.toUpperCase()}}656%g;
@@ -93,7 +100,7 @@ After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which ${network.other.binary_name}-geth) --iliad --syncmode full
+ExecStart=$(which ${network.other.binary_name}-geth) --odyssey --syncmode full
 Restart=on-failure
 RestartSec=5
 LimitNOFILE=65535
@@ -104,7 +111,7 @@ EOF`}
                     </ContentItem>
 
                     <ContentItem title={"CREATE CONSENSUS SERVICE FILE"}>
-                    {`sudo tee /etc/systemd/system/${network.other.binary_name}.service > /dev/null <<EOF
+                        {`sudo tee /etc/systemd/system/${network.other.binary_name}.service > /dev/null <<EOF
 [Unit]
 Description=${network.name} ${network.type} node
 After=network-online.target
@@ -123,8 +130,8 @@ EOF`}
 
                     {network.services.snapshot &&
                         <ContentItem title={"DOWNLOAD GETH SNAPSHOT / OPTIONAL"}>
-                            {`mkdir -p $HOME/.story/geth/iliad/geth
-curl -o - -L https://download.dteam.tech/${network.name}/${network.type}/latest-geth-snapshot  | lz4 -c -d - | tar -x -C $HOME/.story/geth/iliad/geth`}
+                            {`mkdir -p $HOME/.story/geth/odyssey/geth
+curl -o - -L https://download.dteam.tech/${network.name}/${network.type}/latest-geth-snapshot  | lz4 -c -d - | tar -x -C $HOME/.story/geth/odyssey/geth`}
                         </ContentItem>
                     }
 
@@ -149,6 +156,7 @@ sudo journalctl -u ${network.other.binary_name} -f -o cat`}
                     </ContentItem>
 
 
+                </div>
             </div>
         );
 };
