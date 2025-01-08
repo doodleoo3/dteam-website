@@ -4,14 +4,12 @@ import ContentItem from "@/src/entities/content-item/ContentItem";
 import {TendermintContentProps} from "@/src/app/models/ITendermintContentProps";
 import dynamic from "next/dynamic";
 
-// import NamadaUsefulCommands from "@/src/widgets/services-content/namada/namada-useful-commands/NamadaUsefulCommands";
-
 const NamadaUsefulCommands = dynamic(() => import("@/src/widgets/services-content/namada/namada-useful-commands/NamadaUsefulCommands"))
 
 const TendermintUsefulCommands:FC<TendermintContentProps> = ({network, chainId}) => {
     if (network.name === "namada") {
         return (
-            <NamadaUsefulCommands network={network} />
+            <NamadaUsefulCommands network={network} chainId={chainId} />
         );
     }
 
@@ -20,11 +18,7 @@ const TendermintUsefulCommands:FC<TendermintContentProps> = ({network, chainId})
             <ContentItem title={"Service operations"}>
                 {`#check logs
 sudo journalctl -u ${network.other.binary_name} -f
-${
-''               
-// #sync info
-// ${network.other.binary_name} status 2>&1 | jq .SyncInfo          
-}
+
 #start service
 sudo systemctl start ${network.other.binary_name}
 
@@ -73,39 +67,39 @@ ${network.other.binary_name} q bank balances <wallet-address>`}
 
             <ContentItem title={"Tokens operations"}>
                 {`#withdraw all rewards
-${network.other.binary_name} tx distribution withdraw-all-rewards --from <wallet-name> --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
+${network.other.binary_name} tx distribution withdraw-all-rewards --from <wallet-name> --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
 
 #withdraw rewards from specific validator
-${network.other.binary_name} tx distribution withdraw-rewards <validator-valoper-address> --from <wallet-name> --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
+${network.other.binary_name} tx distribution withdraw-rewards <validator-valoper-address> --from <wallet-name> --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
 
 #withdraw rewards and commission from your validator
-${network.other.binary_name} tx distribution withdraw-rewards <your-validator-valoper-address> --commission --from <wallet-name> --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
+${network.other.binary_name} tx distribution withdraw-rewards <your-validator-valoper-address> --commission --from <wallet-name> --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
 
 #delegate
-${network.other.binary_name} tx staking delegate <validator-valoper-address> ${10**network.other.denom_exponent}${network.other.denom} --from <wallet-name> --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
+${network.other.binary_name} tx staking delegate <validator-valoper-address> ${10**network.other.denom_exponent}${network.other.denom} --from <wallet-name> --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
 
 #redelegate
-${network.other.binary_name} tx staking redelegate <from-validator-valoper-address> <to-validator-valoper-address> ${10**network.other.denom_exponent}${network.other.denom} --from <wallet-name> --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
+${network.other.binary_name} tx staking redelegate <from-validator-valoper-address> <to-validator-valoper-address> ${10**network.other.denom_exponent}${network.other.denom} --from <wallet-name> --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
 
 #unbond
-${network.other.binary_name} tx staking unbond <validator-valoper-address> ${10**network.other.denom_exponent}${network.other.denom} --from <wallet-name> --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
+${network.other.binary_name} tx staking unbond <validator-valoper-address> ${10**network.other.denom_exponent}${network.other.denom} --from <wallet-name> --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
 
 #transfer
-${network.other.binary_name} tx bank send <wallet-name> <wallet-address> ${10**network.other.denom_exponent}${network.other.denom} --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y`}
+${network.other.binary_name} tx bank send <wallet-name> <wallet-address> ${10**network.other.denom_exponent}${network.other.denom} --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y`}
             </ContentItem>
 
             <ContentItem title={"Governance operations"}>
                 {`#vote "yes"
-${network.other.binary_name} tx gov vote <proposal-id> yes --from <wallet-name> --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
+${network.other.binary_name} tx gov vote <proposal-id> yes --from <wallet-name> --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
 
 #vote "no"
-${network.other.binary_name} tx gov vote <proposal-id> no --from <wallet-name> --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
+${network.other.binary_name} tx gov vote <proposal-id> no --from <wallet-name> --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
 
 #vote "no with veto"
-${network.other.binary_name} tx gov vote <proposal-id> no_with_veto --from <wallet-name> --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
+${network.other.binary_name} tx gov vote <proposal-id> no_with_veto --from <wallet-name> --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
 
 #vote "abstain"
-${network.other.binary_name} tx gov vote <proposal-id> abstain --from <wallet-name> --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
+${network.other.binary_name} tx gov vote <proposal-id> abstain --from <wallet-name> --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
                 
 #view all proposals
 ${network.other.binary_name} query gov proposals
@@ -117,7 +111,7 @@ ${network.other.binary_name} query gov proposal <proposal-id>`}
             <ContentItem title={"Validator operations"}>
                 {`#create validator
 ${network.other.binary_name} tx staking create-validator \\
---amount 1000000utia \\
+--amount 1000000${network.other.denom} \\
 --moniker "" \\
 --identity "" \\
 --details "" \\
@@ -131,8 +125,8 @@ ${network.other.binary_name} tx staking create-validator \\
 --chain-id ${chainId} \\
 --from <wallet-name> \\
 --gas auto \\
---gas-adjustment ${network.tx.gas_adjustment} \\
---gas-prices ${network.tx.gas_prices}${network.other.denom} \\
+--gas-adjustment ${network.tx?.gas_adjustment} \\
+--gas-prices ${network.tx?.gas_prices}${network.other.denom} \\
 --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" \\
 -y
 
@@ -147,13 +141,13 @@ ${network.other.binary_name} tx staking edit-validator \\
 --chain-id ${chainId} \\
 --from <wallet-name> \\
 --gas auto \\
---gas-adjustment ${network.tx.gas_adjustment} \\
---gas-prices ${network.tx.gas_prices}${network.other.denom} \\
+--gas-adjustment ${network.tx?.gas_adjustment} \\
+--gas-prices ${network.tx?.gas_prices}${network.other.denom} \\
 --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" \\
 -y
 
 #unjail validator
-${network.other.binary_name} tx slashing unjail --from <wallet-name> --chain-id ${chainId} --gas ${network.tx.gas} --gas-adjustment ${network.tx.gas_adjustment} --gas-prices ${network.tx.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
+${network.other.binary_name} tx slashing unjail --from <wallet-name> --chain-id ${chainId} --gas ${network.tx?.gas} --gas-adjustment ${network.tx?.gas_adjustment} --gas-prices ${network.tx?.gas_prices}${network.other.denom} --node "https://rpc.${network.name}.${network.type}.dteam.tech:443" -y
 
 #validator details
 ${network.other.binary_name} q staking validator $(${network.other.binary_name} keys show <wallet-name> --bech val -a)
