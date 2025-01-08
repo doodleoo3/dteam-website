@@ -36,7 +36,7 @@ export interface ILinks {
     inflation?: string;
 
     binary_download: string;
-    git_network_repo: string;
+    git_network_repo?: string;
 
     explorer: string;
     website: string;
@@ -46,9 +46,9 @@ export interface ILinks {
 }
 
 export interface ITx {
-    gas: string;
-    gas_adjustment: number;
-    gas_prices: number;
+    gas?: string;
+    gas_adjustment?: number;
+    gas_prices?: number;
 }
 
 export interface IOther {
@@ -56,7 +56,7 @@ export interface IOther {
     main_dir: string; //example: canto
     working_dir: string; //example: cantod
     valoper_address?: string;
-    min_gas_price: number;
+    min_gas_price?: number;
 
     denom: string;
     denom_exponent: number;
@@ -86,6 +86,6 @@ export interface INetwork {
     need_build_binary: boolean;
     links: ILinks;
     services: IServices;
-    tx: ITx;
+    tx?: ITx;
     other: IOther;
 }
