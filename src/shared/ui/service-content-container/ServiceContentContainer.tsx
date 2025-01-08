@@ -65,7 +65,7 @@ const ServiceContentContainer: FC<ServiceContentContainerProps> = ({ networkName
         if (!Service) return null;
 
         return (
-            <Service network={currentNetwork} chainId={networkParams?.chain_id} nodeVersion={networkParams?.version} peers={networkParams?.peers}/>
+            <Service network={currentNetwork} chainId={networkParams?.chain_id} nodeVersion={networkParams?.version && !currentNetwork.other.version ? networkParams.version : currentNetwork.other.version} peers={networkParams?.peers}/>
         );
     }, [mainnetNetworks.error, mainnetNetworks.loading, testnetNetworks.error, testnetNetworks.loading, currentNetwork, service, networkParams?.chain_id, networkParams?.version, networkParams?.peers]);
 
